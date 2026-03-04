@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PhoneLab Leipzig – Handyverkauf & Reparatur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --white: #ffffff;
+      --navy: #1a2540;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --blue-mid: #dbeafe;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --amber: #d97706;
+      --amber-light: #fef3c7;
+      --text: #1e293b;
+      --sub: #475569;
+      --muted: #94a3b8;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow: 0 2px 12px rgba(30,41,59,.07);
+      --shadow-lg: 0 8px 32px rgba(30,41,59,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .logo { font-size: 1.2rem; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -.02em; }
+    .logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { color: var(--sub); text-decoration: none; font-size: .88rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-wa { background: var(--blue); color: #fff; padding: .42rem 1.1rem; border-radius: 8px; font-size: .85rem; font-weight: 700; text-decoration: none; transition: background .2s; white-space: nowrap; }
+    .nav-wa:hover { background: #1d4ed8; }
+
+    /* ── HERO ── */
+    .hero { background: var(--navy); color: #fff; padding: 70px 5vw 80px; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-pill { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 999px; padding: .28rem .85rem; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #93c5fd; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -.03em; margin-bottom: 1rem; }
+    .hero h1 em { font-style: normal; color: #60a5fa; }
+    .hero p { color: #94a3b8; font-size: 1rem; max-width: 400px; margin-bottom: 1.8rem; }
+    .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--blue); color: #fff; padding: .65rem 1.5rem; border-radius: 10px; font-weight: 700; font-size: .9rem; text-decoration: none; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-outline-white { border: 1px solid rgba(255,255,255,.25); color: #fff; padding: .65rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: .9rem; text-decoration: none; transition: border-color .2s, background .2s; }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05); }
+    .hero-cards { display: flex; flex-direction: column; gap: .9rem; }
+    .hero-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 1rem 1.2rem; display: flex; align-items: center; gap: 1rem; }
+    .hero-card-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .hero-card-title { font-weight: 700; font-size: .9rem; }
+    .hero-card-sub { color: #94a3b8; font-size: .78rem; margin-top: .1rem; }
+
+    /* ── SECTIONS ── */
+    .section { max-width: 1100px; margin: 0 auto; padding: 70px 5vw; }
+    .section-center { text-align: center; }
+    .tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 999px; padding: .22rem .8rem; margin-bottom: .6rem; }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    h2.sh { font-size: clamp(1.6rem, 2.5vw, 2.1rem); font-weight: 800; letter-spacing: -.025em; margin-bottom: .6rem; }
+    .sh-sub { color: var(--sub); font-size: .97rem; max-width: 500px; margin-bottom: 2.5rem; }
+
+    /* ── PRODUCT CARDS ── */
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .pcard { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+    .pcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .pcard-img { height: 200px; background: #f1f5f9; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+    .pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .pcard:hover .pcard-img img { transform: scale(1.04); }
+    .pbadge { position: absolute; top: 10px; left: 10px; padding: .2rem .6rem; border-radius: 999px; font-size: .67rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .pbg { background: var(--green); color: #fff; }
+    .pbb { background: var(--blue); color: #fff; }
+    .akku-tag { position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,.92); border: 1px solid var(--border); border-radius: 8px; padding: .25rem .55rem; font-size: .7rem; font-weight: 700; color: var(--green); }
+    .pcard-body { padding: 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .pcard-name { font-weight: 800; font-size: .98rem; color: var(--navy); margin-bottom: .35rem; }
+    .pcard-desc { color: var(--sub); font-size: .82rem; margin-bottom: .9rem; flex: 1; line-height: 1.55; }
+    .specs { display: grid; grid-template-columns: 1fr 1fr; gap: .38rem; margin-bottom: 1rem; }
+    .spec { background: var(--bg); border-radius: 8px; padding: .4rem .5rem; }
+    .spec-l { font-size: .6rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+    .spec-v { font-size: .78rem; font-weight: 700; color: var(--text); margin-top: .05rem; }
+    .pcard-foot { display: flex; align-items: center; justify-content: space-between; padding-top: .85rem; border-top: 1px solid var(--border); }
+    .pprice { font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+    .pprice small { font-size: .72rem; font-weight: 500; color: var(--muted); }
+    .btn-ask { background: var(--blue); color: #fff; padding: .45rem 1rem; border-radius: 8px; font-size: .82rem; font-weight: 700; text-decoration: none; transition: background .2s; }
+    .btn-ask:hover { background: #1d4ed8; }
+
+    /* ── REPAIR SECTION ── */
+    .repair-section { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .repair-inner { max-width: 1100px; margin: 0 auto; padding: 70px 5vw; }
+
+    /* IC-Tausch explanation box */
+    .ic-box { background: var(--blue-light); border: 1px solid var(--blue-mid); border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 2rem; }
+    .ic-box-title { font-weight: 800; color: var(--navy); margin-bottom: .6rem; font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
+    .ic-options { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .ic-opt { background: var(--white); border-radius: 10px; padding: .85rem 1rem; border: 1px solid var(--border); }
+    .ic-opt-head { font-weight: 700; font-size: .85rem; margin-bottom: .3rem; display: flex; align-items: center; gap: .4rem; }
+    .ic-opt p { font-size: .78rem; color: var(--sub); line-height: 1.5; }
+    .dot-amber { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); flex-shrink: 0; display: inline-block; }
+    .dot-green { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; display: inline-block; }
+    .warn-note { background: var(--amber-light); border: 1px solid #fde68a; border-radius: 8px; padding: .6rem .9rem; font-size: .75rem; color: #92400e; margin-top: .7rem; line-height: 1.5; }
+
+    /* Tab switcher */
+    .tab-bar { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab-btn { padding: .5rem 1.1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); font-size: .83rem; font-weight: 600; cursor: pointer; color: var(--sub); transition: all .15s; font-family: inherit; }
+    .tab-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .tab-btn:hover:not(.active) { border-color: var(--blue); color: var(--blue); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Price table */
+    .ptable { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--white); }
+    .ptable thead tr { background: var(--navy); color: #fff; }
+    .ptable th { padding: .7rem 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; text-align: left; }
+    .ptable th:not(:first-child) { text-align: right; }
+    .ptable tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
+    .ptable tbody tr:last-child { border-bottom: none; }
+    .ptable tbody tr:hover { background: var(--blue-light); }
+    .ptable td { padding: .65rem 1rem; font-size: .85rem; }
+    .ptable td:not(:first-child) { text-align: right; }
+    .ptable td .std { color: var(--text); font-weight: 600; }
+    .ptable td .ic { color: var(--blue); font-weight: 700; }
+    .ptable td .na { color: var(--muted); font-size: .78rem; }
+    .ptable-note { background: #f8fafc; border-top: 1px solid var(--border); padding: .55rem 1rem; font-size: .75rem; color: var(--sub); font-style: italic; }
+    .no-ic-label { font-size: .68rem; color: var(--muted); font-weight: 500; }
+
+    /* Service list */
+    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1.5rem; }
+    .service-item { display: flex; align-items: flex-start; gap: .7rem; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1rem; }
+    .service-item-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .service-item-title { font-weight: 700; font-size: .85rem; color: var(--navy); }
+    .service-item-sub { font-size: .75rem; color: var(--sub); margin-top: .1rem; }
+
+    /* CTA repair */
+    .repair-cta { background: var(--blue); color: #fff; border-radius: 14px; padding: 1.4rem 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .repair-cta p { font-size: .95rem; font-weight: 600; }
+    .repair-cta small { font-size: .8rem; opacity: .75; display: block; margin-top: .1rem; }
+    .btn-white { background: #fff; color: var(--blue); padding: .6rem 1.4rem; border-radius: 8px; font-weight: 700; font-size: .88rem; text-decoration: none; white-space: nowrap; transition: opacity .2s; }
+    .btn-white:hover { opacity: .9; }
+
+    /* ── CONTACT ── */
+    .contact-wrap { max-width: 680px; margin: 0 auto; padding: 70px 5vw; text-align: center; }
+    .contact-cards { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0 1.2rem; }
+    .cc { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem 1.7rem; flex: 1; min-width: 150px; max-width: 195px; text-decoration: none; color: var(--text); transition: border-color .2s, transform .15s, box-shadow .15s; display: flex; flex-direction: column; align-items: center; gap: .4rem; box-shadow: var(--shadow); }
+    .cc:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .cc-icon { font-size: 1.6rem; }
+    .cc-label { font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+    .cc-val { font-size: .88rem; font-weight: 700; text-align: center; color: var(--navy); word-break: break-all; }
+    .loc-pill { display: inline-flex; align-items: center; gap: .5rem; background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: .55rem 1.2rem; font-size: .85rem; color: var(--sub); box-shadow: var(--shadow); }
+    .loc-pill strong { color: var(--navy); }
+
+    footer { border-top: 1px solid var(--border); padding: 1.6rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; color: var(--muted); font-size: .78rem; background: var(--white); }
+
+    @media (max-width: 760px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-cards { display: none; }
+      .nav-links { display: none; }
+      .ic-options { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Phone<span>Lab</span> Leipzig</a>
+  <ul class="nav-links">
+    <li><a href="#angebote">Angebote</a></li>
+    <li><a href="#reparatur">Reparatur</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a class="nav-wa" href="https://wa.me/4915156022081" target="_blank">💬 WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill">📍 Leipzig – Lindenau</div>
+      <h1>Dein Handy in<br/>besten Händen.<br/><em>Kaufen & Reparieren.</em></h1>
+      <p>Geprüfte Smartphones zum fairen Preis – und professionelle Reparaturen für alle iPhone-Modelle. Schnell, zuverlässig, günstig.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="#angebote">Aktuelle Angebote</a>
+        <a class="btn-outline-white" href="#reparatur">Reparaturpreise</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="hero-card-icon">📱</div>
+        <div><div class="hero-card-title">Geprüfte Geräte</div><div class="hero-card-sub">Alle Smartphones persönlich geprüft, faire Preise</div></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">✅</div>
+        <div><div class="hero-card-title">Keine Warnmeldung</div><div class="hero-card-sub">Display & Akku-Tausch mit IC-Chip-Übertragung</div></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">⚡</div>
+        <div><div class="hero-card-title">Schnelle Reparatur</div><div class="hero-card-sub">Reparaturzeit 3–10 Tage je nach Verfügbarkeit</div></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">💶</div>
+        <div><div class="hero-card-title">Faire Preise</div><div class="hero-card-sub">Kein Auftrag ohne vorherige Preisvereinbarung</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="angebote">
+  <div class="section">
+    <span class="tag">Zum Verkauf</span>
+    <h2 class="sh">Aktuelle Angebote</h2>
+    <p class="sh-sub">Alle Geräte persönlich geprüft. Abholung in Leipzig Lindenau, Versand gegen Aufpreis möglich.</p>
+    <div class="products">
+
+      <!-- iPhone 15 Unlocked 420 € -->
+      <div class="pcard">
+        <div class="pcard-img">
+          <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/df/df83c19b-e563-4b95-affb-062ca06f06d2?rule=$_59.AUTO" alt="iPhone 15 Unlocked Pink" onerror="this.style.background='#e0e7ff';this.style.display='block'"/>
+          <span class="pbadge pbb">Unlocked</span>
+          <div class="akku-tag">🔋 89%</div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">iPhone 15 · 128 GB · Pink · Unlocked</div>
+          <p class="pcard-desc">Optisch und technisch einwandfrei. Vollständig entsperrt – für alle Netze nutzbar. Akku 89 %, Display makellos.</p>
+          <div class="specs">
+            <div class="spec"><div class="spec-l">Display</div><div class="spec-v">6,1" OLED</div></div>
+            <div class="spec"><div class="spec-l">Chip</div><div class="spec-v">A16 Bionic</div></div>
+            <div class="spec"><div class="spec-l">Kamera</div><div class="spec-v">48 MP</div></div>
+            <div class="spec"><div class="spec-l">Akku</div><div class="spec-v">89%</div></div>
+            <div class="spec"><div class="spec-l">Speicher</div><div class="spec-v">128 GB</div></div>
+            <div class="spec"><div class="spec-l">Simlock</div><div class="spec-v">Frei / Unlocked</div></div>
+          </div>
+          <div class="pcard-foot">
+            <div class="pprice">420 €</div>
+            <a class="btn-ask" href="https://wa.me/4915156022081?text=Hallo%2C%20Interesse%20am%20iPhone%2015%20Unlocked%20420%E2%82%AC" target="_blank">Anfragen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone 13 Pro Silber 350 € -->
+      <div class="pcard">
+        <div class="pcard-img">
+          <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/b8/b8bb4129-ef66-4f86-b3a6-564cf3d621a7?rule=$_59.AUTO" alt="iPhone 13 Pro Silber"/>
+          <span class="pbadge pbg">Akku 100%</span>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">iPhone 13 Pro · 128 GB · Silber</div>
+          <p class="pcard-desc">Hervorragender Zustand, minimale Kratzer am Display – ansonsten wie neu. Akku 100%. Frei für alle Netze. Ohne Zubehör.</p>
+          <div class="specs">
+            <div class="spec"><div class="spec-l">Display</div><div class="spec-v">6,1" ProMotion 120Hz</div></div>
+            <div class="spec"><div class="spec-l">Chip</div><div class="spec-v">A15 Bionic</div></div>
+            <div class="spec"><div class="spec-l">Kamera</div><div class="spec-v">12 MP Triple</div></div>
+            <div class="spec"><div class="spec-l">Akku</div><div class="spec-v">100%</div></div>
+            <div class="spec"><div class="spec-l">Speicher</div><div class="spec-v">128 GB</div></div>
+            <div class="spec"><div class="spec-l">Simlock</div><div class="spec-v">Frei</div></div>
+          </div>
+          <div class="pcard-foot">
+            <div class="pprice">350 € <small>VB</small></div>
+            <a class="btn-ask" href="https://wa.me/4915156022081?text=Hallo%2C%20Interesse%20am%20iPhone%2013%20Pro%20Silber%20350%E2%82%AC" target="_blank">Anfragen</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pixel 8 Pro 320 € -->
+      <div class="pcard">
+        <div class="pcard-img">
+          <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/36/3636400e-e4fb-4090-8fd3-270d3bd8b756?rule=$_59.AUTO" alt="Google Pixel 8 Pro"/>
+          <span class="pbadge pbg">Top Zustand</span>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-name">Google Pixel 8 Pro · 128 GB · Obsidian</div>
+          <p class="pcard-desc">Kaum genutzt, Display makellos, Akku hält sehr gut. Inkl. Originalverpackung. Abholung Leipzig oder Versand gegen Aufpreis.</p>
+          <div class="specs">
+            <div class="spec"><div class="spec-l">Display</div><div class="spec-v">6,7" LTPO OLED 120Hz</div></div>
+            <div class="spec"><div class="spec-l">Chip</div><div class="spec-v">Google Tensor G3</div></div>
+            <div class="spec"><div class="spec-l">Kamera</div><div class="spec-v">50 MP Triple + Peris.</div></div>
+            <div class="spec"><div class="spec-l">Akku</div><div class="spec-v">Top Zustand</div></div>
+            <div class="spec"><div class="spec-l">Speicher</div><div class="spec-v">128 GB</div></div>
+            <div class="spec"><div class="spec-l">Zubehör</div><div class="spec-v">Originalverpackung</div></div>
+          </div>
+          <div class="pcard-foot">
+            <div class="pprice">320 € <small>VB</small></div>
+            <a class="btn-ask" href="https://wa.me/4915156022081?text=Hallo%2C%20Interesse%20am%20Pixel%208%20Pro%20320%E2%82%AC" target="_blank">Anfragen</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REPAIR -->
+<section id="reparatur" class="repair-section">
+  <div class="repair-inner">
+    <span class="tag">Reparaturservice</span>
+    <h2 class="sh">iPhone Reparatur – Bestpreis & Topqualität</h2>
+    <p class="sh-sub">Professionelle Reparatur aller iPhone-Modelle. Ausschließlich hochwertige Ersatzteile. Weitere Modelle auf Anfrage. Kein Wasserschaden-Service.</p>
+
+    <!-- IC-Chip Erklärung -->
+    <div class="ic-box">
+      <div class="ic-box-title">ℹ️ Beim Display-Tausch hast du die Wahl:</div>
+      <div class="ic-options">
+        <div class="ic-opt">
+          <div class="ic-opt-head"><span class="dot-amber"></span> Standard – mit Warnmeldung</div>
+          <p>Günstigerer Preis. Display ist voll funktionsfähig (Touch, Farben, Helligkeit etc.), allerdings erscheint in den Einstellungen eine Meldung „Unbekanntes Bauteil" o. Ä.</p>
+        </div>
+        <div class="ic-opt">
+          <div class="ic-opt-head"><span class="dot-green"></span> Mit IC-Chip-Übertragung – ohne Warnmeldung</div>
+          <p>Der originale IC-Chip deines alten Displays wird auf das neue übertragen. Dadurch erscheint <strong>keine Fehlermeldung</strong> – wie original. Nur möglich wenn bisher kein Fremd-Display verbaut war.</p>
+        </div>
+      </div>
+      <div class="warn-note">⚠️ Hinweis: Apple kann die IC-Chip-Methode bei zukünftigen iOS-Updates jederzeit erschweren oder blockieren. Keine Garantie für die Dauerhaftigkeit bei künftigen Updates.</div>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab('display')">📱 Display-Reparatur</button>
+      <button class="tab-btn" onclick="showTab('akku')">🔋 Akku-Tausch</button>
+      <button class="tab-btn" onclick="showTab('komplett')">🔧 Komplettreparatur</button>
+    </div>
+
+    <!-- TAB: Display -->
+    <div class="tab-content active" id="tab-display">
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th>Modell</th>
+            <th>Standard<br/><span style="font-weight:400;opacity:.7;text-transform:none;letter-spacing:0;">(mit Warnmeldung)</span></th>
+            <th>Mit IC-Tausch<br/><span style="font-weight:400;opacity:.7;text-transform:none;letter-spacing:0;">(ohne Warnmeldung)</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>iPhone 16 Pro Max</td><td><span class="std">349 €</span></td><td><span class="ic">429 €</span></td></tr>
+          <tr><td>iPhone 16 Pro</td><td><span class="std">299 €</span></td><td><span class="ic">379 €</span></td></tr>
+          <tr><td>iPhone 16</td><td><span class="std">219 €</span></td><td><span class="ic">299 €</span></td></tr>
+          <tr><td>iPhone 15 Pro Max</td><td><span class="std">259 €</span></td><td><span class="ic">339 €</span></td></tr>
+          <tr><td>iPhone 15 Pro</td><td><span class="std">239 €</span></td><td><span class="ic">309 €</span></td></tr>
+          <tr><td>iPhone 15</td><td><span class="std">175 €</span></td><td><span class="ic">255 €</span></td></tr>
+          <tr><td>iPhone 14 Pro Max</td><td><span class="std">199 €</span></td><td><span class="ic">269 €</span></td></tr>
+          <tr><td>iPhone 14 Pro</td><td><span class="std">189 €</span></td><td><span class="ic">259 €</span></td></tr>
+          <tr><td>iPhone 14 Plus</td><td><span class="std">135 €</span></td><td><span class="ic">205 €</span></td></tr>
+          <tr><td>iPhone 14</td><td><span class="std">125 €</span></td><td><span class="ic">195 €</span></td></tr>
+          <tr><td>iPhone 13 Pro Max</td><td><span class="std">175 €</span></td><td><span class="ic">245 €</span></td></tr>
+          <tr><td>iPhone 13 Pro</td><td><span class="std">155 €</span></td><td><span class="ic">225 €</span></td></tr>
+          <tr><td>iPhone 13 mini</td><td><span class="std">175 €</span></td><td><span class="ic">245 €</span></td></tr>
+          <tr><td>iPhone 13</td><td><span class="std">149 €</span></td><td><span class="ic">219 €</span></td></tr>
+          <tr><td>iPhone 12 Pro Max</td><td><span class="std">129 €</span></td><td><span class="na">auf Anfrage</span></td></tr>
+          <tr><td>iPhone 12 / 12 Pro</td><td><span class="std">109 €</span></td><td><span class="na">auf Anfrage</span></td></tr>
+          <tr><td>iPhone 11 Pro <span class="no-ic-label">(kein IC-Tausch)</span></td><td><span class="std">79 €</span></td><td><span class="na">–</span></td></tr>
+          <tr><td>iPhone XS Max <span class="no-ic-label">(kein IC-Tausch)</span></td><td><span class="std">69 €</span></td><td><span class="na">–</span></td></tr>
+          <tr><td>iPhone 11 / XR <span class="no-ic-label">(kein IC-Tausch)</span></td><td><span class="std">69 €</span></td><td><span class="na">–</span></td></tr>
+          <tr><td>iPhone X / XS <span class="no-ic-label">(kein IC-Tausch)</span></td><td><span class="std">69 €</span></td><td><span class="na">–</span></td></tr>
+        </tbody>
+      </table>
+      <div class="ptable-note">Alle Displays in OLED-Qualität. Preise inkl. Einbau. Endpreis nach kostenloser Diagnose.</div>
+    </div>
+
+    <!-- TAB: Akku -->
+    <div class="tab-content" id="tab-akku">
+      <table class="ptable">
+        <thead><tr><th>Modell</th><th>Preis (inkl. Einbau)</th></tr></thead>
+        <tbody>
+          <tr><td>iPhone 16 Pro Max</td><td><span class="std">99 €</span></td></tr>
+          <tr><td>iPhone 16 Pro</td><td><span class="std">95 €</span></td></tr>
+          <tr><td>iPhone 16</td><td><span class="std">85 €</span></td></tr>
+          <tr><td>iPhone 15 Pro Max</td><td><span class="std">85 €</span></td></tr>
+          <tr><td>iPhone 15 Pro</td><td><span class="std">85 €</span></td></tr>
+          <tr><td>iPhone 15</td><td><span class="std">75 €</span></td></tr>
+          <tr><td>iPhone 14 Plus</td><td><span class="std">69 €</span></td></tr>
+          <tr><td>iPhone 14</td><td><span class="std">69 €</span></td></tr>
+          <tr><td>iPhone 11 Pro Max</td><td><span class="std">55 €</span></td></tr>
+          <tr><td>iPhone 11 Pro</td><td><span class="std">49 €</span></td></tr>
+          <tr><td>iPhone XS Max</td><td><span class="std">45 €</span></td></tr>
+          <tr><td>iPhone 11 / XR</td><td><span class="std">39 €</span></td></tr>
+          <tr><td>iPhone X / XS</td><td><span class="std">39 €</span></td></tr>
+        </tbody>
+      </table>
+      <div class="ptable-note">Weitere Modelle auf Anfrage. Preise inkl. Einbau.</div>
+    </div>
+
+    <!-- TAB: Komplett -->
+    <div class="tab-content" id="tab-komplett">
+      <p style="font-size:.85rem;color:var(--sub);margin-bottom:1rem;background:var(--green-light);border-radius:10px;padding:.7rem 1rem;border:1px solid #bbf7d0;">
+        🔧 <strong>Komplettreparatur:</strong> Display, Rückseite und Rahmen werden ersetzt – danach optisch wie neu.
+      </p>
+      <table class="ptable">
+        <thead><tr><th>Modell</th><th>Preis (Komplett)</th></tr></thead>
+        <tbody>
+          <tr><td>iPhone 16 Pro Max</td><td><span class="std">399 €</span></td></tr>
+          <tr><td>iPhone 16 Pro</td><td><span class="std">369 €</span></td></tr>
+          <tr><td>iPhone 16</td><td><span class="std">339 €</span></td></tr>
+          <tr><td>iPhone 15 Pro Max</td><td><span class="std">369 €</span></td></tr>
+          <tr><td>iPhone 15 Pro</td><td><span class="std">339 €</span></td></tr>
+          <tr><td>iPhone 15</td><td><span class="std">319 €</span></td></tr>
+          <tr><td>iPhone 14 Pro Max</td><td><span class="std">319 €</span></td></tr>
+          <tr><td>iPhone 14 Pro</td><td><span class="std">299 €</span></td></tr>
+          <tr><td>iPhone 14 Plus</td><td><span class="std">279 €</span></td></tr>
+          <tr><td>iPhone 14</td><td><span class="std">279 €</span></td></tr>
+          <tr><td>iPhone 13 Pro Max</td><td><span class="std">279 €</span></td></tr>
+          <tr><td>iPhone 13 Pro</td><td><span class="std">259 €</span></td></tr>
+          <tr><td>iPhone 13</td><td><span class="std">249 €</span></td></tr>
+          <tr><td>iPhone 13 mini</td><td><span class="std">249 €</span></td></tr>
+          <tr><td>iPhone 12 Pro Max</td><td><span class="std">249 €</span></td></tr>
+          <tr><td>iPhone 12 / 12 Pro</td><td><span class="std">229 €</span></td></tr>
+          <tr><td>iPhone 11 Pro Max</td><td><span class="std">209 €</span></td></tr>
+          <tr><td>iPhone 11 Pro</td><td><span class="std">199 €</span></td></tr>
+          <tr><td>iPhone 11 / XR</td><td><span class="std">199 €</span></td></tr>
+        </tbody>
+      </table>
+      <div class="ptable-note">Weitere Reparaturen auf Anfrage. Reparaturzeit 3–10 Tage je nach Verfügbarkeit.</div>
+    </div>
+
+    <!-- Further services -->
+    <div style="margin-top:2rem;">
+      <div style="font-weight:700;font-size:.9rem;color:var(--navy);margin-bottom:.8rem;">Weitere Reparaturen auf Anfrage:</div>
+      <div class="service-grid">
+        <div class="service-item"><div class="service-item-icon">🔌</div><div><div class="service-item-title">Ladeport / USB-C / Lightning</div><div class="service-item-sub">Alle Modelle auf Anfrage</div></div></div>
+        <div class="service-item"><div class="service-item-icon">📷</div><div><div class="service-item-title">Kamera-Reparatur</div><div class="service-item-sub">Front- & Rückkamera, alle Modelle</div></div></div>
+        <div class="service-item"><div class="service-item-icon">🔊</div><div><div class="service-item-title">Lautsprecher & Mikrofon</div><div class="service-item-sub">Auf Anfrage</div></div></div>
+        <div class="service-item"><div class="service-item-icon">🔓</div><div><div class="service-item-title">Face ID / Touch ID</div><div class="service-item-sub">Diagnose & Reparatur auf Anfrage</div></div></div>
+      </div>
+    </div>
+
+    <div class="repair-cta">
+      <div>
+        <p>Reparatur anfragen – kostenlose Diagnose!</p>
+        <small>Kein Auftrag ohne vorherige Preisvereinbarung. Reparaturzeit 3–10 Tage.</small>
+      </div>
+      <a class="btn-white" href="https://wa.me/4915156022081?text=Hallo%2C%20ich%20m%C3%B6chte%20mein%20iPhone%20reparieren%20lassen." target="_blank">💬 Jetzt WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt">
+  <div class="contact-wrap">
+    <span class="tag tag-green">Kontakt</span>
+    <h2 class="sh section-center">Einfach melden!</h2>
+    <p class="sh-sub section-center" style="margin: 0 auto 0; text-align:center;">Fragen zu einem Gerät oder zur Reparatur – am schnellsten per WhatsApp.</p>
+    <div class="contact-cards">
+      <a class="cc" href="https://wa.me/4915156022081" target="_blank">
+        <div class="cc-icon">💬</div>
+        <div class="cc-label">WhatsApp</div>
+        <div class="cc-val">0151 56022081</div>
+      </a>
+      <a class="cc" href="mailto:adrich@gmx.net">
+        <div class="cc-icon">✉️</div>
+        <div class="cc-label">E-Mail</div>
+        <div class="cc-val">adrich@gmx.net</div>
+      </a>
+      <a class="cc" href="https://maps.google.com/?q=Leipzig+Lindenau" target="_blank">
+        <div class="cc-icon">📍</div>
+        <div class="cc-label">Standort</div>
+        <div class="cc-val">Leipzig Lindenau</div>
+      </a>
+    </div>
+    <div class="loc-pill">📍 <strong>Leipzig Lindenau</strong> &nbsp;–&nbsp; Abholung &amp; Übergabe möglich</div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo" style="font-size:.9rem;">Phone<span>Lab</span> Leipzig</a>
+  <span>© 2025 · Leipzig Lindenau · <a href="mailto:adrich@gmx.net" style="color:var(--muted);text-decoration:none;">adrich@gmx.net</a></span>
+</footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
