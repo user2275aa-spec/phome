@@ -477,3 +477,15 @@
   <a href="#" class="logo" style="font-size:.9rem;">Phone<span>Lab</span> Leipzig</a>
   <span>© 2025 · Leipzig Lindenau · <a href="mailto:adrich@gmx.net" style="color:var(--muted);text-decoration:none;">adrich@gmx.net</a></span>
 </footer>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+</body>
+</html>
+
