@@ -1451,6 +1451,12 @@
                       <strong>PayPal</strong>
                       <span>Sofortzahlung<br>sicher & schnell</span>
                     </label>
+                    <label class="option-card" id="label-payment-stripe">
+                      <input type="radio" name="payment" value="stripe" />
+                      <div class="option-card-icon">💳</div>
+                      <strong>Kreditkarte</strong>
+                      <span>Visa, Mastercard<br>via Stripe</span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1537,6 +1543,19 @@
                 </p>
                 <p style="text-align:center; font-size:12px; color:var(--muted); margin-top:10px;">
                   🔒 Sichere &amp; verschlüsselte Zahlung via PayPal
+                </p>
+              </div>
+
+              <!-- Stripe Buttons -->
+              <div id="stripeBtnArea" style="display:none;">
+                <p id="stripeValidationMsg" style="display:none; font-size:13px; color:var(--danger); margin-bottom:10px; font-weight:700;">
+                  ⚠️ Bitte fülle alle Pflichtfelder aus und akzeptiere AGB &amp; Widerrufsbelehrung.
+                </p>
+                <button type="button" class="btn btn-primary" style="width:100%; height:50px; font-size:16px; background:#635BFF; box-shadow: 0 12px 24px rgba(99,91,255,0.28);" onclick="startStripeCheckout(event)">
+                  💳 Jetzt mit Kreditkarte bezahlen
+                </button>
+                <p style="text-align:center; font-size:12px; color:var(--muted); margin-top:10px;">
+                  🔒 Sichere &amp; verschlüsselte Zahlung via Stripe
                 </p>
               </div>
             </div>
@@ -2424,10 +2443,12 @@
 
       const showNotice = isPaypal || isShipping;
       document.getElementById('paypalNotice').style.display  = showNotice ? 'block' : 'none';
-      document.getElementById('submitOrderBtn').style.display = isPaypal  ? 'none'  : 'block';
+      const isStripe = document.querySelector('input[name="payment"]:checked').value === 'stripe';
+      document.getElementById('submitOrderBtn').style.display = (!isPaypal && !isStripe) ? 'block' : 'none';
       document.getElementById('paypalBtnArea').style.display  = isPaypal  ? 'block' : 'none';
+      document.getElementById('stripeBtnArea').style.display  = isStripe  ? 'block' : 'none';
 
-      if (!isPaypal) {
+      if (!isPaypal && !isStripe) {
         document.getElementById('submitOrderBtn').disabled = !ready || cart.length === 0;
       }
 
@@ -3114,6 +3135,71 @@
       <button class="cookie-btn-accept" onclick="acceptCookies()">Alle akzeptieren</button>
     </div>
   </div>
+
+  <!-- ─── Stripe Checkout ──────────────────────────────────── -->
+  <script>
+    async function startStripeCheckout(event) {
+      const validationMsg = document.getElementById('stripeValidationMsg');
+      if (!isFormValid()) {
+        validationMsg.style.display = 'block';
+        document.getElementById('firstName').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      const amount = getCheckoutAmount();
+      if (!amount || parseFloat(amount) <= 0) {
+        alert('Bitte lege zuerst Artikel in den Warenkorb.');
+        return;
+      }
+      validationMsg.style.display = 'none';
+      const btn = event.currentTarget;
+      btn.disabled = true;
+      btn.textContent = '⏳ Weiterleitung zu Stripe…';
+
+      const description = cart.map(c => c.label).join(' + ') || 'PhoneLab Leipzig';
+      const origin = window.location.origin + window.location.pathname;
+
+      try {
+        const res = await fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: parseFloat(amount),
+            description,
+            successUrl: origin + '?payment=success',
+            cancelUrl:  origin + '?payment=cancelled',
+          }),
+        });
+        const data = await res.json();
+        if (data.url) {
+          await sendOrderEmails('stripe', null);
+          window.location.href = data.url;
+        } else {
+          throw new Error('Keine Checkout-URL erhalten');
+        }
+      } catch (err) {
+        console.error('Stripe Fehler:', err);
+        alert('Fehler beim Starten der Zahlung. Bitte versuche es erneut.');
+        btn.disabled = false;
+        btn.textContent = '💳 Jetzt mit Kreditkarte bezahlen';
+      }
+    }
+
+    // Erfolg nach Rückkehr von Stripe anzeigen
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('payment') === 'success') {
+        const msg = document.getElementById('formMessage');
+        if (msg) {
+          msg.innerHTML = '✅ Stripe-Zahlung erfolgreich! Du erhältst eine Bestätigung per E-Mail.';
+          msg.style.background = '#dcfce7';
+          msg.style.color = 'var(--success)';
+          msg.hidden = false;
+          msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        window.history.replaceState({}, '', window.location.pathname);
+      }
+    })();
+  </script>
 
   <script>
     // Cookie Banner Logik
