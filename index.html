@@ -544,6 +544,140 @@
     @media (max-width: 480px) {
       #cookieBanner { bottom: 16px; left: 16px; right: 16px; width: auto; max-width: none; }
     }
+
+    /* ═══════════════════════════════════════════════════
+       MOBILE OPTIMIERUNG — Breakpoint 768px
+    ═══════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* ── Abstände & Typografie ── */
+      .section { padding: 52px 0; }
+      h1 { font-size: clamp(32px, 9vw, 52px); margin-bottom: 16px; }
+      h2 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
+      h3 { font-size: 18px; }
+      .lead { font-size: 16px; }
+
+      /* ── Navigation ── */
+      .nav { height: 64px; gap: 12px; }
+      .nav-links { display: none; } /* Desktop-Nav komplett verbergen */
+      #mobileMenuBtn { display: flex !important; align-items: center; }
+      #mobileMenu.open { display: flex !important; }
+      .logo { font-size: 18px; }
+      .logo-mark { width: 34px; height: 34px; border-radius: 10px; font-size: 14px; }
+
+      /* ── Hero ── */
+      .hero { padding: 40px 0 36px; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-visual { min-height: 340px; }
+      .phone-card {
+        width: min(300px, 85%);
+        min-height: 380px;
+        border-radius: 36px;
+        padding: 14px;
+      }
+      .phone-screen { min-height: 352px; padding: 18px; }
+      .repair-status strong { font-size: 26px; }
+      .floating-card.one { left: -8px; top: 40px; max-width: 190px; padding: 14px; font-size: 13px; }
+      .floating-card.two { right: -8px; bottom: 40px; max-width: 190px; padding: 14px; font-size: 13px; }
+      .hero-actions { flex-direction: column; gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .trust-row { gap: 8px; font-size: 13px; }
+
+      /* ── Highlights ── */
+      .highlights-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
+      .highlight-card { padding: 22px; }
+      .highlight-icon { font-size: 32px; margin-bottom: 12px; }
+
+      /* ── Steps ── */
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .step-card { padding: 18px; }
+
+      /* ── Reparatur-Panel ── */
+      .repair-panel { grid-template-columns: 1fr; gap: 20px; }
+      .builder { padding: 20px; }
+      .repair-options { grid-template-columns: 1fr; gap: 10px; }
+      .repair-grid { grid-template-columns: 1fr; gap: 10px; }
+      .series-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+      .model-sub-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+      .option-cards { grid-template-columns: 1fr; gap: 10px; }
+      .summary-card { padding: 20px; }
+      .price { font-size: 36px; }
+      .price-box { padding: 20px; }
+
+      /* ── Produkte ── */
+      .products-grid { grid-template-columns: 1fr; gap: 16px; }
+      .product-body { padding: 18px; }
+      .product-price { font-size: 24px; }
+
+      /* ── Checkout ── */
+      .checkout-wrapper { grid-template-columns: 1fr; gap: 20px; }
+      .checkout-card { padding: 20px; }
+      .checkout-form-grid { grid-template-columns: 1fr; gap: 12px; }
+      .full-width { grid-column: span 1; }
+
+      /* ── Modals ── */
+      .modal-content {
+        margin: 16px auto;
+        padding: 22px 18px;
+        width: calc(100% - 24px);
+        border-radius: 20px;
+      }
+      .modal-gallery { height: 220px; }
+
+      /* ── Footer ── */
+      .footer { padding: 40px 0; margin-top: 52px; }
+      .footer-grid { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
+
+      /* ── Cart Popup ── */
+      .cart-popup-box { padding: 28px 20px 22px; border-radius: 22px; }
+      .cart-popup-btns { flex-direction: column; }
+      .cart-popup-btns .btn { width: 100%; }
+
+      /* ── WhatsApp Button – nach oben damit Cookie-Banner nicht überlagert ── */
+      #waBtn { bottom: 90px; right: 20px; width: 52px; height: 52px; }
+      #waBtn svg { width: 26px; height: 26px; }
+      #waPopup { right: 16px; bottom: 152px; width: calc(100vw - 32px); }
+
+      /* ── Badges & kleine Elemente ── */
+      .badge { font-size: 12px; padding: 6px 10px; }
+      .btn { padding: 12px 18px; font-size: 15px; }
+      .repair-breadcrumb { font-size: 12px; padding: 8px 10px; }
+      .spec-chip { font-size: 11px; padding: 3px 8px; }
+
+      /* ── Spec table in Modal ── */
+      .spec-table td { font-size: 13px; padding: 8px 0; }
+      .spec-table td:first-child { width: 48%; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       MOBILE OPTIMIERUNG — Breakpoint 480px
+    ═══════════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+
+      /* Abstände weiter reduzieren */
+      .section { padding: 40px 0; }
+      .container { width: calc(100% - 24px); }
+
+      /* Steps: 1 Spalte auf sehr kleinen Screens */
+      .steps-grid { grid-template-columns: 1fr; }
+
+      /* Hero visuell noch kompakter */
+      .hero-visual { min-height: 280px; }
+      .phone-card { width: min(260px, 80%); min-height: 330px; }
+      .phone-screen { min-height: 302px; }
+      .floating-card { display: none; } /* Floating cards auf sehr kleinen Screens ausblenden */
+
+      /* Nav: Warenkorb-Text kürzer */
+      #navCartBtn { padding: 8px 12px; font-size: 13px; }
+
+      /* Checkout-Zusammenfassung kompakter */
+      .checkout-sum-row { font-size: 14px; }
+      .checkout-sum-row:last-of-type { font-size: 17px; }
+    }
   </style>
 </head>
 
@@ -562,6 +696,18 @@
         </button>
         <a href="#checkout" class="btn btn-primary" style="padding: 10px 18px; border-radius:12px;">Anfragen</a>
       </nav>
+      <!-- Mobile Hamburger -->
+      <button id="mobileMenuBtn" aria-label="Menü öffnen" onclick="toggleMobileMenu()" style="display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--text);">
+        <svg id="menuIconOpen" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menuIconClose" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobileMenu" style="display:none; position:fixed; top:64px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:19; padding:20px 16px; flex-direction:column; gap:12px;">
+        <a href="#reparatur" onclick="closeMobileMenu()" style="display:block; padding:14px 16px; border-radius:14px; background:var(--bg-soft); font-weight:700; color:var(--text);">🔧 Reparatur</a>
+        <a href="#geraete" onclick="closeMobileMenu()" style="display:block; padding:14px 16px; border-radius:14px; background:var(--bg-soft); font-weight:700; color:var(--text);">📱 Gebrauchte Smartphones</a>
+        <button class="btn btn-secondary" onclick="openCartDrawer(); closeMobileMenu();" style="width:100%; border-radius:14px; position:relative;">🛒 Warenkorb</button>
+        <a href="#checkout" onclick="closeMobileMenu()" class="btn btn-primary" style="width:100%; border-radius:14px; text-align:center;">Anfragen</a>
+      </div>
     </div>
   </header>
 
@@ -2739,6 +2885,41 @@
       const popup = document.getElementById('waPopup');
       if (!btn.contains(e.target) && !popup.contains(e.target)) {
         popup.classList.remove('show');
+      }
+    });
+  </script>
+
+  <script>
+    // ── Mobile Menu ──────────────────────────────
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const iconOpen = document.getElementById('menuIconOpen');
+      const iconClose = document.getElementById('menuIconClose');
+      const isOpen = menu.classList.contains('open');
+      if (isOpen) {
+        menu.classList.remove('open');
+        iconOpen.style.display = '';
+        iconClose.style.display = 'none';
+      } else {
+        menu.classList.add('open');
+        iconOpen.style.display = 'none';
+        iconClose.style.display = '';
+      }
+    }
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const iconOpen = document.getElementById('menuIconOpen');
+      const iconClose = document.getElementById('menuIconClose');
+      menu.classList.remove('open');
+      iconOpen.style.display = '';
+      iconClose.style.display = 'none';
+    }
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileMenu();
       }
     });
   </script>
