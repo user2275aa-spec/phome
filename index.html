@@ -46,6 +46,7 @@
         linear-gradient(180deg, #ffffff 0%, var(--bg) 38%, #ffffff 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -106,14 +107,63 @@
     .trust-row { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
     .hero-visual { position: relative; min-height: 520px; display: grid; place-items: center; }
 
-    .phone-card { width: min(390px, 100%); min-height: 500px; background: #111827; color: #ffffff; border-radius: 44px; padding: 18px; box-shadow: 0 34px 80px rgba(15, 23, 42, 0.28); position: relative; transform: rotate(2deg); }
-    .phone-screen { height: 100%; min-height: 464px; border-radius: 32px; background: radial-gradient(circle at top right, rgba(20, 184, 166, 0.45), transparent 36%), linear-gradient(180deg, #1f2937, #020617); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
-    .screen-top { display: flex; justify-content: space-between; align-items: center; color: #d1d5db; font-size: 13px; font-weight: 700; }
-    .repair-status { margin-top: 46px; }
-    .repair-status strong { font-size: 34px; letter-spacing: -0.04em; display: block; margin-bottom: 8px; }
-    .progress { height: 10px; background: rgba(255, 255, 255, 0.14); border-radius: 999px; overflow: hidden; margin-top: 22px; }
-    .progress span { display: block; height: 100%; width: 78%; background: var(--accent); border-radius: inherit; }
-    .screen-card { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 22px; padding: 18px; backdrop-filter: blur(12px); }
+    .phone-card { width: min(340px, 100%); background: #0d1117; color: #ffffff; border-radius: 48px; padding: 14px; box-shadow: 0 40px 90px rgba(15, 23, 42, 0.38), 0 0 0 1px rgba(255,255,255,0.06); position: relative; transform: rotate(2deg); }
+    .phone-screen { border-radius: 36px; background: linear-gradient(160deg, #0f1923 0%, #071014 100%); padding: 0; display: flex; flex-direction: column; overflow: hidden; min-height: 520px; }
+
+    /* Status bar */
+    .screen-statusbar { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px 0; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.55); }
+    .statusbar-icons { display: flex; align-items: center; gap: 5px; }
+    .statusbar-icons svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.55); }
+
+    /* App header */
+    .screen-app-header { padding: 18px 20px 14px; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: space-between; }
+    .screen-app-logo { display: flex; align-items: center; gap: 8px; }
+    .screen-app-dot { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--accent)); display: grid; place-items: center; font-size: 12px; font-weight: 900; }
+    .screen-app-name { font-size: 14px; font-weight: 800; letter-spacing: -0.02em; }
+    .screen-live-badge { background: rgba(20,184,166,0.18); border: 1px solid rgba(20,184,166,0.35); border-radius: 99px; padding: 3px 9px; font-size: 11px; font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 5px; }
+    .screen-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: livePulse 1.6s ease-in-out infinite; }
+    @keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* Active repair block */
+    .screen-active { padding: 20px 20px 14px; }
+    .screen-active-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+    .screen-active-title { font-size: 26px; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 6px; }
+    .screen-active-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+    .screen-progress-wrap { background: rgba(255,255,255,0.08); border-radius: 99px; height: 6px; overflow: hidden; }
+    .screen-progress-bar { height: 100%; width: 72%; border-radius: 99px; background: linear-gradient(90deg, var(--primary), var(--accent)); animation: progressGrow 2.2s cubic-bezier(0.4,0,0.2,1) both; }
+    @keyframes progressGrow { from { width: 0%; } to { width: 72%; } }
+    .screen-progress-label { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; }
+
+    /* Cycling repair examples */
+    .screen-examples { flex: 1; padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 0; }
+    .screen-examples-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 10px; }
+    .screen-example-slot { position: relative; height: 64px; }
+    .screen-ex {
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px; padding: 10px 14px;
+      display: flex; justify-content: space-between; align-items: center;
+      opacity: 0;
+      animation: exCycle 12s infinite;
+    }
+    .screen-ex:nth-child(1) { animation-delay: 0s; }
+    .screen-ex:nth-child(2) { animation-delay: 3s; }
+    .screen-ex:nth-child(3) { animation-delay: 6s; }
+    .screen-ex:nth-child(4) { animation-delay: 9s; }
+    @keyframes exCycle {
+      0%    { opacity: 0; transform: translateY(5px); }
+      4%    { opacity: 1; transform: translateY(0); }
+      21%   { opacity: 1; transform: translateY(0); }
+      25%   { opacity: 0; transform: translateY(-3px); }
+      100%  { opacity: 0; transform: translateY(-3px); }
+    }
+    .screen-ex-info { display: flex; flex-direction: column; gap: 3px; }
+    .screen-ex-model { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.92); }
+    .screen-ex-repair { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 600; }
+    .screen-ex-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+    .screen-ex-price { font-size: 15px; font-weight: 900; color: var(--accent); letter-spacing: -0.03em; }
+    .screen-ex-done { font-size: 10px; background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.3); color: var(--accent); border-radius: 99px; padding: 2px 7px; font-weight: 700; }
+
     .floating-card { position: absolute; background: #ffffff; border: 1px solid var(--border); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); max-width: 230px; }
     .floating-card strong { display: block; margin-bottom: 4px; }
     .floating-card p { color: var(--muted); font-size: 14px; }
@@ -163,9 +213,11 @@
     .product-image { min-height: 240px; display: grid; place-items: center; background: radial-gradient(circle, rgba(20, 184, 166, 0.24), transparent 42%), linear-gradient(135deg, #f8fafc, #e2e8f0); cursor: pointer; }
     .device { width: 118px; height: 210px; border-radius: 28px; background: linear-gradient(160deg, #111827, #374151); border: 8px solid #020617; box-shadow: 0 24px 40px rgba(15, 23, 42, 0.25); position: relative; }
     .device::before { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 42px; height: 7px; border-radius: 999px; background: #020617; }
+    .device-color-badge, .device-condition-badge { z-index: 1; }
     .product-body { padding: 24px; }
     .product-meta { color: var(--muted); margin-bottom: 14px; }
     .product-price { font-size: 28px; font-weight: 950; margin-bottom: 18px; letter-spacing: -0.04em; }
+    .product-btns { display: flex; gap: 10px; }
 
     /* Checkout */
     .checkout-wrapper { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: stretch; }
@@ -545,138 +597,297 @@
       #cookieBanner { bottom: 16px; left: 16px; right: 16px; width: auto; max-width: none; }
     }
 
-    /* ═══════════════════════════════════════════════════
-       MOBILE OPTIMIERUNG — Breakpoint 768px
-    ═══════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════════════
+       MOBILE RESPONSIVE — Apple-Style
+       ═══════════════════════════════════════════════════════════ */
     @media (max-width: 768px) {
 
-      /* ── Abstände & Typografie ── */
-      .section { padding: 52px 0; }
-      h1 { font-size: clamp(32px, 9vw, 52px); margin-bottom: 16px; }
-      h2 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
-      h3 { font-size: 18px; }
+      /* ── Navigation ─────────────────────────────────────────── */
+      .nav { height: 60px; }
+      .nav-links a,
+      .nav-links .btn-secondary { display: none; }
+      .nav-links .btn-primary {
+        padding: 9px 16px !important;
+        font-size: 14px;
+        border-radius: 10px !important;
+      }
+      .logo { font-size: 19px; }
+
+      /* ── Typography ─────────────────────────────────────────── */
+      h1 { font-size: clamp(34px, 9vw, 48px); }
+      h2 { font-size: clamp(26px, 7vw, 38px); }
       .lead { font-size: 16px; }
 
-      /* ── Navigation ── */
-      .nav { height: 64px; gap: 12px; }
-      .nav-links { display: none; } /* Desktop-Nav komplett verbergen */
-      #mobileMenuBtn { display: flex !important; align-items: center; }
-      #mobileMenu.open { display: flex !important; }
-      .logo { font-size: 18px; }
-      .logo-mark { width: 34px; height: 34px; border-radius: 10px; font-size: 14px; }
-
-      /* ── Hero ── */
-      .hero { padding: 40px 0 36px; }
+      /* ── Hero — Apple-style full-bleed ──────────────────────── */
+      .hero {
+        padding: 36px 0 0;
+        overflow: visible;
+      }
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 0;
+        text-align: center;
       }
-      .hero-visual { min-height: 340px; }
+      .hero-grid > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 4px;
+      }
+      .lead { text-align: center; margin-inline: auto; }
+      .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+      }
+      .hero-actions .btn {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+      }
+      .trust-row {
+        justify-content: center;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      /* Hero visual — dark full-bleed stage like Apple product pages */
+      .hero-visual {
+        margin-top: 48px;
+        width: calc(100% + 32px);
+        margin-left: -16px;
+        margin-right: -16px;
+        min-height: auto;
+        background: linear-gradient(180deg, #f6f8fb 0%, #1a2235 18%, #111827 100%);
+        padding: 36px 24px 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+      /* Subtle teal glow behind phone on mobile */
+      .hero-visual::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(circle, rgba(20,184,166,0.22) 0%, transparent 70%);
+        pointer-events: none;
+      }
       .phone-card {
-        width: min(300px, 85%);
-        min-height: 380px;
-        border-radius: 36px;
-        padding: 14px;
+        transform: none;
+        width: min(300px, 82vw);
       }
-      .phone-screen { min-height: 352px; padding: 18px; }
-      .repair-status strong { font-size: 26px; }
-      .floating-card.one { left: -8px; top: 40px; max-width: 190px; padding: 14px; font-size: 13px; }
-      .floating-card.two { right: -8px; bottom: 40px; max-width: 190px; padding: 14px; font-size: 13px; }
-      .hero-actions { flex-direction: column; gap: 10px; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-      .trust-row { gap: 8px; font-size: 13px; }
+      .phone-screen { min-height: 460px; }
+      .screen-active-title { font-size: 22px; }
 
-      /* ── Highlights ── */
-      .highlights-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
-      .highlight-card { padding: 22px; }
-      .highlight-icon { font-size: 32px; margin-bottom: 12px; }
+      /* Hide floating cards — too cramped on mobile */
+      .floating-card { display: none; }
 
-      /* ── Steps ── */
-      .steps-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      /* ── Section spacing ─────────────────────────────────────── */
+      .section { padding: 56px 0; }
+      .section-header { margin-bottom: 24px; }
+
+      /* ── Highlights ─────────────────────────────────────────── */
+      .highlights-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* ── How-it-works steps ─────────────────────────────────── */
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .step-card { padding: 18px; }
 
-      /* ── Reparatur-Panel ── */
-      .repair-panel { grid-template-columns: 1fr; gap: 20px; }
-      .builder { padding: 20px; }
-      .repair-options { grid-template-columns: 1fr; gap: 10px; }
-      .repair-grid { grid-template-columns: 1fr; gap: 10px; }
-      .series-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
-      .model-sub-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
-      .option-cards { grid-template-columns: 1fr; gap: 10px; }
-      .summary-card { padding: 20px; }
+      /* ── Repair Konfigurator ─────────────────────────────────── */
+      .repair-panel {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .builder { padding: 20px 16px; }
+
+      /* Series / model grids — wider touch targets */
+      .series-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+      .model-sub-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+      .series-box, .model-box { padding: 12px 8px; font-size: 13px; }
+
+      /* Repair option tiles — single column for readability */
+      .repair-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+      }
+      .repair-box { border-radius: 14px; }
+      .repair-box-info strong { font-size: 14px; }
+
+      /* ── "Ohne iOS-Fehlermeldung?" — full-width, readable ───── */
+      #noWarningServiceArea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 16px;
+        margin-top: 16px;
+        border-radius: 16px;
+      }
+      #noWarningServiceArea h3.step-title {
+        font-size: 15px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      #noWarningServiceArea > p {
+        font-size: 13px !important;
+        line-height: 1.65;
+      }
+      /* Warning notice inside noWarningServiceArea */
+      #noWarningServiceArea > div:first-of-type {
+        padding: 12px;
+        border-radius: 10px;
+      }
+      #noWarningServiceArea > div:first-of-type p {
+        font-size: 12.5px !important;
+        line-height: 1.6;
+      }
+      /* Checkbox rows */
+      #noWarningOptions > div {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+      }
+      #noWarningOptions label {
+        font-size: 13px !important;
+      }
+
+      /* Summary card below builder on mobile */
+      .summary-card { padding: 20px 16px; }
       .price { font-size: 36px; }
-      .price-box { padding: 20px; }
 
-      /* ── Produkte ── */
-      .products-grid { grid-template-columns: 1fr; gap: 16px; }
+      /* ── Fehlerdiagnose info box ─────────────────────────────── */
+      #diagnoseFieldsArea {
+        box-sizing: border-box;
+        width: 100% !important;
+        padding: 16px !important;
+        border-radius: 14px !important;
+      }
+      #diagnoseFieldsArea strong {
+        font-size: 14px !important;
+        line-height: 1.4;
+        display: block;
+      }
+      #diagnoseFieldsArea p {
+        font-size: 12.5px !important;
+        line-height: 1.65;
+      }
+      /* Fix overflow of price preview row */
+      #diagnoseFieldsArea > div:last-child > div {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #diagnoseTotalPreview {
+        white-space: normal !important;
+        font-size: 12.5px !important;
+        padding: 10px 12px !important;
+      }
+      #diagnoseDesc {
+        font-size: 14px !important;
+      }
+
+      /* ── Products grid ──────────────────────────────────────── */
+      .products-grid { grid-template-columns: 1fr; }
+      .product-image { min-height: 200px; }
       .product-body { padding: 18px; }
-      .product-price { font-size: 24px; }
+      .product-price { font-size: 24px; margin-bottom: 14px; }
 
-      /* ── Checkout ── */
-      .checkout-wrapper { grid-template-columns: 1fr; gap: 20px; }
-      .checkout-card { padding: 20px; }
-      .checkout-form-grid { grid-template-columns: 1fr; gap: 12px; }
+      /* Product buttons — shrink text slightly, allow wrapping as last resort */
+      .product-btns { gap: 8px; }
+      .product-btns .btn {
+        font-size: 13px !important;
+        padding: 11px 8px !important;
+      }
+      /* On very narrow screens, stack the buttons */
+      @media (max-width: 360px) {
+        .product-btns { flex-direction: column; }
+        .product-btns .btn { flex: unset !important; width: 100%; }
+      }
+
+      /* ── Checkout ───────────────────────────────────────────── */
+      .checkout-wrapper { grid-template-columns: 1fr; gap: 16px; }
+      .checkout-card { padding: 18px 14px; }
+      .checkout-form-grid { grid-template-columns: 1fr; gap: 14px; }
       .full-width { grid-column: span 1; }
 
-      /* ── Modals ── */
-      .modal-content {
-        margin: 16px auto;
-        padding: 22px 18px;
-        width: calc(100% - 24px);
-        border-radius: 20px;
+      /* Shipping address inline grid — override to single column */
+      #deviceShippingAddress > div > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
       }
-      .modal-gallery { height: 220px; }
 
-      /* ── Footer ── */
-      .footer { padding: 40px 0; margin-top: 52px; }
-      .footer-grid { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .footer-links { flex-wrap: wrap; gap: 14px; }
+      /* Summary rows — allow wrapping so long values don't overflow */
+      .checkout-sum-row {
+        flex-wrap: wrap;
+        gap: 2px 8px;
+        align-items: flex-start;
+      }
+      .checkout-sum-row strong,
+      .checkout-sum-row span { word-break: break-word; }
+      /* Reduce oversized total row font on narrow screens */
+      .checkout-sum-row:last-of-type { font-size: 16px; }
 
-      /* ── Cart Popup ── */
-      .cart-popup-box { padding: 28px 20px 22px; border-radius: 22px; }
-      .cart-popup-btns { flex-direction: column; }
-      .cart-popup-btns .btn { width: 100%; }
+      /* Summary box padding */
+      .checkout-summary { padding: 16px; }
 
-      /* ── WhatsApp Button – nach oben damit Cookie-Banner nicht überlagert ── */
-      #waBtn { bottom: 90px; right: 20px; width: 52px; height: 52px; }
-      #waBtn svg { width: 26px; height: 26px; }
-      #waPopup { right: 16px; bottom: 152px; width: calc(100vw - 32px); }
+      /* Option cards — stacked on mobile */
+      .option-cards { grid-template-columns: 1fr; }
+      .option-card { flex-direction: row; text-align: left; padding: 14px; align-items: center; gap: 12px; }
+      .option-card-icon { font-size: 24px; margin-bottom: 0; flex-shrink: 0; }
+      .option-card strong { font-size: 14px; }
+      .option-card span { font-size: 12px; }
 
-      /* ── Badges & kleine Elemente ── */
-      .badge { font-size: 12px; padding: 6px 10px; }
-      .btn { padding: 12px 18px; font-size: 15px; }
-      .repair-breadcrumb { font-size: 12px; padding: 8px 10px; }
-      .spec-chip { font-size: 11px; padding: 3px 8px; }
+      /* Submit button — ensure it never overflows */
+      #submitOrderBtn { font-size: 16px !important; padding: 15px !important; }
 
-      /* ── Spec table in Modal ── */
-      .spec-table td { font-size: 13px; padding: 8px 0; }
-      .spec-table td:first-child { width: 48%; }
+      /* PayPal notice box */
+      #paypalNotice { padding: 14px !important; }
+      #paypalNotice strong { font-size: 14px !important; }
+      #paypalNotice p { font-size: 12px !important; }
+
+      /* ── Footer ─────────────────────────────────────────────── */
+      .footer { padding: 36px 0; margin-top: 56px; }
+      .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .footer-grid > p {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 10px 18px;
+      }
+      .footer-links a {
+        font-size: 13px;
+      }
+
+      /* ── WhatsApp button — keep accessible ──────────────────── */
+      #waBtn { bottom: 20px; right: 16px; width: 52px; height: 52px; }
     }
 
-    /* ═══════════════════════════════════════════════════
-       MOBILE OPTIMIERUNG — Breakpoint 480px
-    ═══════════════════════════════════════════════════ */
-    @media (max-width: 480px) {
+    /* Footer stacks cleanly at medium-small widths too */
+    @media (max-width: 600px) {
+      .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .footer-links { flex-wrap: wrap; gap: 10px 18px; }
+    }
 
-      /* Abstände weiter reduzieren */
-      .section { padding: 40px 0; }
-      .container { width: calc(100% - 24px); }
-
-      /* Steps: 1 Spalte auf sehr kleinen Screens */
+    /* Extra-small screens */
+    @media (max-width: 400px) {
+      .hero-actions .btn { font-size: 15px; padding: 13px 18px; }
       .steps-grid { grid-template-columns: 1fr; }
-
-      /* Hero visuell noch kompakter */
-      .hero-visual { min-height: 280px; }
-      .phone-card { width: min(260px, 80%); min-height: 330px; }
-      .phone-screen { min-height: 302px; }
-      .floating-card { display: none; } /* Floating cards auf sehr kleinen Screens ausblenden */
-
-      /* Nav: Warenkorb-Text kürzer */
-      #navCartBtn { padding: 8px 12px; font-size: 13px; }
-
-      /* Checkout-Zusammenfassung kompakter */
-      .checkout-sum-row { font-size: 14px; }
-      .checkout-sum-row:last-of-type { font-size: 17px; }
+      .series-grid { grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); }
     }
   </style>
 </head>
@@ -696,18 +907,6 @@
         </button>
         <a href="#checkout" class="btn btn-primary" style="padding: 10px 18px; border-radius:12px;">Anfragen</a>
       </nav>
-      <!-- Mobile Hamburger -->
-      <button id="mobileMenuBtn" aria-label="Menü öffnen" onclick="toggleMobileMenu()" style="display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--text);">
-        <svg id="menuIconOpen" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        <svg id="menuIconClose" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <!-- Mobile Dropdown Menu -->
-      <div id="mobileMenu" style="display:none; position:fixed; top:64px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); z-index:19; padding:20px 16px; flex-direction:column; gap:12px;">
-        <a href="#reparatur" onclick="closeMobileMenu()" style="display:block; padding:14px 16px; border-radius:14px; background:var(--bg-soft); font-weight:700; color:var(--text);">🔧 Reparatur</a>
-        <a href="#geraete" onclick="closeMobileMenu()" style="display:block; padding:14px 16px; border-radius:14px; background:var(--bg-soft); font-weight:700; color:var(--text);">📱 Gebrauchte Smartphones</a>
-        <button class="btn btn-secondary" onclick="openCartDrawer(); closeMobileMenu();" style="width:100%; border-radius:14px; position:relative;">🛒 Warenkorb</button>
-        <a href="#checkout" onclick="closeMobileMenu()" class="btn btn-primary" style="width:100%; border-radius:14px; text-align:center;">Anfragen</a>
-      </div>
     </div>
   </header>
 
@@ -744,23 +943,88 @@
         <div class="hero-visual">
           <div class="phone-card">
             <div class="phone-screen">
-              <div class="screen-top">
-                <span>PhoneLab</span>
-                <span style="color:var(--accent);">Live</span>
-              </div>
-              <div class="repair-status">
-                <span class="eyebrow" style="color:var(--accent);">10 Jahre Erfahrung</span>
-                <strong>Display Reparatur</strong>
-                <p style="color:#9ca3af; font-size:15px;">Faire Preise. 12 Monate Gewährleistung.</p>
-                <div class="progress"><span></span></div>
-              </div>
-              <div class="screen-card">
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                  <strong style="font-size:16px;">iPhone 16 Pro</strong>
-                  <strong style="color:var(--accent);">€219</strong>
+
+              <!-- Status Bar -->
+              <div class="screen-statusbar">
+                <span id="screenClock">09:41</span>
+                <div class="statusbar-icons">
+                  <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
                 </div>
-                <p style="color:#d1d5db; font-size:13px;">Inkl. 12 Monate Garantie</p>
               </div>
+
+              <!-- App Header -->
+              <div class="screen-app-header">
+                <div class="screen-app-logo">
+                  <div class="screen-app-dot">PL</div>
+                  <span class="screen-app-name">PhoneLab</span>
+                </div>
+                <div class="screen-live-badge">
+                  <span class="screen-live-dot"></span>Live
+                </div>
+              </div>
+
+              <!-- Active Repair -->
+              <div class="screen-active">
+                <div class="screen-active-label">Aktive Reparatur</div>
+                <div class="screen-active-title">Display-<br>Reparatur</div>
+                <div class="screen-active-sub">Faire Preise · 12 Monate Gewährleistung</div>
+                <div class="screen-progress-wrap">
+                  <div class="screen-progress-bar"></div>
+                </div>
+                <div class="screen-progress-label">
+                  <span>In Bearbeitung</span>
+                  <span>72%</span>
+                </div>
+              </div>
+
+              <!-- Cycling Examples -->
+              <div class="screen-examples">
+                <div class="screen-examples-label">Abgeschlossene Aufträge</div>
+                <div class="screen-example-slot">
+                  <div class="screen-ex">
+                    <div class="screen-ex-info">
+                      <span class="screen-ex-model">iPhone 16 Pro</span>
+                      <span class="screen-ex-repair">Display-Reparatur</span>
+                    </div>
+                    <div class="screen-ex-right">
+                      <span class="screen-ex-price">€279</span>
+                      <span class="screen-ex-done">✓ Abgeholt</span>
+                    </div>
+                  </div>
+                  <div class="screen-ex">
+                    <div class="screen-ex-info">
+                      <span class="screen-ex-model">iPhone 14</span>
+                      <span class="screen-ex-repair">Akku-Tausch</span>
+                    </div>
+                    <div class="screen-ex-right">
+                      <span class="screen-ex-price">€65</span>
+                      <span class="screen-ex-done">✓ Abgeholt</span>
+                    </div>
+                  </div>
+                  <div class="screen-ex">
+                    <div class="screen-ex-info">
+                      <span class="screen-ex-model">iPhone 13 Pro</span>
+                      <span class="screen-ex-repair">Kamera-Reparatur</span>
+                    </div>
+                    <div class="screen-ex-right">
+                      <span class="screen-ex-price">€129</span>
+                      <span class="screen-ex-done">✓ Abgeholt</span>
+                    </div>
+                  </div>
+                  <div class="screen-ex">
+                    <div class="screen-ex-info">
+                      <span class="screen-ex-model">iPhone 15</span>
+                      <span class="screen-ex-repair">Backglas-Tausch</span>
+                    </div>
+                    <div class="screen-ex-right">
+                      <span class="screen-ex-price">€89</span>
+                      <span class="screen-ex-done">✓ Abgeholt</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="floating-card one">
@@ -896,12 +1160,81 @@
 
         <div class="products-grid">
 
-          <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
-            <div style="font-size:52px;margin-bottom:18px;">📦</div>
-            <h3 style="font-size:22px;font-weight:900;letter-spacing:-0.04em;margin-bottom:10px;">Derzeit keine Geräte verfügbar</h3>
-            <p style="color:var(--muted);max-width:420px;margin:0 auto 22px;">Wir arbeiten gerade an neuen Geräten für euch. Schaut bald wieder rein oder kontaktiert uns direkt – wir finden für euch das passende Gerät.</p>
-            <a href="#reparatur" class="btn btn-primary" style="display:inline-flex;">Zur Reparatur</a>
+          <!-- iPhone 13 Pro -->
+          <div class="product-card">
+            <div class="product-image" style="position:relative;">
+              <div class="device-color-badge" style="position:absolute;top:12px;left:12px;background:#fff;border:1px solid var(--border);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#c0b8ae;display:inline-block;border:1px solid #aaa;"></span>Sierra Blau
+              </div>
+              <div class="device-condition-badge" style="position:absolute;top:12px;right:12px;background:var(--primary-soft);border:1px solid var(--primary);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--primary-dark);">Sehr gut</div>
+              <div class="device" style="border-color:#8ba0b0;"></div>
+            </div>
+            <div class="product-body">
+              <h3>iPhone 13 Pro</h3>
+              <div class="product-specs-row">
+                <span class="spec-chip">💾 256 GB</span>
+                <span class="spec-chip">🔋 88%</span>
+                <span class="spec-chip">📱 iOS 17</span>
+                <span class="spec-chip">🛡 12 M. Garantie</span>
+              </div>
+              <div class="product-price">€629.00</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" style="flex:1;padding:12px 10px;font-size:14px;" data-device="ip13pro">🔍 Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 13 Pro (256 GB)" data-price="629" style="flex:2;padding:12px 10px;font-size:14px;">In den Warenkorb 🛒</button>
+              </div>
+            </div>
           </div>
+
+          <!-- iPhone 14 -->
+          <div class="product-card">
+            <div class="product-image" style="position:relative;">
+              <div class="device-color-badge" style="position:absolute;top:12px;left:12px;background:#fff;border:1px solid var(--border);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#f0e6d3;display:inline-block;border:1px solid #ccc;"></span>Polarstern
+              </div>
+              <div class="device-condition-badge" style="position:absolute;top:12px;right:12px;background:#dcfce7;border:1px solid #16a34a;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:#166534;">Wie neu</div>
+              <div class="device" style="border-color:#d4cfc8;"></div>
+            </div>
+            <div class="product-body">
+              <h3>iPhone 14</h3>
+              <div class="product-specs-row">
+                <span class="spec-chip">💾 128 GB</span>
+                <span class="spec-chip">🔋 94%</span>
+                <span class="spec-chip">📱 iOS 17</span>
+                <span class="spec-chip">🛡 12 M. Garantie</span>
+              </div>
+              <div class="product-price">€589.00</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" style="flex:1;padding:12px 10px;font-size:14px;" data-device="ip14">🔍 Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 14 (128 GB)" data-price="589" style="flex:2;padding:12px 10px;font-size:14px;">In den Warenkorb 🛒</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- iPhone 12 -->
+          <div class="product-card">
+            <div class="product-image" style="position:relative;">
+              <div class="device-color-badge" style="position:absolute;top:12px;left:12px;background:#fff;border:1px solid var(--border);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#3b3a6e;display:inline-block;border:1px solid #555;"></span>Violett
+              </div>
+              <div class="device-condition-badge" style="position:absolute;top:12px;right:12px;background:#fef9c3;border:1px solid #ca8a04;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:#854d0e;">Gut</div>
+              <div class="device" style="border-color:#3b3a6e;"></div>
+            </div>
+            <div class="product-body">
+              <h3>iPhone 12</h3>
+              <div class="product-specs-row">
+                <span class="spec-chip">💾 64 GB</span>
+                <span class="spec-chip">🔋 85%</span>
+                <span class="spec-chip">📱 iOS 16</span>
+                <span class="spec-chip">🛡 12 M. Garantie</span>
+              </div>
+              <div class="product-price">€329.00</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" style="flex:1;padding:12px 10px;font-size:14px;" data-device="ip12">🔍 Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 12 (64 GB)" data-price="329" style="flex:2;padding:12px 10px;font-size:14px;">In den Warenkorb 🛒</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1442,75 +1775,75 @@
 
     // ─── Datenstruktur ────────────────────────────────────────────
     const seriesData = {
-      "11": {
-        label: "iPhone 11",
+      "16": {
+        label: "iPhone 16",
         models: {
-          "ip11pm":  { name: "11 Pro Max", display: 75, akku: 52,  kamera: 89, housing: 149, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip11p":  { name: "11 Pro", display: 70, akku: 45,  kamera: 79, housing: 139, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip11":  { name: "11", display: 65, akku: 37,  kamera: 69, housing: 119, backglass: 0, icDiff: 0, akkuDiff: 0 }
-        }
-      },
-      "12": {
-        label: "iPhone 12",
-        models: {
-          "ip12pm":  { name: "12 Pro Max", display: 119, akku: 55,  kamera: 119, housing: 169, backglass: 0, icDiff: 49, akkuDiff: 20 },
-          "ip12p":  { name: "12 Pro", display: 99, akku: 49,  kamera: 109, housing: 159, backglass: 0, icDiff: 49, akkuDiff: 20 },
-          "ip12":  { name: "12", display: 99, akku: 49,  kamera: 89, housing: 139, backglass: 0, icDiff: 49, akkuDiff: 20 },
-          "ip12mini":  { name: "12 Mini", display: 95, akku: 45,  kamera: 79, housing: 129, backglass: 0, icDiff: 49, akkuDiff: 20 }
-        }
-      },
-      "13": {
-        label: "iPhone 13",
-        models: {
-          "ip13pm":  { name: "13 Pro Max", display: 165, akku: 62,  kamera: 139, housing: 189, backglass: 0, icDiff: 70, akkuDiff: 23 },
-          "ip13p":  { name: "13 Pro", display: 145, akku: 59,  kamera: 129, housing: 179, backglass: 0, icDiff: 70, akkuDiff: 20 },
-          "ip13":  { name: "13", display: 139, akku: 55,  kamera: 99, housing: 149, backglass: 0, icDiff: 66, akkuDiff: 20 },
-          "ip13mini":  { name: "13 Mini", display: 165, akku: 52,  kamera: 89, housing: 139, backglass: 0, icDiff: 70, akkuDiff: 20 }
-        }
-      },
-      "14": {
-        label: "iPhone 14",
-        models: {
-          "ip14pm":  { name: "14 Pro Max", display: 219, akku: 79,  kamera: 169, housing: 249, backglass: 129, icDiff: 80, akkuDiff: 26 },
-          "ip14p":  { name: "14 Pro", display: 199, akku: 75,  kamera: 149, housing: 229, backglass: 119, icDiff: 70, akkuDiff: 23 },
-          "ip14plus":  { name: "14 Plus", display: 179, akku: 69,  kamera: 129, housing: 199, backglass: 99, icDiff: 80, akkuDiff: 23 },
-          "ip14":  { name: "14", display: 159, akku: 65,  kamera: 119, housing: 189, backglass: 89, icDiff: 80, akkuDiff: 23 }
+          "ip16pm":  { name: "16 Pro Max", display: 329, akku: 95,  kamera: 199, housing: 269, backglass: 139, icDiff: 80, akkuDiff: 30 },
+          "ip16p":   { name: "16 Pro",     display: 279, akku: 90,  kamera: 179, housing: 249, backglass: 129, icDiff: 80, akkuDiff: 30 },
+          "ip16plus":{ name: "16 Plus",    display: 229, akku: 85,  kamera: 149, housing: 219, backglass: 109, icDiff: 80, akkuDiff: 26 },
+          "ip16":    { name: "16",         display: 199, akku: 79,  kamera: 139, housing: 199, backglass: 99,  icDiff: 80, akkuDiff: 26 }
         }
       },
       "15": {
         label: "iPhone 15",
         models: {
           "ip15pm":  { name: "15 Pro Max", display: 239, akku: 79,  kamera: 179, housing: 249, backglass: 129, icDiff: 80, akkuDiff: 30 },
-          "ip15p":  { name: "15 Pro", display: 219, akku: 79,  kamera: 159, housing: 229, backglass: 119, icDiff: 70, akkuDiff: 30 },
-          "ip15plus":  { name: "15 Plus", display: 179, akku: 72,  kamera: 139, housing: 199, backglass: 99, icDiff: 80, akkuDiff: 26 },
-          "ip15":  { name: "15", display: 159, akku: 69,  kamera: 129, housing: 189, backglass: 89, icDiff: 80, akkuDiff: 26 }
+          "ip15p":   { name: "15 Pro",     display: 219, akku: 79,  kamera: 159, housing: 229, backglass: 119, icDiff: 70, akkuDiff: 30 },
+          "ip15plus":{ name: "15 Plus",    display: 179, akku: 72,  kamera: 139, housing: 199, backglass: 99,  icDiff: 80, akkuDiff: 26 },
+          "ip15":    { name: "15",         display: 159, akku: 69,  kamera: 129, housing: 189, backglass: 89,  icDiff: 80, akkuDiff: 26 }
         }
       },
-      "16": {
-        label: "iPhone 16",
+      "14": {
+        label: "iPhone 14",
         models: {
-          "ip16pm":  { name: "16 Pro Max", display: 329, akku: 95,  kamera: 199, housing: 269, backglass: 139, icDiff: 80, akkuDiff: 30 },
-          "ip16p":  { name: "16 Pro", display: 279, akku: 90,  kamera: 179, housing: 249, backglass: 129, icDiff: 80, akkuDiff: 30 },
-          "ip16plus":  { name: "16 Plus", display: 229, akku: 85,  kamera: 149, housing: 219, backglass: 109, icDiff: 80, akkuDiff: 26 },
-          "ip16":  { name: "16", display: 199, akku: 79,  kamera: 139, housing: 199, backglass: 99, icDiff: 80, akkuDiff: 26 }
+          "ip14pm":  { name: "14 Pro Max", display: 219, akku: 79,  kamera: 169, housing: 249, backglass: 129, icDiff: 80, akkuDiff: 26 },
+          "ip14p":   { name: "14 Pro",     display: 199, akku: 75,  kamera: 149, housing: 229, backglass: 119, icDiff: 70, akkuDiff: 23 },
+          "ip14plus":{ name: "14 Plus",    display: 179, akku: 69,  kamera: 129, housing: 199, backglass: 99,  icDiff: 80, akkuDiff: 23 },
+          "ip14":    { name: "14",         display: 159, akku: 65,  kamera: 119, housing: 189, backglass: 89,  icDiff: 80, akkuDiff: 23 }
+        }
+      },
+      "13": {
+        label: "iPhone 13",
+        models: {
+          "ip13pm":  { name: "13 Pro Max", display: 165, akku: 62,  kamera: 139, housing: 189, backglass: 0,  icDiff: 70, akkuDiff: 23 },
+          "ip13p":   { name: "13 Pro",     display: 145, akku: 59,  kamera: 129, housing: 179, backglass: 0,  icDiff: 70, akkuDiff: 20 },
+          "ip13":    { name: "13",         display: 139, akku: 55,  kamera: 99,  housing: 149, backglass: 0,  icDiff: 66, akkuDiff: 20 },
+          "ip13mini":{ name: "13 Mini",    display: 165, akku: 52,  kamera: 89,  housing: 139, backglass: 0,  icDiff: 70, akkuDiff: 20 }
+        }
+      },
+      "12": {
+        label: "iPhone 12",
+        models: {
+          "ip12pm":  { name: "12 Pro Max", display: 119, akku: 55,  kamera: 119, housing: 169, backglass: 0,  icDiff: 49, akkuDiff: 20 },
+          "ip12p":   { name: "12 Pro",     display: 99,  akku: 49,  kamera: 109, housing: 159, backglass: 0,  icDiff: 49, akkuDiff: 20 },
+          "ip12":    { name: "12",         display: 99,  akku: 49,  kamera: 89,  housing: 139, backglass: 0,  icDiff: 49, akkuDiff: 20 },
+          "ip12mini":{ name: "12 Mini",    display: 95,  akku: 45,  kamera: 79,  housing: 129, backglass: 0,  icDiff: 49, akkuDiff: 20 }
+        }
+      },
+      "11": {
+        label: "iPhone 11",
+        models: {
+          "ip11pm": { name: "11 Pro Max", display: 75, akku: 52, kamera: 89, housing: 149, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ip11p":  { name: "11 Pro",     display: 70, akku: 45, kamera: 79, housing: 139, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ip11":   { name: "11",         display: 65, akku: 37, kamera: 69, housing: 119, backglass: 0, icDiff: 0, akkuDiff: 0 }
         }
       },
       "X/XS": {
         label: "iPhone X / XS",
         models: {
-          "ipxsm":  { name: "XS Max", display: 75, akku: 42,  kamera: 79, housing: 129, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipxs":  { name: "XS", display: 65, akku: 37,  kamera: 69, housing: 119, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipxr":  { name: "XR", display: 65, akku: 37,  kamera: 59, housing: 109, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipx":  { name: "X", display: 65, akku: 37,  kamera: 65, housing: 109, backglass: 0, icDiff: 0, akkuDiff: 0 }
+          "ipxsm": { name: "XS Max", display: 75, akku: 42, kamera: 79, housing: 129, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ipxs":  { name: "XS",     display: 65, akku: 37, kamera: 69, housing: 119, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ipxr":  { name: "XR",     display: 65, akku: 37, kamera: 59, housing: 109, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ipx":   { name: "X",      display: 65, akku: 37, kamera: 65, housing: 109, backglass: 0, icDiff: 0, akkuDiff: 0 }
         }
       },
       "8/SE": {
         label: "iPhone 8/SE",
         models: {
-          "ipse3":  { name: "SE 3 (2022)", display: 75, akku: 45,  kamera: 55, housing: 95, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipse2":  { name: "SE 2 (2020)", display: 65, akku: 39,  kamera: 49, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip8p":  { name: "8 Plus", display: 69, akku: 42,  kamera: 59, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip8":  { name: "8", display: 59, akku: 35,  kamera: 49, housing: 79, backglass: 0, icDiff: 0, akkuDiff: 0 }
+          "ipse3": { name: "SE 3 (2022)", display: 75, akku: 45, kamera: 55, housing: 95, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ipse2": { name: "SE 2 (2020)", display: 65, akku: 39, kamera: 49, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ip8p":  { name: "8 Plus",      display: 69, akku: 42, kamera: 59, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 },
+          "ip8":   { name: "8",           display: 59, akku: 35, kamera: 49, housing: 79, backglass: 0, icDiff: 0, akkuDiff: 0 }
         }
       }
     };
@@ -1764,13 +2097,34 @@
       repairsGrid.innerHTML = '';
       const model = seriesData[selectedSeriesKey].models[modelKey];
 
+      // ─── Repair subtitles ────────────────────────────────────
+      const oledSeries = ['16', '15', '14', '13', '12', '11', 'X/XS'];
+      function getRepairSubtitle(rep) {
+        switch (rep) {
+          case 'display':
+            return oledSeries.includes(selectedSeriesKey)
+              ? 'Hochwertiges Soft-OLED · 12 M. Garantie'
+              : 'Geprüfte Displayqualität · 12 M. Garantie';
+          case 'akku':
+            return 'Starke Leistung · Originalkapazität · 12 M. Garantie';
+          case 'kamera':
+            return 'Klare Optik · geprüfte Linse · 12 M. Garantie';
+          case 'housing':
+            return 'Passgenaue Verarbeitung · neuwertig · 12 M. Garantie';
+          case 'backglass':
+            return 'Originaloptik · bruchsicher verklebt · 12 M. Garantie';
+          default:
+            return 'Geprüfte Qualität · 12 M. Garantie';
+        }
+      }
+
       ['display', 'akku', 'kamera', 'housing', 'backglass'].forEach(rep => {
         const price = model[rep];
         if (price && price > 0) {
           const rBox = document.createElement('div');
           rBox.className = 'repair-box';
           rBox.onclick   = () => toggleRepair(rep, rBox);
-          rBox.innerHTML = '<div class="repair-box-info"><strong>' + repairLabels[rep] + '</strong><span>Geprüfte Qualität · 12 M. Garantie</span></div><div class="repair-box-price">€' + price + '</div>';
+          rBox.innerHTML = '<div class="repair-box-info"><strong>' + repairLabels[rep] + '</strong><span>' + getRepairSubtitle(rep) + '</span></div><div class="repair-box-price">€' + price + '</div>';
           repairsGrid.appendChild(rBox);
         }
       });
@@ -1809,7 +2163,7 @@
       if (!area) {
         area = document.createElement('div');
         area.id = 'diagnoseFieldsArea';
-        area.style.cssText = 'margin-top:18px; padding:20px; background:#fffbeb; border:1.5px solid #f59e0b; border-radius:var(--radius-sm); display:grid; gap:14px;';
+        area.style.cssText = 'margin-top:18px; padding:20px; background:#fffbeb; border:1.5px solid #f59e0b; border-radius:var(--radius-sm); display:grid; gap:14px; box-sizing:border-box; width:100%;';
         area.innerHTML = `
           <div style="display:flex;align-items:flex-start;gap:10px;">
             <span style="font-size:22px;">🔍</span>
@@ -1830,7 +2184,7 @@
             <label for="diagnoseMaxAmount" style="color:#92400e;">Maximaler Freigabebetrag für Reparatur (€) *</label>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
               <input type="number" id="diagnoseMaxAmount" min="1" step="1" placeholder="z.B. 120" style="flex:1;min-width:120px;border:1px solid #f59e0b;border-radius:12px;padding:12px 14px;outline:none;background:#fff;" oninput="updateSummary()" />
-              <div id="diagnoseTotalPreview" style="background:#fff;border:1px solid #f59e0b;border-radius:12px;padding:10px 14px;font-size:13px;color:#92400e;white-space:nowrap;">
+              <div id="diagnoseTotalPreview" style="background:#fff;border:1px solid #f59e0b;border-radius:12px;padding:10px 14px;font-size:13px;color:#92400e;flex-shrink:0;">
                 Gesamt: <strong>€${DIAGNOSE_BASE_FEE}.00</strong> <span style="color:#78350f;">(€${DIAGNOSE_BASE_FEE} Diagnose + €0 Freigabe)</span>
               </div>
             </div>
@@ -2477,253 +2831,103 @@
     let gallerySlides = [];
 
     const deviceDetails = {
-      "ip13pro": {
-            "name": "iPhone 13 Pro",
-            "subtitle": "256 GB · Sierra Blau",
-            "price": "€629.00",
-            "condition": "Sehr gut",
-            "conditionIcon": "✅",
-            "conditionColor": {
-                  "bg": "var(--primary-soft)",
-                  "border": "var(--primary)",
-                  "text": "var(--primary-dark)"
-            },
-            "conditionDetails": "Das Gerät befindet sich in sehr gutem Zustand. Das Display ist kratzer- und splitterfrei. Das Gehäuse weist minimale, kaum sichtbare Gebrauchsspuren auf – typisch für ein gepflegtes Alltagsgerät. Alle Tasten, Anschlüsse und Funktionen wurden geprüft und funktionieren einwandfrei.",
-            "akku": 88,
-            "color": "rgb(192, 184, 174)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 13 Pro"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Sierra Blau"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "256 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A15 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Triple 12 MP Pro-System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 17.5"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "88%",
-                        "isAkku": true,
-                        "akkuVal": 88
-                  }
-            ],
-            "cartName": "iPhone 13 Pro (256 GB)",
-            "cartPrice": 629
+      ip13pro: {
+        name: "iPhone 13 Pro",
+        subtitle: "256 GB · Sierra Blau",
+        price: "€629.00",
+        condition: "Sehr gut",
+        conditionColor: { bg: "var(--primary-soft)", border: "var(--primary)", text: "var(--primary-dark)" },
+        conditionIcon: "✅",
+        conditionDetails: "Das Gerät befindet sich in sehr gutem Zustand. Das Display ist kratzer- und splitterfrei. Das Gehäuse weist minimale, kaum sichtbare Gebrauchsspuren auf – typisch für ein gepflegtes Alltagsgerät. Alle Tasten, Anschlüsse und Funktionen wurden geprüft und funktionieren einwandfrei.",
+        akku: 88,
+        color: "#8ba0b0",
+        images: [], // Bilder werden später ergänzt
+        specs: [
+          { cat: "Gerät" },
+          { label: "Modell", value: "iPhone 13 Pro" },
+          { label: "Farbe", value: "Sierra Blau" },
+          { label: "Speicher", value: "256 GB" },
+          { label: "Chip", value: "Apple A15 Bionic" },
+          { cat: "Display & Kamera" },
+          { label: "Display", value: "6,1\" Super Retina XDR (OLED)" },
+          { label: "Kamera", value: "Triple 12 MP Pro-System" },
+          { cat: "Konnektivität" },
+          { label: "5G", value: "✓ Ja" },
+          { label: "SIM", value: "Nano-SIM + eSIM" },
+          { cat: "Software & Status" },
+          { label: "iOS Version", value: "iOS 17.5" },
+          { label: "Face ID", value: "✓ Geprüft & aktiv" },
+          { label: "iCloud", value: "✓ Entriegelt" },
+          { label: "Akkukapazität", value: "88%", isAkku: true, akkuVal: 88 }
+        ],
+        cartName: "iPhone 13 Pro (256 GB)",
+        cartPrice: 629
       },
-      "ip14": {
-            "name": "iPhone 14",
-            "subtitle": "128 GB · Polarstern",
-            "price": "€589.00",
-            "condition": "Wie neu",
-            "conditionIcon": "⭐",
-            "conditionColor": {
-                  "bg": "rgb(220, 252, 231)",
-                  "border": "rgb(22, 163, 74)",
-                  "text": "rgb(22, 101, 52)"
-            },
-            "conditionDetails": "Das Gerät ist in nahezu neuwertigem Zustand. Display und Rückseite sind ohne jegliche Kratzer oder Beschädigungen. Das Gerät wurde sehr schonend genutzt und sieht aus wie frisch aus dem Laden. Alle Funktionen wurden vollständig geprüft und sind einwandfrei.",
-            "akku": 94,
-            "color": "rgb(240, 230, 211)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 14"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Polarstern"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "128 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A15 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Dual 12 MP System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 17.6"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "94%",
-                        "isAkku": true,
-                        "akkuVal": 94
-                  }
-            ],
-            "cartName": "iPhone 14 (128 GB)",
-            "cartPrice": 589
+      ip14: {
+        name: "iPhone 14",
+        subtitle: "128 GB · Polarstern",
+        price: "€589.00",
+        condition: "Wie neu",
+        conditionColor: { bg: "#dcfce7", border: "#16a34a", text: "#166534" },
+        conditionIcon: "⭐",
+        conditionDetails: "Das Gerät ist in nahezu neuwertigem Zustand. Display und Rückseite sind ohne jegliche Kratzer oder Beschädigungen. Das Gerät wurde sehr schonend genutzt und sieht aus wie frisch aus dem Laden. Alle Funktionen wurden vollständig geprüft und sind einwandfrei.",
+        akku: 94,
+        color: "#d4cfc8",
+        images: [],
+        specs: [
+          { cat: "Gerät" },
+          { label: "Modell", value: "iPhone 14" },
+          { label: "Farbe", value: "Polarstern" },
+          { label: "Speicher", value: "128 GB" },
+          { label: "Chip", value: "Apple A15 Bionic" },
+          { cat: "Display & Kamera" },
+          { label: "Display", value: "6,1\" Super Retina XDR (OLED)" },
+          { label: "Kamera", value: "Dual 12 MP System" },
+          { cat: "Konnektivität" },
+          { label: "5G", value: "✓ Ja" },
+          { label: "SIM", value: "Nano-SIM + eSIM" },
+          { cat: "Software & Status" },
+          { label: "iOS Version", value: "iOS 17.6" },
+          { label: "Face ID", value: "✓ Geprüft & aktiv" },
+          { label: "iCloud", value: "✓ Entriegelt" },
+          { label: "Akkukapazität", value: "94%", isAkku: true, akkuVal: 94 }
+        ],
+        cartName: "iPhone 14 (128 GB)",
+        cartPrice: 589
       },
-      "ip12": {
-            "name": "iPhone 12",
-            "subtitle": "64 GB · Violett",
-            "price": "€329.00",
-            "condition": "Gut",
-            "conditionIcon": "👍",
-            "conditionColor": {
-                  "bg": "rgb(254, 249, 195)",
-                  "border": "rgb(202, 138, 4)",
-                  "text": "rgb(133, 77, 14)"
-            },
-            "conditionDetails": "Das Gerät befindet sich in gutem Gebrauchszustand. Am Gehäuse sind leichte Gebrauchsspuren (feine Kratzer) sichtbar, die den Nutzungsspaß nicht beeinträchtigen. Das Display ist klar und ohne Einschränkungen nutzbar. Alle Funktionen wurden geprüft und sind vollständig in Ordnung.",
-            "akku": 85,
-            "color": "rgb(59, 58, 110)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 12"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Violett"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "64 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A14 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Dual 12 MP System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 16.7"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "85%",
-                        "isAkku": true,
-                        "akkuVal": 85
-                  }
-            ],
-            "cartName": "iPhone 12 (64 GB)",
-            "cartPrice": 329
+      ip12: {
+        name: "iPhone 12",
+        subtitle: "64 GB · Violett",
+        price: "€329.00",
+        condition: "Gut",
+        conditionColor: { bg: "#fef9c3", border: "#ca8a04", text: "#854d0e" },
+        conditionIcon: "👍",
+        conditionDetails: "Das Gerät befindet sich in gutem Gebrauchszustand. Am Gehäuse sind leichte Gebrauchsspuren (feine Kratzer) sichtbar, die den Nutzungsspaß nicht beeinträchtigen. Das Display ist klar und ohne Einschränkungen nutzbar. Alle Funktionen wurden geprüft und sind vollständig in Ordnung.",
+        akku: 85,
+        color: "#3b3a6e",
+        images: [],
+        specs: [
+          { cat: "Gerät" },
+          { label: "Modell", value: "iPhone 12" },
+          { label: "Farbe", value: "Violett" },
+          { label: "Speicher", value: "64 GB" },
+          { label: "Chip", value: "Apple A14 Bionic" },
+          { cat: "Display & Kamera" },
+          { label: "Display", value: "6,1\" Super Retina XDR (OLED)" },
+          { label: "Kamera", value: "Dual 12 MP System" },
+          { cat: "Konnektivität" },
+          { label: "5G", value: "✓ Ja" },
+          { label: "SIM", value: "Nano-SIM + eSIM" },
+          { cat: "Software & Status" },
+          { label: "iOS Version", value: "iOS 16.7" },
+          { label: "Face ID", value: "✓ Geprüft & aktiv" },
+          { label: "iCloud", value: "✓ Entriegelt" },
+          { label: "Akkukapazität", value: "85%", isAkku: true, akkuVal: 85 }
+        ],
+        cartName: "iPhone 12 (64 GB)",
+        cartPrice: 329
       }
-};
+    };
 
     function buildGallery(images, deviceColor) {
       const track = document.getElementById('galleryTrack');
@@ -2880,46 +3084,20 @@
     function toggleWaPopup() {
       document.getElementById('waPopup').classList.toggle('show');
     }
+    // Live clock in phone mockup
+    function updateScreenClock() {
+      const el = document.getElementById('screenClock');
+      if (!el) return;
+      const now = new Date();
+      el.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    }
+    updateScreenClock();
+    setInterval(updateScreenClock, 30000);
     document.addEventListener('click', function(e) {
       const btn = document.getElementById('waBtn');
       const popup = document.getElementById('waPopup');
       if (!btn.contains(e.target) && !popup.contains(e.target)) {
         popup.classList.remove('show');
-      }
-    });
-  </script>
-
-  <script>
-    // ── Mobile Menu ──────────────────────────────
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const iconOpen = document.getElementById('menuIconOpen');
-      const iconClose = document.getElementById('menuIconClose');
-      const isOpen = menu.classList.contains('open');
-      if (isOpen) {
-        menu.classList.remove('open');
-        iconOpen.style.display = '';
-        iconClose.style.display = 'none';
-      } else {
-        menu.classList.add('open');
-        iconOpen.style.display = 'none';
-        iconClose.style.display = '';
-      }
-    }
-    function closeMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const iconOpen = document.getElementById('menuIconOpen');
-      const iconClose = document.getElementById('menuIconClose');
-      menu.classList.remove('open');
-      iconOpen.style.display = '';
-      iconClose.style.display = 'none';
-    }
-    // Close menu on outside click
-    document.addEventListener('click', function(e) {
-      const menu = document.getElementById('mobileMenu');
-      const btn = document.getElementById('mobileMenuBtn');
-      if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
-        closeMobileMenu();
       }
     });
   </script>
