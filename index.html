@@ -160,7 +160,7 @@
     /* Products */
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .product-card { overflow: hidden; }
-    .product-image { min-height: 240px; display: grid; place-items: center; background: radial-gradient(circle, rgba(20, 184, 166, 0.24), transparent 42%), linear-gradient(135deg, #f8fafc, #e2e8f0); }
+    .product-image { min-height: 240px; display: grid; place-items: center; background: radial-gradient(circle, rgba(20, 184, 166, 0.24), transparent 42%), linear-gradient(135deg, #f8fafc, #e2e8f0); cursor: pointer; }
     .device { width: 118px; height: 210px; border-radius: 28px; background: linear-gradient(160deg, #111827, #374151); border: 8px solid #020617; box-shadow: 0 24px 40px rgba(15, 23, 42, 0.25); position: relative; }
     .device::before { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 42px; height: 7px; border-radius: 999px; background: #020617; }
     .product-body { padding: 24px; }
@@ -505,42 +505,45 @@
     /* ─── Cookie Banner ───────────────────────────────── */
     #cookieBanner {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      bottom: 24px; left: 24px;
       z-index: 999;
-      background: #111827;
+      background: #1f2937;
       color: #e5e7eb;
-      padding: 20px 24px;
+      padding: 20px 22px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      box-shadow: 0 -8px 30px rgba(0,0,0,0.28);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-direction: column;
+      gap: 14px;
+      width: 320px;
+      max-width: calc(100vw - 32px);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.07);
       animation: slideUpBanner 0.4s cubic-bezier(0.34, 1.3, 0.64, 1);
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.6;
     }
     #cookieBanner.hidden { display: none; }
-    @keyframes slideUpBanner { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .cookie-text { flex: 1; min-width: 260px; }
-    .cookie-text strong { color: #ffffff; display: block; margin-bottom: 4px; font-size: 15px; }
+    @keyframes slideUpBanner { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .cookie-text { }
+    .cookie-text strong { color: #ffffff; display: block; margin-bottom: 5px; font-size: 14px; }
     .cookie-text a { color: var(--accent); text-decoration: underline; }
-    .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+    .cookie-btns { display: flex; gap: 8px; }
     .cookie-btn-accept {
       background: var(--primary); color: #fff;
-      border: none; border-radius: 10px;
-      padding: 10px 22px; font-weight: 700; cursor: pointer;
-      font-size: 14px; transition: 0.2s;
+      border: none; border-radius: 8px;
+      padding: 9px 16px; font-weight: 700; cursor: pointer;
+      font-size: 13px; transition: 0.2s; flex: 1;
     }
     .cookie-btn-accept:hover { background: var(--primary-dark); }
     .cookie-btn-decline {
       background: transparent; color: #9ca3af;
-      border: 1px solid #374151; border-radius: 10px;
-      padding: 10px 18px; font-weight: 600; cursor: pointer;
-      font-size: 14px; transition: 0.2s;
+      border: 1px solid #374151; border-radius: 8px;
+      padding: 9px 14px; font-weight: 600; cursor: pointer;
+      font-size: 13px; transition: 0.2s; flex: 1;
     }
     .cookie-btn-decline:hover { border-color: #6b7280; color: #e5e7eb; }
+    @media (max-width: 480px) {
+      #cookieBanner { bottom: 16px; left: 16px; right: 16px; width: auto; max-width: none; }
+    }
   </style>
 </head>
 
@@ -2688,6 +2691,12 @@
 
     document.querySelectorAll('.details-btn').forEach(btn => {
       btn.addEventListener('click', () => openDeviceDetail(btn.dataset.device));
+    });
+    document.querySelectorAll('.product-image').forEach(img => {
+      img.addEventListener('click', () => {
+        const key = img.closest('.product-card').querySelector('.details-btn')?.dataset.device;
+        if (key) openDeviceDetail(key);
+      });
     });
     function openModal(modalId) {
       document.getElementById(modalId).style.display = "block";
