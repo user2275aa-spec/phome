@@ -1368,10 +1368,10 @@
                   </div>
                 </div>
 
-                <!-- Lieferadresse (nur bei Geräte-Versand) -->
+                <!-- Versand- / Rücksendeadresse -->
                 <div class="full-width" id="deviceShippingAddress" style="display:none;">
                   <div style="background:#f0fdfa; border:1px solid var(--primary); border-radius:16px; padding:18px; display:grid; gap:14px;">
-                    <p style="font-weight:800; color:var(--primary-dark); font-size:15px;">📦 Lieferadresse</p>
+                    <p id="shippingAddressTitle" style="font-weight:800; color:var(--primary-dark); font-size:15px;">📦 Lieferadresse</p>
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
                       <div>
                         <label for="streetName">Straße *</label>
@@ -2369,8 +2369,9 @@
             const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
             cashRadio.disabled = true;
             document.getElementById('label-payment-cash').classList.remove('active');
-            document.getElementById('label-payment-cash').style.opacity = '0.45';
-            document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
+            document.getElementById('label-payment-cash').style.opacity       = '0.4';
+            document.getElementById('label-payment-cash').style.cursor        = 'not-allowed';
+            document.getElementById('label-payment-cash').style.pointerEvents = 'none';
             const currentPayment = document.querySelector('input[name="payment"]:checked').value;
             if (currentPayment === 'cash') {
               document.querySelectorAll('input[name="payment"]').forEach(r => {
@@ -2379,11 +2380,16 @@
               paypalRadio.checked = true;
               document.getElementById('label-payment-paypal').classList.add('active');
             }
+            // Rücksendeadresse einblenden
+            document.getElementById('deviceShippingAddress').style.display = 'block';
           } else {
             const cashRadio = document.querySelector('input[name="payment"][value="cash"]');
             cashRadio.disabled = false;
-            document.getElementById('label-payment-cash').style.opacity = '';
-            document.getElementById('label-payment-cash').style.cursor  = '';
+            document.getElementById('label-payment-cash').style.opacity       = '';
+            document.getElementById('label-payment-cash').style.cursor        = '';
+            document.getElementById('label-payment-cash').style.pointerEvents = '';
+            // Adressfeld ausblenden
+            document.getElementById('deviceShippingAddress').style.display = 'none';
           }
           updatePaymentUI();
         }
@@ -2406,11 +2412,33 @@
     });
 
     function updatePaymentUI() {
+      const isShipping = document.querySelector('input[name="delivery"]:checked')?.value === 'shipping';
+
+      // Barzahlung sperren/freigeben je nach Liefermethode
+      const cashRadio   = document.querySelector('input[name="payment"][value="cash"]');
+      const cashLabel   = document.getElementById('label-payment-cash');
+      const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
+
+      if (isShipping) {
+        cashRadio.disabled = true;
+        cashLabel.style.opacity       = '0.4';
+        cashLabel.style.cursor        = 'not-allowed';
+        cashLabel.style.pointerEvents = 'none';
+        if (document.querySelector('input[name="payment"]:checked').value === 'cash') {
+          cashLabel.classList.remove('active');
+          paypalRadio.checked = true;
+          document.getElementById('label-payment-paypal').classList.add('active');
+        }
+      } else {
+        cashRadio.disabled = false;
+        cashLabel.style.opacity       = '';
+        cashLabel.style.cursor        = '';
+        cashLabel.style.pointerEvents = '';
+      }
+
       const currentPayment = document.querySelector('input[name="payment"]:checked').value;
       const isPaypal   = currentPayment === 'paypal';
       const isStripe   = currentPayment === 'stripe';
-      const isShipping = document.querySelector('input[name="delivery"]:checked') &&
-                         document.querySelector('input[name="delivery"]:checked').value === 'shipping';
       const agb        = document.getElementById('acceptAgb').checked;
       const privacy    = document.getElementById('acceptWiderruf').checked;
       const ready      = agb && privacy;
@@ -2766,6 +2794,8 @@
         const deviceDelivery = document.querySelector('input[name="delivery_device"]:checked');
         const isDeviceShipping = deviceDelivery && deviceDelivery.value === 'send';
         shippingAddr.style.display = isDeviceShipping ? 'block' : 'none';
+        const addrTitle = document.getElementById('shippingAddressTitle');
+        if (addrTitle) addrTitle.textContent = '📦 Lieferadresse';
 
         const cashRadio   = document.querySelector('input[name="payment"][value="cash"]');
         const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
@@ -2796,13 +2826,34 @@
       } else {
         repairOptions.style.display = 'grid';
         deviceOptions.style.display = 'none';
-        shippingAddr.style.display  = 'none';
-        // Barzahlung wieder freigeben
+        // Adressfeld nur bei Einsendung zeigen
+        const deliveryVal = document.querySelector('input[name="delivery"]:checked')?.value;
+        const isShipping  = deliveryVal === 'shipping';
+        shippingAddr.style.display = isShipping ? 'block' : 'none';
+        const addrTitle = document.getElementById('shippingAddressTitle');
+        if (addrTitle) addrTitle.textContent = isShipping ? '📬 Rücksendeadresse' : '📦 Lieferadresse';
+        // Barzahlung nur freigeben wenn NICHT Einsendung gewählt
         const cashRadio = document.querySelector('input[name="payment"][value="cash"]');
         if (cashRadio) {
-          cashRadio.disabled = false;
-          document.getElementById('label-payment-cash').style.opacity = '';
-          document.getElementById('label-payment-cash').style.cursor  = '';
+          if (isShipping) {
+            cashRadio.disabled = true;
+            document.getElementById('label-payment-cash').style.opacity       = '0.4';
+            document.getElementById('label-payment-cash').style.cursor        = 'not-allowed';
+            document.getElementById('label-payment-cash').style.pointerEvents = 'none';
+            const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
+            if (document.querySelector('input[name="payment"]:checked').value === 'cash') {
+              document.querySelectorAll('input[name="payment"]').forEach(r => {
+                document.getElementById(`label-payment-${r.value}`).classList.remove('active');
+              });
+              paypalRadio.checked = true;
+              document.getElementById('label-payment-paypal').classList.add('active');
+            }
+          } else {
+            cashRadio.disabled = false;
+            document.getElementById('label-payment-cash').style.opacity       = '';
+            document.getElementById('label-payment-cash').style.cursor        = '';
+            document.getElementById('label-payment-cash').style.pointerEvents = '';
+          }
         }
       }
 
