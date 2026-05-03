@@ -1518,9 +1518,9 @@
                 <div style="display:flex; align-items:flex-start; gap:12px;">
                   <span style="font-size:22px; line-height:1;">⚡</span>
                   <div>
-                    <strong style="font-size:15px; color:#92400e;">Sofortzahlung via PayPal erforderlich</strong>
+                    <strong style="font-size:15px; color:#92400e;">Sofortzahlung erforderlich</strong>
                     <p style="font-size:13px; color:#78350f; margin-top:4px; line-height:1.5;">
-                      Bei Einsendung per Post sowie bei Zahlung per PayPal wird der Betrag vorab fällig – bevor das Gerät zur Reparatur eingeschickt wird. Bitte fülle alle Kontaktdaten aus und klicke dann auf den PayPal-Button.
+                      Bei Einsendung per Post sowie bei Online-Zahlung (PayPal oder Kreditkarte) wird der Betrag vorab fällig – bevor das Gerät zur Reparatur eingeschickt wird. Bitte fülle alle Kontaktdaten aus und wähle deine bevorzugte Zahlungsart.
                     </p>
                   </div>
                 </div>
@@ -2438,18 +2438,23 @@
     });
 
     function updatePaymentUI() {
-      const isPaypal   = document.querySelector('input[name="payment"]:checked').value === 'paypal';
-      const isShipping = document.querySelector('input[name="delivery"]:checked').value === 'shipping';
+      const currentPayment = document.querySelector('input[name="payment"]:checked').value;
+      const isPaypal   = currentPayment === 'paypal';
+      const isStripe   = currentPayment === 'stripe';
+      const isShipping = document.querySelector('input[name="delivery"]:checked') &&
+                         document.querySelector('input[name="delivery"]:checked').value === 'shipping';
       const agb        = document.getElementById('acceptAgb').checked;
       const privacy    = document.getElementById('acceptWiderruf').checked;
       const ready      = agb && privacy;
 
-      const showNotice = isPaypal || isShipping;
-      document.getElementById('paypalNotice').style.display  = showNotice ? 'block' : 'none';
-      const isStripe = document.querySelector('input[name="payment"]:checked').value === 'stripe';
+      // Notice bei Online-Zahlung oder Versand anzeigen
+      const showNotice = isPaypal || isStripe || isShipping;
+      document.getElementById('paypalNotice').style.display   = showNotice ? 'block' : 'none';
+
+      // Buttons korrekt ein-/ausblenden
       document.getElementById('submitOrderBtn').style.display = (!isPaypal && !isStripe) ? 'block' : 'none';
-      document.getElementById('paypalBtnArea').style.display  = isPaypal  ? 'block' : 'none';
-      document.getElementById('stripeBtnArea').style.display  = isStripe  ? 'block' : 'none';
+      document.getElementById('paypalBtnArea').style.display  = isPaypal ? 'block' : 'none';
+      document.getElementById('stripeBtnArea').style.display  = isStripe ? 'block' : 'none';
 
       if (!isPaypal && !isStripe) {
         document.getElementById('submitOrderBtn').disabled = !ready || cart.length === 0;
@@ -2793,7 +2798,9 @@
           document.getElementById('label-payment-cash').classList.remove('active');
           document.getElementById('label-payment-cash').style.opacity = '0.45';
           document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
-          if (!paypalRadio.checked) {
+          // Nur auf PayPal wechseln wenn aktuell Barzahlung gewählt ist (nicht Stripe überschreiben)
+          const currentPayment = document.querySelector('input[name="payment"]:checked').value;
+          if (currentPayment === 'cash') {
             document.querySelectorAll('input[name="payment"]').forEach(r => {
               document.getElementById(`label-payment-${r.value}`).classList.remove('active');
             });
@@ -2806,8 +2813,8 @@
           document.getElementById('label-payment-cash').style.opacity = '';
           document.getElementById('label-payment-cash').style.cursor  = '';
           if (paypalNoticeEl) {
-            const isPaypal = document.querySelector('input[name="payment"]:checked').value === 'paypal';
-            paypalNoticeEl.style.display = isPaypal ? 'block' : 'none';
+            const currentPayment = document.querySelector('input[name="payment"]:checked').value;
+            paypalNoticeEl.style.display = (currentPayment === 'paypal' || currentPayment === 'stripe') ? 'block' : 'none';
           }
         }
       } else {
