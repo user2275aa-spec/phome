@@ -1944,7 +1944,7 @@
 
       summaryEl.innerHTML += `
         <div class="checkout-sum-row"><span>Lieferung / Übergabe</span><strong id="checkoutDelivery">${deliveryText}</strong></div>
-        <div class="checkout-sum-row"><span>Zahlung</span><strong id="checkoutPayment">${document.querySelector('input[name="payment"]:checked').value === 'paypal' ? 'PayPal (Sofortzahlung)' : 'Bar vor Ort'}</strong></div>
+        <div class="checkout-sum-row"><span>Zahlung</span><strong id="checkoutPayment">${document.querySelector('input[name="payment"]:checked').value === 'paypal' ? 'PayPal (Sofortzahlung)' : document.querySelector('input[name="payment"]:checked').value === 'stripe' ? 'Kreditkarte (Stripe)' : 'Bar vor Ort'}</strong></div>
         ${shippingExtra}
         <div class="checkout-sum-row" style="color:var(--primary);font-size:20px;font-weight:900;"><span>Gesamtsumme</span><span id="checkoutTotal">€${total.toFixed(2)}</span></div>`;
 
@@ -2283,13 +2283,6 @@
         if (oldPriceEl) oldPriceEl.style.display = 'none';
         if (discountLabel) discountLabel.style.display = 'none';
 
-        const delivery = document.querySelector('input[name="delivery"]:checked').value;
-        if (delivery === 'shipping') {
-          total += 5.49;
-          const li2 = document.createElement('li');
-          li2.textContent = 'Versicherter Rückversand: €5.49';
-          summaryList.appendChild(li2);
-        }
         totalPriceEl.textContent = `€${total.toFixed(2)}`;
         return;
       }
@@ -2347,14 +2340,6 @@
       } else {
         oldPriceEl.style.display    = 'none';
         discountLabel.style.display = 'none';
-      }
-
-      const delivery = document.querySelector('input[name="delivery"]:checked').value;
-      if (delivery === 'shipping') {
-        total += 5.49;
-        const li = document.createElement('li');
-        li.textContent = 'Versicherter Rückversand: €5.49';
-        summaryList.appendChild(li);
       }
 
       totalPriceEl.textContent = `€${total.toFixed(2)}`;
@@ -2800,13 +2785,41 @@
       } else {
         repairOptions.style.display = 'grid';
         deviceOptions.style.display = 'none';
-        shippingAddr.style.display  = 'none';
-        // Barzahlung wieder freigeben
-        const cashRadio = document.querySelector('input[name="payment"][value="cash"]');
-        if (cashRadio) {
-          cashRadio.disabled = false;
-          document.getElementById('label-payment-cash').style.opacity = '';
-          document.getElementById('label-payment-cash').style.cursor  = '';
+
+        // Prüfen ob Versand-Option für Reparaturen gewählt ist
+        const repairDelivery = document.querySelector('input[name="delivery"]:checked');
+        const isRepairShipping = repairDelivery && repairDelivery.value === 'shipping';
+
+        const cashRadio   = document.querySelector('input[name="payment"][value="cash"]');
+        const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
+
+        if (isRepairShipping) {
+          // Rücksendeadresse anzeigen
+          if (shippingAddr) shippingAddr.style.display = 'block';
+          // Barzahlung sperren
+          if (cashRadio) {
+            cashRadio.disabled = true;
+            document.getElementById('label-payment-cash').classList.remove('active');
+            document.getElementById('label-payment-cash').style.opacity = '0.45';
+            document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
+            const currentPayment = document.querySelector('input[name="payment"]:checked').value;
+            if (currentPayment === 'cash') {
+              document.querySelectorAll('input[name="payment"]').forEach(r => {
+                document.getElementById(`label-payment-${r.value}`).classList.remove('active');
+              });
+              paypalRadio.checked = true;
+              document.getElementById('label-payment-paypal').classList.add('active');
+            }
+          }
+        } else {
+          // Rücksendeadresse ausblenden
+          if (shippingAddr) shippingAddr.style.display = 'none';
+          // Barzahlung freigeben
+          if (cashRadio) {
+            cashRadio.disabled = false;
+            document.getElementById('label-payment-cash').style.opacity = '';
+            document.getElementById('label-payment-cash').style.cursor  = '';
+          }
         }
       }
 
