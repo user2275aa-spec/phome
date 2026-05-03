@@ -2590,7 +2590,7 @@
 
       let details = Array.from(selectedRepairs).map(r => repairLabels[r]).join(', ');
       if (noWarningState.display && model.icDiff  > 0) details += ' + Premium (Display, ohne Warnung)';
-      if (noWarningState.akku    && model.akkuDiff > 0) details += ' + Premium (Akku, ohne Warnung)';
+      if (noWarningState.akku    && model.akkuDiff > 0) details += selectedSeriesKey === '16' ? ' + Original Apple Akku' : ' + Premium (Akku, ohne Warnung)';
 
       addToCart({
         type: 'repair',
