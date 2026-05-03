@@ -2406,6 +2406,9 @@
             document.getElementById('label-payment-cash').classList.remove('active');
             document.getElementById('label-payment-cash').style.opacity = '0.45';
             document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
+            document.querySelectorAll('input[name="payment"]').forEach(r => {
+              document.getElementById(`label-payment-${r.value}`).classList.remove('active');
+            });
             paypalRadio.checked = true;
             document.getElementById('label-payment-paypal').classList.add('active');
           } else {
@@ -2791,6 +2794,9 @@
           document.getElementById('label-payment-cash').style.opacity = '0.45';
           document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
           if (!paypalRadio.checked) {
+            document.querySelectorAll('input[name="payment"]').forEach(r => {
+              document.getElementById(`label-payment-${r.value}`).classList.remove('active');
+            });
             paypalRadio.checked = true;
             document.getElementById('label-payment-paypal').classList.add('active');
           }
