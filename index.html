@@ -1127,17 +1127,17 @@
               <div class="step-heading"><span class="step-num">3</span> Reparatur wählen</div>
               <div style="display:flex; gap:10px; align-items:flex-start; background:#eff6ff; border:1px solid #93c5fd; border-radius:12px; padding:11px 14px; margin-bottom:14px; font-size:13px; color:#1e40af; line-height:1.55;">
                 <span style="flex-shrink:0; font-size:15px;">ℹ️</span>
-                <span>Alle Displays sind <strong>hochwertige Drittanbieterteile</strong> – kein Apple-Original. Gleiche Bildqualität, volle Funktion, faire Preise. Gegen Aufpreis auch <strong>ohne iOS-Meldung</strong> möglich (✨ Premium-Option erscheint nach deiner Auswahl).</span>
+                <span>Alle Ersatzteile – Display, Kamera, Akku, Gehäuse – sind <strong>hochwertige Drittanbieterteile</strong>, kein Apple-Original. Gleiche Qualität, volle Funktion, faire Preise. Gegen Aufpreis buchbar: <strong>ohne iOS-Meldung</strong> bei bestimmten Displays &amp; Akkus älterer Modelle; <strong>Original Apple Akku</strong> bei der iPhone 16 Serie (✨ Premium-Optionen erscheinen nach deiner Auswahl).</span>
               </div>
               <div class="repair-grid" id="repairsGrid"></div>
             </div>
 
             <!-- ── Premium Service ────────────────────── -->
             <div id="noWarningServiceArea" style="display:none; margin-top:22px; padding:18px; background:var(--bg-soft); border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <h3 class="step-title" style="margin-bottom:10px;"><span>✨</span> Optional: Ohne iOS-Fehlermeldung?</h3>
+              <h3 id="noWarningTitle" class="step-title" style="margin-bottom:10px;"><span>✨</span> Optional: Ohne iOS-Fehlermeldung?</h3>
 
-              <!-- Kunden-Hinweis -->
-              <div style="background:#fef3c7; border:1px solid #f59e0b; border-radius:12px; padding:12px 14px; margin-bottom:14px; display:flex; gap:10px; align-items:flex-start;">
+              <!-- Kunden-Hinweis (nur bei "ohne iOS-Warnung" Optionen relevant) -->
+              <div id="iosWarningHint" style="background:#fef3c7; border:1px solid #f59e0b; border-radius:12px; padding:12px 14px; margin-bottom:14px; display:flex; gap:10px; align-items:flex-start;">
                 <span style="font-size:20px; flex-shrink:0; line-height:1.4;">⚠️</span>
                 <p style="font-size:13px; color:#78350f; margin:0; line-height:1.6;">
                   <strong>Bitte prüfe vorab selbst in deinen iPhone-Einstellungen:</strong> Gehe zu
@@ -1148,7 +1148,7 @@
                 </p>
               </div>
 
-              <p style="color:var(--muted); font-size:14px; margin-bottom:14px;">
+              <p id="noWarningDesc" style="color:var(--muted); font-size:14px; margin-bottom:14px;">
                 Ab dem iPhone 11 (bzw. XS beim Akku) zeigt iOS bei getauschten Displays und Akkus eine
                 Warnung an. Wir können den Original-Chip umprogrammieren, um diese Meldung zu verhindern.
                 Wähle unten pro Reparatur einzeln aus:
@@ -1810,10 +1810,10 @@
       "16": {
         label: "iPhone 16",
         models: {
-          "ip16pm":  { name: "16 Pro Max", display: 299, akku: 89,  kamera: 169, housing: 239, backglass: 119, icDiff: 70, akkuDiff: 25 },
-          "ip16p":  { name: "16 Pro", display: 265, akku: 85,  kamera: 149, housing: 219, backglass: 109, icDiff: 70, akkuDiff: 25 },
-          "ip16plus":  { name: "16 Plus", display: 219, akku: 79,  kamera: 129, housing: 189, backglass: 95, icDiff: 65, akkuDiff: 22 },
-          "ip16":  { name: "16", display: 189, akku: 75,  kamera: 119, housing: 175, backglass: 89, icDiff: 65, akkuDiff: 22 }
+          "ip16pm":  { name: "16 Pro Max", display: 299, akku: 89,  kamera: 169, housing: 239, backglass: 119, icDiff: 70, akkuDiff: 49 },
+          "ip16p":  { name: "16 Pro", display: 265, akku: 85,  kamera: 149, housing: 219, backglass: 109, icDiff: 70, akkuDiff: 49 },
+          "ip16plus":  { name: "16 Plus", display: 219, akku: 79,  kamera: 129, housing: 189, backglass: 95, icDiff: 65, akkuDiff: 45 },
+          "ip16":  { name: "16", display: 189, akku: 75,  kamera: 119, housing: 175, backglass: 89, icDiff: 65, akkuDiff: 45 }
         }
       },
       "X/XS": {
@@ -2094,9 +2094,11 @@
               ? 'Hochwertiges Drittanbieter Soft-OLED · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar'
               : 'Hochwertiges Drittanbieterteil · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar';
           case 'akku':
-            return 'Starke Leistung · Originalkapazität · 12 M. Garantie';
+            return selectedSeriesKey === '16'
+              ? 'Hochwertiges Drittanbieterteil · Originalkapazität · 12 M. Garantie · ⭐ Original Apple Akku optional'
+              : 'Starke Leistung · Originalkapazität · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar';
           case 'kamera':
-            return 'Klare Optik · geprüfte Linse · 12 M. Garantie';
+            return 'Hochwertiges Drittanbieterteil · geprüfte Optik · 12 M. Garantie';
           case 'housing':
             return 'Passgenaue Verarbeitung · neuwertig · 12 M. Garantie';
           case 'backglass':
@@ -2213,6 +2215,33 @@
     // ── Hilfsfunktion: Premium-Checkboxen je Reparatur rendern ──────────
     function renderNoWarningOptions(surchargeDisplay, surchargeAkku) {
       noWarningOptionsEl.innerHTML = '';
+      const isIPhone16 = selectedSeriesKey === '16';
+
+      // ─ Titel und Beschreibung dynamisch anpassen ─
+      const titleEl   = document.getElementById('noWarningTitle');
+      const hintEl    = document.getElementById('iosWarningHint');
+      const descEl    = document.getElementById('noWarningDesc');
+
+      const hasDisplayWarn = surchargeDisplay > 0;
+      const hasAkkuApple   = isIPhone16 && surchargeAkku > 0;
+      const hasAkkuWarn    = !isIPhone16 && surchargeAkku > 0;
+
+      if (hasAkkuApple && !hasDisplayWarn) {
+        // Nur iPhone-16-Akku: Apple Original Premium
+        titleEl.innerHTML = '<span>⭐</span> Optional: Original Apple Akku';
+        hintEl.style.display = 'none';
+        descEl.innerHTML = 'Für die iPhone 16 Serie bieten wir optional einen <strong>Original Apple Akku</strong> an. Damit erhältst du volle iOS-Kompatibilität, keine Warnmeldungen und identische Akkulaufzeit wie im Werkszustand. Der günstigere Drittanbieter-Akku (bereits im Basispreis enthalten) ist ebenfalls hochwertig und zuverlässig.';
+      } else if (hasAkkuApple && hasDisplayWarn) {
+        // Display (ohne Warnung) + iPhone-16-Akku (Apple Original): gemischt
+        titleEl.innerHTML = '<span>✨</span> Optional: Premium-Optionen';
+        hintEl.style.display = 'flex';
+        descEl.innerHTML = 'Beim Display kann die iOS-Warnung per Chip-Umprogrammierung entfernt werden. Für den Akku bieten wir optional einen <strong>Original Apple Akku</strong> an, der keine Warnmeldung erzeugt. Wähle unten pro Reparatur einzeln aus:';
+      } else {
+        // Standard: ohne iOS-Fehlermeldung (Display / ältere Akku-Modelle)
+        titleEl.innerHTML = '<span>✨</span> Optional: Ohne iOS-Fehlermeldung?';
+        hintEl.style.display = 'flex';
+        descEl.textContent = 'Ab dem iPhone 11 (bzw. XS beim Akku) zeigt iOS bei getauschten Displays und Akkus eine Warnung an. Wir können den Original-Chip umprogrammieren, um diese Meldung zu verhindern. Wähle unten pro Reparatur einzeln aus:';
+      }
 
       function makeRow(rep, surcharge, label) {
         const checked = noWarningState[rep];
@@ -2240,7 +2269,7 @@
       }
       if (surchargeAkku > 0) {
         noWarningOptionsEl.appendChild(
-          makeRow('akku', surchargeAkku, '✨ Akku-Wechsel ohne iOS-Warnung')
+          makeRow('akku', surchargeAkku, isIPhone16 ? '⭐ Akku-Wechsel mit Original Apple Akku' : '✨ Akku-Wechsel ohne iOS-Warnung')
         );
       }
     }
@@ -2319,7 +2348,9 @@
         total += icSurchargeAkku;
         const li = document.createElement('li');
         li.style.color = 'var(--primary)'; li.style.fontWeight = 'bold';
-        li.textContent = `✨ Premium (Akku, ohne Warnung): +€${icSurchargeAkku.toFixed(2)}`;
+        li.textContent = selectedSeriesKey === '16'
+          ? `⭐ Original Apple Akku: +€${icSurchargeAkku.toFixed(2)}`
+          : `✨ Premium (Akku, ohne Warnung): +€${icSurchargeAkku.toFixed(2)}`;
         summaryList.appendChild(li);
       }
 
