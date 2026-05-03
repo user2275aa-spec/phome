@@ -320,7 +320,8 @@
     .option-card.active { border-color: var(--primary); background: #f0fdfa; box-shadow: 0 0 0 3px rgba(20,184,166,0.15); }
     .option-card.active::after { content: "✓"; position: absolute; top: 10px; right: 12px; width: 20px; height: 20px; background: var(--primary); color: #fff; border-radius: 50%; font-size: 11px; display: grid; place-items: center; font-weight: 900; }
     .option-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .option-card-icon { font-size: 30px; line-height: 1; margin-bottom: 4px; }
+    .option-card-icon { font-size: 30px; line-height: 1; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; min-height: 36px; }
+    .option-card-icon svg { display: block; max-width: 100%; height: auto; }
     .option-card strong { font-size: 14px; font-weight: 800; display: block; }
     .option-card span { font-size: 12px; color: var(--muted); display: block; line-height: 1.4; }
     .option-section-label {
@@ -838,7 +839,7 @@
       /* Option cards — stacked on mobile */
       .option-cards { grid-template-columns: 1fr; }
       .option-card { flex-direction: row; text-align: left; padding: 14px; align-items: center; gap: 12px; }
-      .option-card-icon { font-size: 24px; margin-bottom: 0; flex-shrink: 0; }
+      .option-card-icon { font-size: 24px; margin-bottom: 0; flex-shrink: 0; min-height: unset; }
       .option-card strong { font-size: 14px; }
       .option-card span { font-size: 12px; }
 
@@ -1447,13 +1448,20 @@
                     </label>
                     <label class="option-card" id="label-payment-paypal">
                       <input type="radio" name="payment" value="paypal" />
-                      <div class="option-card-icon">🔵</div>
+                      <div class="option-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9144 9144" width="32" height="32" style="display:block;">
+                          <path fill="#179BD7" d="m5997 3797c-7 66-19 130-35 192-56 209-167 396-316 545-220 220-525 357-861 357h-792l-359 1329c-33 213-65 367-65 367-9 46 21 91 67 100 5 1 11 2 16 2h807c44 0 81-35 84-78l145-1008h672c285 0 543-113 730-295 188-183 304-436 304-715 0-157-37-306-103-439-68-138-167-258-288-352l-6-5z"/>
+                          <path fill="#253B80" fill-rule="nonzero" d="m3814 6161c-3 20-6 40-9 59h-970v-1h-12c-46-7-78-50-72-96l504-3589c3-44 40-79 85-79h1445c337 0 641 137 862 357 220 220 356 525 356 861 0 42-2 83-6 124-7 66-19 130-35 192-56 209-167 396-316 545-220 220-525 357-861 357h-792l-175 1250c-1 7-2 14-4 20z"/>
+                        </svg>
+                      </div>
                       <strong>PayPal</strong>
                       <span>Sofortzahlung<br>sicher & schnell</span>
                     </label>
                     <label class="option-card" id="label-payment-stripe">
                       <input type="radio" name="payment" value="stripe" />
-                      <div class="option-card-icon">💳</div>
+                      <div class="option-card-icon">
+                        <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.5px; line-height: 1; color: #635BFF; white-space: nowrap;">stripe</span>
+                      </div>
                       <strong>Kreditkarte</strong>
                       <span>Visa, Mastercard<br>via Stripe</span>
                     </label>
@@ -1465,9 +1473,9 @@
             <!-- ── RECHTE SPALTE: Positionen + AGB + Abschluss ── -->
             <div class="checkout-card" style="display:flex; flex-direction:column; gap:22px;">
 
-              <!-- Gewählte Positionen -->
+              <!-- Zusammenfassung -->
               <div>
-                <h3 style="margin-bottom: 16px;">Gewählte Positionen</h3>
+                <h3 style="margin-bottom: 16px;">Zusammenfassung</h3>
                 <div class="checkout-summary" id="checkoutSummaryList">
                   <div class="checkout-sum-row">
                     <div>
@@ -1985,8 +1993,8 @@
       // Zahlung-Text nachträglich aktualisieren, da _applyCheckoutMode ggf. PayPal erzwingt
       const paymentEl = document.getElementById('checkoutPayment');
       if (paymentEl) {
-        paymentEl.textContent = document.querySelector('input[name="payment"]:checked').value === 'paypal'
-          ? 'PayPal (Sofortzahlung)' : 'Bar vor Ort';
+        const pv = document.querySelector('input[name="payment"]:checked').value;
+        paymentEl.textContent = pv === 'paypal' ? 'PayPal' : pv === 'stripe' ? 'Kreditkarte (Stripe)' : 'Bar vor Ort';
       }
     }
 
@@ -2406,11 +2414,14 @@
             document.getElementById('label-payment-cash').classList.remove('active');
             document.getElementById('label-payment-cash').style.opacity = '0.45';
             document.getElementById('label-payment-cash').style.cursor  = 'not-allowed';
-            document.querySelectorAll('input[name="payment"]').forEach(r => {
-              document.getElementById(`label-payment-${r.value}`).classList.remove('active');
-            });
-            paypalRadio.checked = true;
-            document.getElementById('label-payment-paypal').classList.add('active');
+            const currentPayment = document.querySelector('input[name="payment"]:checked').value;
+            if (currentPayment === 'cash') {
+              document.querySelectorAll('input[name="payment"]').forEach(r => {
+                document.getElementById(`label-payment-${r.value}`).classList.remove('active');
+              });
+              paypalRadio.checked = true;
+              document.getElementById('label-payment-paypal').classList.add('active');
+            }
           } else {
             const cashRadio = document.querySelector('input[name="payment"][value="cash"]');
             cashRadio.disabled = false;
@@ -2446,6 +2457,14 @@
       const agb        = document.getElementById('acceptAgb').checked;
       const privacy    = document.getElementById('acceptWiderruf').checked;
       const ready      = agb && privacy;
+
+      // Zahlungsart in Zusammenfassung aktualisieren
+      const paymentEl = document.getElementById('checkoutPayment');
+      if (paymentEl) {
+        if (isPaypal) paymentEl.textContent = 'PayPal';
+        else if (isStripe) paymentEl.textContent = 'Kreditkarte (Stripe)';
+        else paymentEl.textContent = 'Bar vor Ort';
+      }
 
       // Notice bei Online-Zahlung oder Versand anzeigen
       const showNotice = isPaypal || isStripe || isShipping;
