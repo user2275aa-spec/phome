@@ -234,6 +234,10 @@
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .product-card { overflow: hidden; }
     .product-image { min-height: 240px; display: grid; place-items: center; background: radial-gradient(circle, rgba(20, 184, 166, 0.24), transparent 42%), linear-gradient(135deg, #f8fafc, #e2e8f0); cursor: pointer; }
+    .product-image { overflow: hidden; }
+    .product-image img { width: 100%; height: 240px; object-fit: cover; border-radius: 0; transition: transform 0.25s ease; }
+    .product-card:hover .product-image img { transform: scale(1.025); }
+
     .device { width: 118px; height: 210px; border-radius: 28px; background: linear-gradient(160deg, #111827, #374151); border: 8px solid #020617; box-shadow: 0 24px 40px rgba(15, 23, 42, 0.25); position: relative; }
     .device::before { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 42px; height: 7px; border-radius: 999px; background: #020617; }
     .device-color-badge, .device-condition-badge { z-index: 1; }
@@ -845,6 +849,7 @@
       /* ── Products grid ──────────────────────────────────────── */
       .products-grid { grid-template-columns: 1fr; }
       .product-image { min-height: 200px; }
+      .product-image img { height: 220px; }
       .product-body { padding: 18px; }
       .product-price { font-size: 24px; margin-bottom: 14px; }
 
@@ -1214,12 +1219,111 @@
 
         <div class="products-grid">
 
-          <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
-            <div style="font-size:52px;margin-bottom:18px;">📦</div>
-            <h3 style="font-size:22px;font-weight:900;letter-spacing:-0.04em;margin-bottom:10px;">Derzeit keine Geräte verfügbar</h3>
-            <p style="color:var(--muted);max-width:420px;margin:0 auto 22px;">Wir arbeiten gerade an neuen Geräten für euch. Schaut bald wieder rein oder kontaktiert uns direkt – wir finden für euch das passende Gerät.</p>
-            <a href="#reparatur" class="btn btn-primary" style="display:inline-flex;">Zur Reparatur</a>
-          </div>
+          
+          <article class="product-card">
+            <div class="product-image" title="Details zum iPhone 16 öffnen">
+              <img src="https://i.ebayimg.com/images/g/mvcAAeSwfPFqiB2u/s-l1600.webp" alt="Apple iPhone 16 128 GB Ultramarine" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <div class="product-body">
+              <span class="badge" style="margin-bottom:12px;">✓ Verfügbar · Sehr gut</span>
+              <h3>iPhone 16</h3>
+              <p class="product-meta">128 GB · Ultramarine · 91 % Batterie</p>
+              <div class="product-specs-row">
+                <span class="spec-chip">Display & Rückseite wie neu</span>
+                <span class="spec-chip">5G</span>
+                <span class="spec-chip">USB-C</span>
+              </div>
+              <div class="product-price">€539</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" data-device="ip16u" style="flex:1;">Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 16 (128 GB, Ultramarine)" data-price="539" style="flex:1;">Kaufen</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image" title="Details zum iPhone 14 Pro Max öffnen">
+              <img src="https://i.ebayimg.com/images/g/lp8AAeSwdK5qiCA4/s-l1600.webp" alt="Apple iPhone 14 Pro Max 256 GB Silber" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <div class="product-body">
+              <span class="badge" style="margin-bottom:12px;">★ Verfügbar · Wie neu</span>
+              <h3>iPhone 14 Pro Max</h3>
+              <p class="product-meta">256 GB · Silber · 100 % Batterie</p>
+              <div class="product-specs-row">
+                <span class="spec-chip">Kratzfrei</span>
+                <span class="spec-chip">Originalbatterie</span>
+                <span class="spec-chip">Schutzhülle inkl.</span>
+              </div>
+              <div class="product-price">€599</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" data-device="ip14pm256" style="flex:1;">Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 14 Pro Max (256 GB, Silber)" data-price="599" style="flex:1;">Kaufen</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image" title="Details zum iPhone 14 Pro öffnen">
+              <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/95/95a1dbbd-2368-4081-90c3-8161bf5b2a37?rule=%24_59.AUTO" alt="Apple iPhone 14 Pro 128 GB Deep Purple" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <div class="product-body">
+              <span class="badge" style="margin-bottom:12px;">★ Verfügbar · Sehr gut</span>
+              <h3>iPhone 14 Pro</h3>
+              <p class="product-meta">128 GB · Deep Purple · 100 % Batterie</p>
+              <div class="product-specs-row">
+                <span class="spec-chip">Makelloser Zustand</span>
+                <span class="spec-chip">Originalbatterie</span>
+                <span class="spec-chip">OVP + Kabel</span>
+              </div>
+              <div class="product-price">€429,00</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" data-device="ip14pro128" style="flex:1;">Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 14 Pro (128 GB, Deep Purple)" data-price="429" style="flex:1;">Kaufen</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image" title="Details zum iPhone 13 Pro öffnen">
+              <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/7f/7f07d477-2c40-4a2e-873a-91d3ef3fe014?rule=%24_59.AUTO" alt="Apple iPhone 13 Pro 128 GB Graphit" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <div class="product-body">
+              <span class="badge" style="margin-bottom:12px;">★ Verfügbar · Sehr gut</span>
+              <h3>iPhone 13 Pro</h3>
+              <p class="product-meta">128 GB · Graphit · 100 % Batterie</p>
+              <div class="product-specs-row">
+                <span class="spec-chip">Makelloser Zustand</span>
+                <span class="spec-chip">Originalbatterie</span>
+                <span class="spec-chip">OVP inklusive</span>
+              </div>
+              <div class="product-price">€339,00</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" data-device="ip13pro128" style="flex:1;">Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 13 Pro (128 GB, Graphit)" data-price="339" style="flex:1;">Kaufen</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image" title="Details zum iPhone 14 öffnen">
+              <img src="https://i.ebayimg.com/images/g/pmIAAeSwVZ5qiB9A/s-l1600.webp" alt="Apple iPhone 14 128 GB Midnight" loading="lazy" referrerpolicy="no-referrer" />
+            </div>
+            <div class="product-body">
+              <span class="badge" style="margin-bottom:12px;">✓ Verfügbar · Sehr gut</span>
+              <h3>iPhone 14</h3>
+              <p class="product-meta">128 GB · Midnight · 91 % Batterie</p>
+              <div class="product-specs-row">
+                <span class="spec-chip">Originalteile</span>
+                <span class="spec-chip">Display erneuert</span>
+                <span class="spec-chip">Batterie erneuert</span>
+              </div>
+              <div class="product-price">€329</div>
+              <div class="product-btns">
+                <button class="btn btn-secondary details-btn" data-device="ip14black" style="flex:1;">Details</button>
+                <button class="btn btn-primary buy-device" data-name="iPhone 14 (128 GB, Midnight)" data-price="329" style="flex:1;">Kaufen</button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1329,7 +1433,7 @@
         <div class="section-header">
           <p class="eyebrow">Verbindliche Anfrage</p>
           <h2>Auftrag abschließen</h2>
-          <p class="lead">Sende uns deine Reparaturanfrage. Wir melden uns umgehend zur Terminabsprache.</p>
+          <p class="lead">Schließe deine Reparaturanfrage oder Gerätebestellung sicher ab.</p>
         </div>
 
         <form id="checkoutForm">
@@ -1914,6 +2018,7 @@
       summaryEl.innerHTML = '';
 
       const isSingleDevice = cart.length === 1 && cart[0].type === 'device';
+      const allDevices = cart.length > 0 && cart.every(item => item.type === 'device');
 
       if (cart.length === 0) {
         summaryEl.innerHTML = `
@@ -1951,7 +2056,7 @@
       let deliveryText, shippingExtra = '';
       let total = cart.reduce((a, c) => a + c.price, 0);
 
-      if (isSingleDevice) {
+      if (allDevices) {
         const deviceDel = document.querySelector('input[name="delivery_device"]:checked');
         const isDevSend = deviceDel && deviceDel.value === 'send';
         deliveryText = isDevSend ? 'Versand (kostenlos, DHL)' : 'Vor Ort testen · Leipzig Lindenau';
@@ -1973,7 +2078,7 @@
 
       updatePaymentUI();
       // Checkout-Modus (Gerät vs Reparatur) anpassen – ohne Rückkopplung
-      _applyCheckoutMode(isSingleDevice);
+      _applyCheckoutMode(allDevices);
       // Zahlung-Text nachträglich aktualisieren, da _applyCheckoutMode ggf. PayPal erzwingt
       const paymentEl = document.getElementById('checkoutPayment');
       if (paymentEl) {
@@ -2498,6 +2603,13 @@
         const el = document.getElementById(id);
         if (!el || !el.value.trim()) return false;
       }
+
+      const shippingFields = ['streetName','streetNr','zipCode','city'];
+      for (const id of shippingFields) {
+        const el = document.getElementById(id);
+        if (el && el.required && !el.value.trim()) return false;
+      }
+
       if (!document.getElementById('acceptAgb').checked) return false;
       if (!document.getElementById('acceptWiderruf').checked) return false;
       return true;
@@ -2795,20 +2907,28 @@
       btn.textContent = label;
     }
 
+    function setShippingAddressRequired(required) {
+      ['streetName','streetNr','zipCode','city'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.required = required;
+      });
+    }
+
     // ─── Checkout-Modus: Gerät vs. Reparatur ─────────────────────
-    function _applyCheckoutMode(isSingleDevice) {
+    function _applyCheckoutMode(deviceOnlyOrder) {
       const repairOptions  = document.getElementById('delivery-repair-options');
       const deviceOptions  = document.getElementById('delivery-device-options');
       const shippingAddr   = document.getElementById('deviceShippingAddress');
       const paypalNoticeEl = document.getElementById('paypalNotice');
 
-      if (isSingleDevice) {
+      if (deviceOnlyOrder) {
         repairOptions.style.display = 'none';
         deviceOptions.style.display = 'grid';
 
         const deviceDelivery = document.querySelector('input[name="delivery_device"]:checked');
         const isDeviceShipping = deviceDelivery && deviceDelivery.value === 'send';
         shippingAddr.style.display = isDeviceShipping ? 'block' : 'none';
+        setShippingAddressRequired(isDeviceShipping);
 
         const cashRadio   = document.querySelector('input[name="payment"][value="cash"]');
         const paypalRadio = document.querySelector('input[name="payment"][value="paypal"]');
@@ -2850,6 +2970,7 @@
         if (isRepairShipping) {
           // Rücksendeadresse anzeigen
           if (shippingAddr) shippingAddr.style.display = 'block';
+          setShippingAddressRequired(true);
           // Barzahlung sperren
           if (cashRadio) {
             cashRadio.disabled = true;
@@ -2868,6 +2989,7 @@
         } else {
           // Rücksendeadresse ausblenden
           if (shippingAddr) shippingAddr.style.display = 'none';
+          setShippingAddressRequired(false);
           // Barzahlung freigeben
           if (cashRadio) {
             cashRadio.disabled = false;
@@ -2880,7 +3002,7 @@
       // Barzahlungs-Hinweis anpassen
       const cashHint = document.getElementById('payment-cash-hint');
       if (cashHint) {
-        cashHint.innerHTML = isSingleDevice
+        cashHint.innerHTML = deviceOnlyOrder
           ? 'Bei Abholung<br>vor Ort'
           : 'Nach Abschluss<br>der Reparatur';
       }
@@ -2889,8 +3011,8 @@
     }
 
     function updateCheckoutMode() {
-      const isSingleDevice = cart.length === 1 && cart[0].type === 'device';
-      _applyCheckoutMode(isSingleDevice);
+      const allDevices = cart.length > 0 && cart.every(i => i.type === 'device');
+      _applyCheckoutMode(allDevices);
       updatePaymentUI();
     }
 
@@ -2912,253 +3034,206 @@
     let gallerySlides = [];
 
     const deviceDetails = {
-      "ip13pro": {
-            "name": "iPhone 13 Pro",
-            "subtitle": "256 GB · Sierra Blau",
-            "price": "€399.00",
-            "condition": "Sehr gut",
-            "conditionIcon": "✅",
-            "conditionColor": {
-                  "bg": "var(--primary-soft)",
-                  "border": "var(--primary)",
-                  "text": "var(--primary-dark)"
-            },
-            "conditionDetails": "Das Gerät befindet sich in sehr gutem Zustand. Das Display ist kratzer- und splitterfrei. Das Gehäuse weist minimale, kaum sichtbare Gebrauchsspuren auf – typisch für ein gepflegtes Alltagsgerät. Alle Tasten, Anschlüsse und Funktionen wurden geprüft und funktionieren einwandfrei.",
-            "akku": 88,
-            "color": "rgb(192, 184, 174)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 13 Pro"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Sierra Blau"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "256 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A15 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Triple 12 MP Pro-System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 17.5"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "88%",
-                        "isAkku": true,
-                        "akkuVal": 88
-                  }
-            ],
-            "cartName": "iPhone 13 Pro (256 GB)",
-            "cartPrice": 399
+      "ip16u": {
+        "name": "iPhone 16",
+        "subtitle": "128 GB · Ultramarine",
+        "price": "€539",
+        "condition": "Sehr gut",
+        "conditionIcon": "✅",
+        "conditionColor": { "bg": "var(--primary-soft)", "border": "var(--primary)", "text": "var(--primary-dark)" },
+        "conditionDetails": "Das Gerät befindet sich insgesamt in einem sehr gepflegten gebrauchten Zustand. Display und Rückseite sind optisch wie neu. Am Rahmen bzw. an den Rändern sind normale Gebrauchsspuren vorhanden. Technisch funktioniert das Gerät einwandfrei.",
+        "akku": 91,
+        "color": "#4f78c4",
+        "images": [
+          "https://i.ebayimg.com/images/g/mvcAAeSwfPFqiB2u/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/IuEAAeSwRqBqiB2y/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/flMAAeSwgW9qiB25/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/krgAAeSwxB9qiB2j/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/dJ0AAeSwy-ZqiB2j/s-l1600.webp"
+        ],
+        "specs": [
+          { "cat": "Gerät" },
+          { "label": "Modell", "value": "iPhone 16" },
+          { "label": "Farbe", "value": "Ultramarine" },
+          { "label": "Speicher", "value": "128 GB" },
+          { "label": "Chip", "value": "Apple A18" },
+          { "cat": "Display & Kamera" },
+          { "label": "Display", "value": "6,1\" Super Retina XDR (OLED)" },
+          { "label": "Kamera", "value": "48 MP Fusion + 12 MP Ultraweitwinkel" },
+          { "cat": "Konnektivität" },
+          { "label": "5G", "value": "✓ Ja" },
+          { "label": "Anschluss", "value": "USB-C" },
+          { "label": "SIM", "value": "Nano-SIM + eSIM" },
+          { "cat": "Software & Status" },
+          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
+          { "label": "iCloud", "value": "✓ Entriegelt" },
+          { "label": "Batteriekapazität", "value": "91%", "isAkku": true, "akkuVal": 91 }
+        ],
+        "includes": ["📱 iPhone 16", "📋 Kaufbeleg"],
+        "cartName": "iPhone 16 (128 GB, Ultramarine)",
+        "cartPrice": 539
       },
-      "ip14": {
-            "name": "iPhone 14",
-            "subtitle": "128 GB · Polarstern",
-            "price": "€359.00",
-            "condition": "Wie neu",
-            "conditionIcon": "⭐",
-            "conditionColor": {
-                  "bg": "#dcfce7",
-                  "border": "#16a34a",
-                  "text": "#166534"
-            },
-            "conditionDetails": "Das Gerät ist in nahezu neuwertigem Zustand. Display und Rückseite sind ohne jegliche Kratzer oder Beschädigungen. Das Gerät wurde sehr schonend genutzt und sieht aus wie frisch aus dem Laden. Alle Funktionen wurden vollständig geprüft und sind einwandfrei.",
-            "akku": 94,
-            "color": "rgb(240, 230, 211)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 14"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Polarstern"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "128 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A15 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Dual 12 MP System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 17.6"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "94%",
-                        "isAkku": true,
-                        "akkuVal": 94
-                  }
-            ],
-            "cartName": "iPhone 14 (128 GB)",
-            "cartPrice": 359
+      "ip14pm256": {
+        "name": "iPhone 14 Pro Max",
+        "subtitle": "256 GB · Silber",
+        "price": "€599",
+        "condition": "Wie neu",
+        "conditionIcon": "⭐",
+        "conditionColor": { "bg": "#dcfce7", "border": "#16a34a", "text": "#166534" },
+        "conditionDetails": "Das Gerät befindet sich in einem hervorragenden, optisch neuwertigen Zustand und ist kratzfrei. Display, Rückseite und Rahmen sind sehr gepflegt. Die Batterie wurde fachgerecht erneuert; verbaut wurde eine Apple Originalbatterie. Die maximale Kapazität beträgt 100 %.",
+        "akku": 100,
+        "color": "#d8d8d2",
+        "images": [
+          "https://i.ebayimg.com/images/g/lp8AAeSwdK5qiCA4/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/NqUAAeSwk1JqiCA3/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/XdAAAeSwLcVqiCA5/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/lmQAAeSwjh5qiCA5/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/pLgAAeSwCjpqiCA5/s-l1600.webp"
+        ],
+        "specs": [
+          { "cat": "Gerät" },
+          { "label": "Modell", "value": "iPhone 14 Pro Max" },
+          { "label": "Farbe", "value": "Silber" },
+          { "label": "Speicher", "value": "256 GB" },
+          { "label": "Chip", "value": "Apple A16 Bionic" },
+          { "cat": "Display & Kamera" },
+          { "label": "Display", "value": "6,7\" Super Retina XDR ProMotion (OLED)" },
+          { "label": "Kamera", "value": "48 MP Pro-Kamerasystem" },
+          { "cat": "Konnektivität" },
+          { "label": "5G", "value": "✓ Ja" },
+          { "label": "Anschluss", "value": "Lightning" },
+          { "label": "SIM", "value": "Nano-SIM + eSIM" },
+          { "cat": "Software & Status" },
+          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
+          { "label": "iCloud", "value": "✓ Entriegelt" },
+          { "label": "Batterie", "value": "Apple Originalteil · erneuert" },
+          { "label": "Batteriekapazität", "value": "100%", "isAkku": true, "akkuVal": 100 }
+        ],
+        "includes": ["📱 iPhone 14 Pro Max", "🟡 Neuwertige gelbe Schutzhülle", "📋 Kaufbeleg"],
+        "cartName": "iPhone 14 Pro Max (256 GB, Silber)",
+        "cartPrice": 599
       },
-      "ip12": {
-            "name": "iPhone 12",
-            "subtitle": "64 GB · Violett",
-            "price": "€259.00",
-            "condition": "Gut",
-            "conditionIcon": "👍",
-            "conditionColor": {
-                  "bg": "#fef9c3",
-                  "border": "#ca8a04",
-                  "text": "#854d0e"
-            },
-            "conditionDetails": "Das Gerät befindet sich in gutem Gebrauchszustand. Am Gehäuse sind leichte Gebrauchsspuren (feine Kratzer) sichtbar, die den Nutzungsspaß nicht beeinträchtigen. Das Display ist klar und ohne Einschränkungen nutzbar. Alle Funktionen wurden geprüft und sind vollständig in Ordnung.",
-            "akku": 85,
-            "color": "rgb(59, 58, 110)",
-            "images": [],
-            "specs": [
-                  {
-                        "cat": "Gerät"
-                  },
-                  {
-                        "label": "Modell",
-                        "value": "iPhone 12"
-                  },
-                  {
-                        "label": "Farbe",
-                        "value": "Violett"
-                  },
-                  {
-                        "label": "Speicher",
-                        "value": "64 GB"
-                  },
-                  {
-                        "label": "Chip",
-                        "value": "Apple A14 Bionic"
-                  },
-                  {
-                        "cat": "Display & Kamera"
-                  },
-                  {
-                        "label": "Display",
-                        "value": "6,1\" Super Retina XDR (OLED)"
-                  },
-                  {
-                        "label": "Kamera",
-                        "value": "Dual 12 MP System"
-                  },
-                  {
-                        "cat": "Konnektivität"
-                  },
-                  {
-                        "label": "5G",
-                        "value": "✓ Ja"
-                  },
-                  {
-                        "label": "SIM",
-                        "value": "Nano-SIM + eSIM"
-                  },
-                  {
-                        "cat": "Software & Status"
-                  },
-                  {
-                        "label": "iOS Version",
-                        "value": "iOS 16.7"
-                  },
-                  {
-                        "label": "Face ID",
-                        "value": "✓ Geprüft & aktiv"
-                  },
-                  {
-                        "label": "iCloud",
-                        "value": "✓ Entriegelt"
-                  },
-                  {
-                        "label": "Akkukapazität",
-                        "value": "85%",
-                        "isAkku": true,
-                        "akkuVal": 85
-                  }
-            ],
-            "cartName": "iPhone 12 (64 GB)",
-            "cartPrice": 259
+      "ip14pro128": {
+        "name": "iPhone 14 Pro",
+        "subtitle": "128 GB · Deep Purple",
+        "price": "€429,00",
+        "condition": "Sehr gut",
+        "conditionIcon": "⭐",
+        "conditionColor": { "bg": "#dcfce7", "border": "#16a34a", "text": "#166534" },
+        "conditionDetails": "Das Gerät ist technisch und optisch in einem makellosen Zustand und funktioniert einwandfrei. Laut Reparaturhistorie wurde die Batterie gegen eine Apple Originalbatterie getauscht; die maximale Kapazität beträgt 100 %. In der iOS-Reparaturhistorie wird die Originalbatterie als „Gebraucht“ aufgeführt.",
+        "akku": 100,
+        "color": "#4c4257",
+        "images": [
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/95/95a1dbbd-2368-4081-90c3-8161bf5b2a37?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/ad/adb4dc2f-5ec3-42f0-9d49-9c9a95c4712c?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/3d/3dd6a75d-e108-4812-878a-d5f59b14bbff?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/90/90b62879-bc57-4b36-8880-544e77ad2acf?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/33/3377884f-7d7c-4888-a0b4-b5bca42013f3?rule=%24_59.AUTO"
+        ],
+        "specs": [
+          { "cat": "Gerät" },
+          { "label": "Modell", "value": "iPhone 14 Pro" },
+          { "label": "Farbe", "value": "Deep Purple" },
+          { "label": "Speicher", "value": "128 GB" },
+          { "label": "Chip", "value": "Apple A16 Bionic" },
+          { "cat": "Display & Kamera" },
+          { "label": "Display", "value": "6,1\" Super Retina XDR ProMotion (OLED)" },
+          { "label": "Kamera", "value": "48 MP Pro-Kamerasystem" },
+          { "cat": "Konnektivität" },
+          { "label": "5G", "value": "✓ Ja" },
+          { "label": "Anschluss", "value": "Lightning" },
+          { "label": "SIM", "value": "Nano-SIM + eSIM" },
+          { "cat": "Software & Status" },
+          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
+          { "label": "iCloud", "value": "✓ Entriegelt" },
+          { "label": "Reparaturhistorie", "value": "Batterie: Apple Originalteil · „Gebraucht“" },
+          { "label": "Batteriekapazität", "value": "100%", "isAkku": true, "akkuVal": 100 }
+        ],
+        "includes": ["📱 iPhone 14 Pro", "📦 Originalverpackung", "🔌 Unbenutztes Ladekabel", "📋 Kaufbeleg"],
+        "cartName": "iPhone 14 Pro (128 GB, Deep Purple)",
+        "cartPrice": 429
+      },
+      "ip13pro128": {
+        "name": "iPhone 13 Pro",
+        "subtitle": "128 GB · Graphit",
+        "price": "€339,00",
+        "condition": "Sehr gut",
+        "conditionIcon": "⭐",
+        "conditionColor": { "bg": "#dcfce7", "border": "#16a34a", "text": "#166534" },
+        "conditionDetails": "Das Gerät ist technisch und optisch in einem makellosen Zustand und funktioniert einwandfrei. Laut Reparaturhistorie wurde die Batterie gegen eine Apple Originalbatterie getauscht; die maximale Kapazität beträgt 100 %. In der iOS-Reparaturhistorie wird die Originalbatterie als „Gebraucht“ aufgeführt.",
+        "akku": 100,
+        "color": "#4b4a46",
+        "images": [
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/7f/7f07d477-2c40-4a2e-873a-91d3ef3fe014?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/28/28377358-4372-4e23-96d8-4c3244bfaeb0?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/51/51dc678e-4276-499b-8330-758fb3134553?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/c4/c4459796-0f06-4d4a-970d-dc83170c0400?rule=%24_59.AUTO",
+          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/89/89551d5f-711d-4eea-ae97-c5765382a306?rule=%24_59.AUTO"
+        ],
+        "specs": [
+          { "cat": "Gerät" },
+          { "label": "Modell", "value": "iPhone 13 Pro" },
+          { "label": "Farbe", "value": "Graphit" },
+          { "label": "Speicher", "value": "128 GB" },
+          { "label": "Chip", "value": "Apple A15 Bionic" },
+          { "cat": "Display & Kamera" },
+          { "label": "Display", "value": "6,1\" Super Retina XDR ProMotion (OLED)" },
+          { "label": "Kamera", "value": "Triple 12 MP Pro-System" },
+          { "cat": "Konnektivität" },
+          { "label": "5G", "value": "✓ Ja" },
+          { "label": "Anschluss", "value": "Lightning" },
+          { "label": "SIM", "value": "Nano-SIM + eSIM" },
+          { "cat": "Software & Status" },
+          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
+          { "label": "iCloud", "value": "✓ Entriegelt" },
+          { "label": "Reparaturhistorie", "value": "Batterie: Apple Originalteil · „Gebraucht“" },
+          { "label": "Batteriekapazität", "value": "100%", "isAkku": true, "akkuVal": 100 }
+        ],
+        "includes": ["📱 iPhone 13 Pro", "📦 Originalverpackung", "📋 Kaufbeleg"],
+        "cartName": "iPhone 13 Pro (128 GB, Graphit)",
+        "cartPrice": 339
+      },
+      "ip14black": {
+        "name": "iPhone 14",
+        "subtitle": "128 GB · Midnight",
+        "price": "€329",
+        "condition": "Sehr gut",
+        "conditionIcon": "✅",
+        "conditionColor": { "bg": "var(--primary-soft)", "border": "var(--primary)", "text": "var(--primary-dark)" },
+        "conditionDetails": "Das Gerät befindet sich in einem sehr guten optischen Zustand und funktioniert technisch einwandfrei. Display und Batterie wurden fachgerecht ersetzt. Dabei wurden Apple Originalteile verwendet. Beide Komponenten werden in der iOS-Reparaturhistorie transparent als „Gebraucht“ ausgewiesen. Die Batteriekapazität beträgt 91 %.",
+        "akku": 91,
+        "color": "#25272a",
+        "images": [
+          "https://i.ebayimg.com/images/g/pmIAAeSwVZ5qiB9A/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/0fgAAeSwT-hqiB9A/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/js4AAeSw1INqiB9A/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/lv0AAeSwGFpqiB8-/s-l1600.webp",
+          "https://i.ebayimg.com/images/g/tlMAAeSw6xpqiB8~/s-l1600.webp"
+        ],
+        "specs": [
+          { "cat": "Gerät" },
+          { "label": "Modell", "value": "iPhone 14" },
+          { "label": "Farbe", "value": "Midnight / Schwarz" },
+          { "label": "Speicher", "value": "128 GB" },
+          { "label": "Chip", "value": "Apple A15 Bionic" },
+          { "cat": "Display & Kamera" },
+          { "label": "Display", "value": "6,1\" Super Retina XDR (OLED)" },
+          { "label": "Kamera", "value": "Dual 12 MP System" },
+          { "cat": "Konnektivität" },
+          { "label": "5G", "value": "✓ Ja" },
+          { "label": "Anschluss", "value": "Lightning" },
+          { "label": "SIM", "value": "Nano-SIM + eSIM" },
+          { "cat": "Software & Status" },
+          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
+          { "label": "iCloud", "value": "✓ Entriegelt" },
+          { "label": "Reparaturhistorie", "value": "Display & Batterie: Apple Originalteile · „Gebraucht“" },
+          { "label": "Batteriekapazität", "value": "91%", "isAkku": true, "akkuVal": 91 }
+        ],
+        "includes": ["📱 iPhone 14", "📋 Kaufbeleg"],
+        "cartName": "iPhone 14 (128 GB, Midnight)",
+        "cartPrice": 329
       }
-};
+    };
 
     function buildGallery(images, deviceColor) {
       const track = document.getElementById('galleryTrack');
@@ -3214,7 +3289,7 @@
       buildGallery(d.images, d.color);
 
       // Header
-      document.getElementById('modalEyebrow').textContent = 'Refurbished · PhoneLab Leipzig';
+      document.getElementById('modalEyebrow').textContent = 'Geprüft · PhoneLab Leipzig';
       document.getElementById('modalTitle').textContent = d.name;
       document.getElementById('modalSubtitle').textContent = d.subtitle;
       document.getElementById('modalPrice').textContent = d.price;
@@ -3249,7 +3324,9 @@
 
       // Lieferumfang
       document.getElementById('modalIncludes').innerHTML =
-        `<span class="modal-include-chip">📱 ${d.name}</span><span class="modal-include-chip">📋 Kaufbeleg</span>`;
+        (d.includes || [`📱 ${d.name}`, '📋 Kaufbeleg'])
+          .map(item => `<span class="modal-include-chip">${item}</span>`)
+          .join('');
 
       // Buy button
       document.getElementById('modalBuyBtn').onclick = () => {
