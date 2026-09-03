@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhoneLab Leipzig — iPhone Reparatur & Verkauf</title>
+  <title>PhoneLab Leipzig | iPhone-Reparatur & refurbished iPhones</title>
   <meta
     name="description"
-    content="iPhone Reparatur in Leipzig Lindenau mit günstigen Preisen, 10 Jahren Erfahrung und gesetzlicher Gewährleistung. Reparatur ohne iOS-Warnmeldungen möglich."
+    content="iPhone-Reparatur in Leipzig-Lindenau und geprüfte refurbished iPhones. Reparaturpreis online zusammenstellen, Gerät vor Ort abgeben oder einsenden. PhoneLab Leipzig."
   />
 
   <!-- ─── Google Analytics 4 + Consent Mode v2 (DSGVO) ─── -->
@@ -945,151 +945,565 @@
       .series-grid { grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); }
     }
   </style>
+  <style id="phonelab-refresh">
+/* PhoneLab: ruhigere Gestaltung; vorhandene IDs und Bestelloptionen bleiben erhalten. */
+:root {
+  --bg: #f5f7f7;
+  --bg-soft: #edf2f1;
+  --card: #fff;
+  --text: #162a2a;
+  --muted: #536565;
+  --primary: #076e60;
+  --primary-dark: #064d44;
+  --primary-soft: #e1f3ec;
+  --accent: #65d7ad;
+  --border: #d8e2df;
+  --success: #167348;
+  --danger: #b42332;
+  --shadow: 0 12px 36px rgba(17, 49, 43, .055);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --max: 1200px;
+}
+html { scroll-padding-top: 108px; }
+body { background: #fff; font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
+button { color: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #076e60; outline-offset: 4px; }
+.container { width: min(100% - 64px, var(--max)); }
+.btn { min-height: 48px; border-radius: 11px; padding: 13px 20px; font-size: 15px; font-weight: 700; letter-spacing: -.01em; white-space: normal; line-height: 1.4; text-align: center; }
+.btn-primary { background: var(--primary); box-shadow: 0 4px 10px rgba(7, 110, 96, .12); }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-primary:disabled { transform: none; }
+.btn-secondary { background: #fff; border-color: #bdcfca; box-shadow: none; }
+.icon { width: 21px; height: 21px; display: inline-block; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.badge { font-size: 13px; font-weight: 650; padding: 5px 10px; border-radius: 7px; }
+h1, h2, h3 { color: var(--text); letter-spacing: -.045em; }
+h1 { font-size: clamp(44px, 5.2vw, 72px); line-height: 1.06; font-weight: 760; }
+h2 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.15; font-weight: 740; }
+h3 { line-height: 1.25; font-size: 22px; font-weight: 720; }
+.lead { font-size: 18px; line-height: 1.75; color: var(--muted); }
+.eyebrow { font-size: 12px; font-weight: 750; letter-spacing: .12em; margin-bottom: 14px; }
+.section { padding: 80px 0; }
+.section-header { max-width: 760px; margin-bottom: 32px; }
+.site-header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); }
+.nav { height: 84px; gap: 24px; }
+.logo { font-size: 24px; gap: 10px; flex-shrink: 0; }
+.logo-mark { width: 42px; height: 42px; font-size: 16px; letter-spacing: -.04em; border-radius: 12px; background: var(--primary-dark); box-shadow: none; }
+.logo-wordmark { line-height: 1.1; }
+.logo .logo-city { display: block; margin-top: 5px; font-size: 10px; font-weight: 650; letter-spacing: .19em; color: var(--muted); text-transform: uppercase; }
+.nav-links { gap: 27px; font-size: 14px; color: var(--text); }
+.nav-links > a:not(.btn) { padding-block: 12px; }
+#navCartBtn { min-height: 44px; padding: 10px 14px !important; border-radius: 10px !important; font-size: 14px; white-space: nowrap; }
+.nav-links .nav-checkout { min-height: 44px; font-size: 14px; }
+.hero { background: #f5f8f7; padding: 62px 0 66px; overflow: hidden; border-bottom: 1px solid var(--border); }
+.hero-grid { grid-template-columns: 1.08fr 1fr; gap: 64px; align-items: center; text-align: left; }
+.hero-copy { min-width: 0; }
+.hero-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 13px; font-weight: 700; margin-bottom: 22px; }
+.hero-kicker .icon { width: 17px; height: 17px; }
+.hero h1 { margin-bottom: 23px; }
+.hero h1 em { display: block; font-style: normal; color: var(--primary); }
+.hero .lead { max-width: 520px; margin: 0; font-size: 18px; }
+.hero-actions { display: flex; flex-direction: row; gap: 10px; margin-top: 28px; }
+.hero-actions .btn { padding-inline: 19px; }
+.trust-row { display: flex; gap: 10px 20px; margin-top: 24px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.trust-row > span { display: inline-flex; align-items: center; gap: 6px; }
+.trust-row .icon { width: 16px; height: 16px; color: var(--primary); }
+.hero-showcase { background: #103b34; padding: 24px; border-radius: 24px; min-width: 0; color: #fff; position: relative; box-shadow: 0 24px 45px rgba(16,59,52,.10); }
+.showcase-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+.showcase-top > span:last-child { letter-spacing: 0; font-weight: 500; color: #c8ddd5; font-size: 12px; }
+.hero-photo { display: block; background: #fff; border-radius: 15px; overflow: hidden; }
+.hero-photo img { width: 100%; height: 320px; object-fit: contain; border-radius: 0; padding: 10px; }
+.showcase-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; padding-top: 18px; }
+.showcase-bottom strong { font-size: 21px; font-weight: 650; letter-spacing: -.02em; display: block; }
+.showcase-bottom p { color: #c8ddd5; font-size: 13px; margin-top: 3px; }
+.showcase-price { font-size: 25px; font-weight: 700; letter-spacing: -.04em; white-space: nowrap; }
+.showcase-caption { display: flex; align-items: center; gap: 8px; margin-top: 18px; padding-top: 15px; border-top: 1px solid #396058; font-size: 12px; color: #d6e8e1; }
+.showcase-caption .icon { width: 17px; height: 17px; color: #8be0bb; }
+#vorteile { padding: 44px 0 46px; background: #fff !important; border-bottom: 1px solid var(--border); }
+#vorteile .section-header { text-align: left !important; margin-inline: 0 !important; max-width: none; margin-bottom: 26px; }
+#vorteile .section-header h2 { font-size: 27px; margin-bottom: 0; letter-spacing: -.03em; }
+#vorteile .section-header .eyebrow { margin-bottom: 8px; }
+.highlights-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 34px; }
+.highlight-card { background: transparent; box-shadow: none; border: 0; border-radius: 0; padding: 0; }
+.highlight-card + .highlight-card { border-left: 1px solid var(--border); padding-left: 30px; }
+.highlight-icon { display: flex; background: var(--primary-soft); color: var(--primary); width: 40px; height: 40px; border-radius: 10px; align-items: center; justify-content: center; margin-bottom: 14px; }
+.highlight-card h3 { font-size: 18px; letter-spacing: -.02em; margin-bottom: 8px; }
+.highlight-card p { font-size: 15px; line-height: 1.7; }
+.repair-panel { grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: 24px; align-items: start; }
+.builder, .summary-card, .checkout-card, .product-card { border: 1px solid var(--border); box-shadow: var(--shadow); background: #fff; border-radius: var(--radius); min-width: 0; }
+.builder { padding: 30px; min-height: 304px; }
+.step-label { font-size: 12px; letter-spacing: .09em; margin-bottom: 15px; }
+.step-heading { font-size: 20px; margin-bottom: 22px; letter-spacing: -.025em; }
+.step-num { width: 30px; height: 30px; font-size: 14px; border-radius: 9px; }
+.series-grid, .model-sub-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.series-box, .model-box { padding: 18px 8px; min-height: 64px; border-width: 1px; border-radius: 10px; font-size: 14px; line-height: 1.5; font-family: inherit; }
+.repair-grid { grid-template-columns: 1fr; }
+.repair-box { width: 100%; min-height: 84px; padding: 16px; gap: 14px; border-width: 1px; border-radius: 12px; text-align: left; }
+.repair-box-info { min-width: 0; gap: 4px; }
+.repair-box-info strong { font-size: 16px; }
+.repair-box-info span { font-size: 13px; line-height: 1.55; }
+.repair-box-price { font-size: 18px; padding-right: 23px; }
+.repair-box:hover, .series-box:hover, .model-box:hover { transform: none; box-shadow: none; }
+.repair-box.active { box-shadow: inset 0 0 0 1px var(--primary); }
+.summary-card { padding: 25px; gap: 16px; background: #f2f7f4; }
+.summary-card h3 { font-size: 20px; }
+.price-box { background: var(--primary-dark); padding: 23px; border-radius: 14px; }
+.price-box > span { font-size: 13px; font-weight: 500; opacity: 1; color: #d0e9df; }
+.price { font-size: 44px; font-weight: 740; letter-spacing: -.04em; line-height: 1.2; margin-top: 10px; }
+.price-box > div { flex-wrap: wrap; }
+.summary-list { font-size: 14px; color: #435d55; }
+.summary-card > p { font-size: 13px !important; }
+.bc-item { font-family: inherit; }
+#geraete { background: #f1f5f3 !important; border-block: 1px solid var(--border); }
+.products-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; align-items: stretch; }
+.product-card { display: flex; flex-direction: column; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.product-card:hover { border-color: #90b6a8; box-shadow: 0 14px 36px rgba(16,59,52,.08); }
+.product-image { width: 100%; min-height: 260px; background: #fff; border-bottom: 1px solid #edf1ef; }
+.product-image img { width: 100%; height: 260px; object-fit: contain; padding: 22px; }
+.product-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
+.product-body > .badge { align-self: flex-start; background: #e9f5ed; border: 0; color: #266440; font-size: 12px; }
+.product-body h3 { font-size: 24px; margin-bottom: 7px; }
+.product-meta { font-size: 14px; margin-bottom: 14px; }
+.product-specs-row { margin-bottom: 18px; }
+.spec-chip { font-size: 12px; background: #f7f8f7; border-color: #e6ece8; border-radius: 6px; padding: 4px 8px; white-space: normal; }
+.product-price { margin-top: auto; margin-bottom: 17px; font-size: 30px; font-weight: 730; }
+.product-btns { gap: 8px; }
+.product-btns .btn { font-size: 14px !important; padding: 12px 8px !important; }
+.steps-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 28px; }
+.step-card { border: 0; border-top: 1px solid #b9cbc4; box-shadow: none; border-radius: 0; padding: 22px 0 0; background: transparent; }
+.step-number { width: auto; height: auto; background: transparent; color: var(--primary); border-radius: 0; box-shadow: none; display: block; font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+.step-card h3 { font-size: 19px; }
+.step-card p { font-size: 15px; line-height: 1.75; color: var(--muted); }
+#checkout { background: #f5f7f6; border-top: 1px solid var(--border); }
+.checkout-wrapper { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); align-items: start; }
+.checkout-card { padding: 28px; }
+.checkout-card h3 { font-size: 21px; }
+.checkout-form-grid { gap: 18px; }
+label { font-size: 14px; font-weight: 650; }
+input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: 16px; border-radius: 9px; min-height: 49px; padding: 12px 13px; border-color: #c9d6d1; }
+input::placeholder, textarea::placeholder { color: #687b75; opacity: 1; }
+input[type="checkbox"] { accent-color: var(--primary); min-width: 19px; min-height: 19px; flex-shrink: 0; }
+.option-section-label { font-size: 12px; color: #40584f; letter-spacing: .09em; }
+.option-cards { gap: 10px; }
+.payment-options { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.option-card { min-width: 0; padding: 18px 10px 14px; border-width: 1px; border-radius: 12px; margin-bottom: 0; gap: 5px; }
+.option-card:hover { transform: none; box-shadow: none; }
+.option-card.active { box-shadow: inset 0 0 0 1px var(--primary); background: #eef8f1; }
+.option-card:has(input:focus-visible) { outline: 3px solid var(--primary); outline-offset: 3px; }
+.option-card:has(input:disabled) { background: #eef0ef; border-color: #c7ceca; box-shadow: none; transform: none; cursor: not-allowed; }
+.option-card strong { font-size: 14px; }
+.option-card span { font-size: 12px; line-height: 1.5; }
+.option-card-icon { min-height: 32px; margin-bottom: 6px; color: var(--primary); }
+.option-card-icon .icon { width: 25px; height: 25px; }
+.checkout-summary { padding: 20px; background: #f1f6f3; border: 1px solid #e3ece7; border-radius: 12px; font-size: 14px; }
+.checkout-sum-row { gap: 12px; align-items: flex-start; }
+.checkout-sum-row > strong { text-align: right; max-width: 64%; }
+.checkout-sum-row:last-of-type { padding-top: 6px; }
+.checkout-item-row { gap: 6px; padding-bottom: 15px; }
+.checkout-item-row > div { flex-wrap: wrap; }
+.checkout-item-row > div > strong { min-width: 130px; }
+.checkout-item-row button, .cart-popup-row button { width: 32px !important; height: 32px !important; background: #f8e8e8 !important; color: #a12735 !important; border-radius: 8px !important; }
+.agb-checkbox-wrapper { margin-top: 4px; gap: 11px; }
+.agb-checkbox-wrapper label { line-height: 1.65; font-weight: 450; }
+.agb-checkbox-wrapper a { text-decoration: underline; text-underline-offset: 3px; color: var(--primary); }
+#paypalNotice p { font-size: 14px !important; line-height: 1.65 !important; }
+.checkout-note { font-size: 14px; color: var(--muted); line-height: 1.65; margin-top: 12px; }
+#submitOrderBtn { font-size: 16px !important; min-height: 54px; }
+#stripeBtnArea > button { height: auto !important; min-height: 54px; }
+.cart-popup-box { border-radius: 20px; }
+.cart-popup-icon { border-radius: 16px; width: 56px; height: 56px; background: var(--primary-soft); color: var(--primary); box-shadow: none; }
+.cart-popup-icon .icon { width: 27px; height: 27px; }
+.cart-popup-row > div { gap: 12px; flex-wrap: wrap; }
+.cart-popup-row > div > div { flex-shrink: 0; }
+.modal { z-index: 1000; }
+.modal-content { line-height: 1.8; }
+.modal-header { gap: 20px; align-items: flex-start; }
+.modal-header h2 { font-size: clamp(23px,4vw,32px); overflow-wrap: anywhere; }
+.close-modal { background: transparent; border: 0; line-height: 1; min-width: 36px; }
+.modal-close-btn, .gallery-arrow { min-height: 44px; min-width: 44px; }
+.gallery-dot { padding: 0; border: 0; position: relative; }
+.gallery-dot::before { content: ''; position: absolute; inset: -10px -5px; }
+.spec-cat-row td { font-size: 12px !important; }
+.footer { margin-top: 0; background: #12382f; color: #bed3ca; padding: 46px 0 80px; }
+.footer-grid { align-items: flex-start; gap: 32px; }
+.footer-brand strong { display: block; font-size: 24px; font-weight: 680; color: #fff; letter-spacing: -.035em; margin-bottom: 7px; }
+.footer-brand p { max-width: 490px; font-size: 13px; line-height: 1.8; }
+.footer-links { gap: 18px; padding-top: 8px; flex-wrap: wrap; font-size: 14px; color: #e5efe9; }
+#waBtn { background: #08775d; box-shadow: 0 5px 18px rgba(7,83,58,.2); width: 54px; height: 54px; }
+#waPopup { width: min(280px,calc(100vw - 32px)); }
+#cookieBanner { background: #fff; color: #4d6259; border: 1px solid #cddbd4; box-shadow: 0 8px 40px rgba(16,59,52,.16); width: 385px; padding: 20px; font-size: 13px; }
+.cookie-text strong { color: var(--text); font-size: 15px; }
+.cookie-text a { color: var(--primary); }
+.cookie-btn-accept, .cookie-btn-decline { min-height: 44px; border-radius: 8px; padding: 9px 12px; font-size: 13px; }
+.cookie-btn-decline { color: #344f43; background: #fff; border-color: #bccfc3; }
+.cookie-btn-decline:hover { color: var(--primary-dark); background: #f0f6f2; border-color: var(--primary); }
+body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
+@media (min-width: 1001px) { .summary-card { position: sticky; top: 108px; } }
+@media (max-width: 1100px) {
+  .hero-grid { gap: 32px; }
+  .nav-links { gap: 16px; }
+  .products-grid { gap: 16px; }
+  .product-body { padding: 20px; }
+  .checkout-card { padding: 23px; }
+}
+@media (max-width: 900px) {
+  .nav { height: auto; min-height: 78px; gap: 20px; padding-block: 15px; flex-wrap: wrap; }
+  .nav-links { flex: 1; justify-content: flex-end; gap: 14px; }
+  .nav-links .nav-checkout { display: none; }
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+  .hero-photo img { height: 280px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .repair-panel { grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 16px; }
+  .builder { padding: 24px; }
+  .series-grid, .model-sub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .products-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .checkout-wrapper { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .highlights-grid { gap: 22px; }
+  .highlight-card + .highlight-card { padding-left: 22px; }
+}
+@media (max-width: 768px) {
+  html { scroll-padding-top: 135px; }
+  .container { width: min(100% - 36px,var(--max)); }
+  .nav { gap: 12px; padding-block: 12px; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+  .nav-links > a:not(.btn), .nav-links .btn-secondary { display: inline-flex; }
+  .nav-links .nav-checkout { display: none; }
+  .logo { font-size: 22px; }
+  .hero { padding: 40px 0; }
+  .hero-grid { grid-template-columns: 1fr; text-align: left; gap: 32px; }
+  .hero-grid > .hero-copy { display: block; padding: 0; }
+  .hero-kicker { margin-bottom: 18px; font-size: 12px; }
+  .hero h1 { font-size: clamp(43px,8vw,62px); margin-bottom: 18px; }
+  .hero .lead { font-size: 17px; }
+  .lead { text-align: left; margin-inline: 0; font-size: 16px; }
+  .hero-actions { flex-direction: row; width: auto; align-items: stretch; justify-content: flex-start; margin-top: 24px; }
+  .hero-actions .btn { flex: 1; max-width: none; width: auto; padding: 14px 13px; font-size: 14px; }
+  .trust-row { justify-content: flex-start; text-align: left; margin-top: 20px; font-size: 12px; gap: 9px 16px; }
+  .hero-showcase { padding: 20px; border-radius: 20px; }
+  .hero-photo img { height: 280px; }
+  .showcase-bottom strong { font-size: 20px; }
+  .section { padding: 52px 0; }
+  .section-header { margin-bottom: 25px; }
+  .eyebrow { font-size: 12px; }
+  h2 { font-size: clamp(29px,6.8vw,38px); }
+  #vorteile { padding: 32px 0; }
+  #vorteile .section-header h2 { font-size: 25px; }
+  .highlights-grid { grid-template-columns: 1fr; gap: 22px; }
+  .highlight-card { display: grid; grid-template-columns: 40px minmax(0,1fr); column-gap: 15px; }
+  .highlight-icon { grid-row: 1 / 3; margin: 0; }
+  .highlight-card h3 { margin-bottom: 5px; }
+  .highlight-card + .highlight-card { border-left: 0; padding-left: 0; }
+  .highlight-card p { font-size: 14px; }
+  .repair-panel { grid-template-columns: 1fr; gap: 18px; }
+  .builder, .summary-card, .checkout-card { padding: 22px; }
+  .builder { min-height: 0; }
+  .series-grid, .model-sub-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .series-box, .model-box { font-size: 14px; padding: 15px 8px; }
+  .repair-box-info strong { font-size: 16px; }
+  .repair-box-info span, #noWarningOptions label, #noWarningServiceArea > p { font-size: 14px !important; }
+  #noWarningServiceArea > div:first-of-type p { font-size: 13px !important; }
+  .repair-box-price { font-size: 17px; }
+  #diagnoseDesc { font-size: 16px !important; }
+  .price { font-size: 40px; }
+  .products-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .product-image { min-height: 225px; }
+  .product-image img { height: 225px; padding: 16px; }
+  .product-body { padding: 18px; }
+  .product-body h3 { font-size: 22px; }
+  .product-price { font-size: 29px; }
+  .product-btns .btn { font-size: 14px !important; }
+  .checkout-form-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+  .full-width { grid-column: span 2; }
+  .option-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .payment-options { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .option-card { flex-direction: column; text-align: center; padding: 16px 10px; gap: 5px; }
+  .option-card-icon { min-height: 32px; margin-bottom: 5px; }
+  .option-card strong { font-size: 14px; }
+  .option-card span { font-size: 12px; }
+  .checkout-sum-row { flex-wrap: nowrap; gap: 15px; }
+  .checkout-sum-row:last-of-type { font-size: 20px; }
+  .steps-grid { gap: 28px 22px; }
+  .step-card { padding: 20px 0 0; }
+  .footer { margin-top: 0; padding: 35px 0 84px; }
+  .footer-links a { font-size: 14px; }
+  .modal-content { padding: 25px 22px; }
+  #waBtn { bottom: 20px; right: 18px; }
+  body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: auto; top: 142px; }
+  body:has(#cookieBanner:not(.hidden)) #waPopup { bottom: auto; top: 204px; }
+}
+@media (max-width: 540px) {
+  .nav { display: grid; grid-template-columns: 1fr; gap: 9px; }
+  .logo { width: fit-content; }
+  .nav-links { justify-content: flex-start; width: 100%; font-size: 13px; gap: 10px 18px; }
+  .nav-links > a:not(.btn) { padding-block: 7px; }
+  #navCartBtn { position: absolute !important; right: 18px; top: 13px; min-height: 42px; font-size: 13px; }
+  #navCartBtn .icon { width: 18px; height: 18px; }
+  .hero h1 { font-size: clamp(41px,10.5vw,57px); }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; flex: none; font-size: 15px; min-height: 50px; }
+  .hero-photo img { height: 250px; }
+  .showcase-top { font-size: 10px; letter-spacing: .1em; }
+  .showcase-top > span:last-child { font-size: 11px; }
+  .showcase-bottom p { font-size: 12px; }
+  .showcase-price { font-size: 24px; }
+  .showcase-caption { font-size: 11px; }
+  .builder, .summary-card, .checkout-card { padding: 20px 16px; }
+  .series-grid, .model-sub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+  .products-grid { grid-template-columns: 1fr; gap: 20px; }
+  .product-image { min-height: 275px; }
+  .product-image img { height: 275px; padding: 22px; }
+  .product-body { padding: 23px; }
+  .product-body h3 { font-size: 25px; }
+  .product-btns { flex-direction: row; }
+  .product-btns .btn { flex: 1 !important; width: auto; }
+  .checkout-form-grid { grid-template-columns: 1fr; gap: 17px; }
+  .full-width { grid-column: auto; }
+  .payment-options { grid-template-columns: 1fr; }
+  .payment-options .option-card { display: grid; grid-template-columns: 35px 1fr; text-align: left; column-gap: 12px; row-gap: 1px; padding: 15px; }
+  .payment-options .option-card-icon { grid-row: 1 / 3; margin: 0; justify-content: center; }
+  .payment-options .option-card > span { grid-column: 2; font-size: 13px; }
+  .payment-options .option-card > span br { display: none; }
+  .payment-options .option-card > span br::after { content: ' '; }
+  .checkout-sum-row { flex-wrap: wrap; }
+  .checkout-sum-row > strong { max-width: 100%; }
+  .checkout-summary { padding: 16px; }
+  .repair-box { padding: 14px 12px; gap: 8px; }
+  .repair-box-price { padding-right: 14px; font-size: 16px; }
+  .repair-box-info span { font-size: 13px !important; }
+  .steps-grid { grid-template-columns: 1fr; gap: 25px; }
+  .step-number { margin-bottom: 10px; }
+  #cookieBanner { width: auto; bottom: 12px; left: 12px; right: 12px; max-width: none; padding: 17px; }
+  .cart-popup-box { padding: 28px 18px 20px; }
+  .cart-popup-items { padding: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+  </style>
+  <style id="phonelab-highlight-design">
+/* PhoneLab – wechselnde Geräteauswahl und verfeinerte Oberflächen. */
+:root { --text: #15332c; --muted: #53675f; --primary: #086c52; --primary-dark: #104b3c; --primary-soft: #e4f3eb; --border: #dce5df; }
+.site-header { background: rgba(255,255,255,.97); }
+.nav-links > a:not(.btn) { position: relative; }
+.nav-links > a:not(.btn)::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 2px; background: var(--primary); transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
+.nav-links > a:not(.btn):hover::after, .nav-links > a:not(.btn):focus-visible::after { transform: scaleX(1); }
+.logo-mark { background: #153d31; border: 1px solid #295442; }
+.hero { padding: 60px 0 62px; background: linear-gradient(125deg,#f5f8f4 5%,#f0f6f2 62%,#e7f1ea); border-bottom-color: #d6e3d9; }
+.hero-grid { gap: 64px; grid-template-columns: 1.05fr 1fr; }
+.hero-kicker { background: #fff; border: 1px solid #d4e2d8; padding: 7px 11px; border-radius: 7px; font-size: 12px; font-weight: 650; box-shadow: 0 2px 5px #244b3610; }
+.hero h1 { font-size: clamp(44px,5.2vw,70px); line-height: 1.055; letter-spacing: -.055em; margin-bottom: 24px; }
+.hero h1 em { color: #26715a; }
+.hero .lead { font-size: 18px; line-height: 1.75; max-width: 505px; }
+.hero-actions { margin-top: 30px; gap: 12px; }
+.hero-actions .btn { min-height: 52px; }
+.hero-actions .btn-primary { background: #164e3e; box-shadow: 0 5px 14px #143e3520; }
+.hero-actions .btn-primary:hover { background: #0b382b; }
+.hero-actions .btn-secondary { background: #ffffffb8; border-color: #bccfc3; }
+.trust-row { gap: 12px 19px; margin-top: 27px; color: #4a6457; }
+.hero-showcase { --showcase-ink: #f1f8f2; position: relative; background: linear-gradient(140deg,#1c4d3c,#10382d 78%); border: 1px solid #476a51; border-radius: 24px; padding: 24px; box-shadow: 0 24px 60px #23493120, inset 0 1px 0 #ffffff12; color: var(--showcase-ink); overflow: hidden; min-width: 0; }
+.hero-showcase[hidden] { display: none !important; }
+.hero-grid:has(.hero-showcase[hidden]) { grid-template-columns: 1fr; }
+.showcase-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 19px; }
+.showcase-eyebrow { color: #c5dccb; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
+.showcase-heading h2 { font-size: 20px; line-height: 1.3; letter-spacing: -.025em; font-weight: 550; color: #f1f8f2; margin: 0; }
+.showcase-counter { display: flex; align-items: baseline; gap: 7px; white-space: nowrap; font-variant-numeric: tabular-nums; color: #d0e0d3; font-size: 12px; }
+.showcase-counter .current { color: #fff; font-weight: 650; font-size: 21px; letter-spacing: -.03em; }
+.showcase-slides { display: grid; isolation: isolate; }
+.showcase-slide { grid-area: 1 / 1; min-width: 0; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .55s ease, visibility 0s .55s; }
+.showcase-slide.is-active { opacity: 1; visibility: visible; pointer-events: auto; z-index: 1; transition-delay: 0s; }
+.showcase-product { position: relative; display: block; width: 100%; color: inherit; border: 0; background: transparent; text-align: left; padding: 0; border-radius: 14px; cursor: pointer; font: inherit; }
+.showcase-product:focus-visible { outline: 3px solid #bbe9c8; outline-offset: 5px; }
+.showcase-image-stage { display: grid; grid-template-areas: 'photo'; place-items: center; width: 100%; height: 306px; overflow: hidden; border-radius: 15px; background: #fff; position: relative; }
+.showcase-image { grid-area: photo; display: block; width: 100%; height: 100%; min-height: 0; padding: 20px 16px; border-radius: 0; object-fit: contain; transition: transform .45s ease; }
+.showcase-product:hover .showcase-image { transform: scale(1.025); }
+.showcase-image[hidden], .showcase-image-fallback[hidden] { display: none; }
+.showcase-image-fallback { grid-area: photo; font-size: 14px; color: #617069; padding: 32px; text-align: center; }
+.showcase-condition { position: absolute; bottom: 14px; left: 14px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #d2e5d7; border-radius: 6px; padding: 5px 9px; background: #f4faf6f5; color: #2d6043; font-size: 12px; font-weight: 650; }
+.showcase-condition .icon { width: 15px; height: 15px; }
+.showcase-info { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-top: 20px; }
+.showcase-model { display: block; font-size: 27px; font-weight: 650; line-height: 1.2; letter-spacing: -.035em; color: #fff; }
+.showcase-specs { display: block; margin-top: 7px; color: #cadecf; font-size: 13px; line-height: 1.6; }
+.showcase-battery { display: block; color: #cadecf; font-size: 13px; line-height: 1.6; margin-top: 2px; }
+.showcase-cost { flex-shrink: 0; text-align: right; }
+.showcase-price { display: block; font-size: 30px; color: #fff; line-height: 1.2; letter-spacing: -.04em; font-weight: 650; font-variant-numeric: tabular-nums; }
+.showcase-shipping { display: block; font-size: 12px; color: #cadecf; margin-top: 8px; }
+.showcase-details { display: flex; align-items: center; gap: 8px; margin-top: 19px; width: fit-content; font-size: 13px; font-weight: 650; color: #d7f6df; border-bottom: 1px solid #77aa854d; padding-bottom: 4px; }
+.showcase-details .icon { width: 16px; height: 16px; transition: transform .2s; }
+.showcase-product:hover .showcase-details .icon { transform: translateX(3px); }
+.showcase-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; margin-top: 18px; border-top: 1px solid #86a89042; }
+.showcase-controls[hidden] { display: none; }
+.showcase-dots { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.showcase-dot { display: grid; place-items: center; width: 40px; min-height: 42px; cursor: pointer; background: transparent; border: 0; padding: 6px; border-radius: 6px; }
+.showcase-dot span { display: block; width: 21px; height: 4px; background: #c5d9cd59; border-radius: 4px; transition: background .25s, width .25s; }
+.showcase-dot[aria-current="true"] span { width: 28px; background: #caf0d1; }
+.showcase-dot:hover span { background: #fff; }
+.showcase-dot:focus-visible, .showcase-pause:focus-visible { outline: 2px solid #cef2d5; outline-offset: 2px; }
+.showcase-pause { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; gap: 7px; border: 1px solid #87ab944f; background: #ffffff06; color: #e1eee4; border-radius: 8px; cursor: pointer; font-size: 12px; padding: 7px 11px; }
+.showcase-pause[hidden] { display: none; }
+.showcase-pause:hover { background: #ffffff12; border-color: #9fc5ac; }
+.showcase-pause .icon { width: 15px; height: 15px; }
+.showcase-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+#vorteile { padding-block: 45px; }
+#vorteile .section-header h2 { font-size: 28px; font-weight: 650; }
+.highlight-card h3 { font-weight: 650; }
+.highlight-icon { background: #e8f2e9; border: 1px solid #d9e8db; border-radius: 11px; }
+.section-header h2 { font-weight: 700; letter-spacing: -.045em; }
+.builder, .checkout-card { border-radius: 18px; box-shadow: 0 6px 24px #15352806; }
+.summary-card { border-radius: 18px; border-color: #d1e2d4; background: #f0f6ef; }
+.price-box { background: #174b39; }
+.series-box, .model-box { background: #fbfcfb; border-color: #d6e3d9; }
+.series-box:hover, .model-box:hover { background: #e9f4eb; }
+#geraete { background: #f1f5f0 !important; }
+.product-card { border-radius: 18px; border-color: #d7e2d8; box-shadow: 0 4px 14px #15352804; }
+.product-card:hover { border-color: #96bba0; box-shadow: 0 16px 32px #1e4b2c0d; }
+.product-image { background: #fff; min-height: 274px; border-bottom: 1px solid #e5ede6; }
+.product-image img { height: 274px; padding: 23px; }
+.product-body { padding: 25px; }
+.product-body > .badge { background: #eaf4e8; border: 1px solid #dcebd9; color: #3c6447; font-size: 12px; font-weight: 600; padding: 4px 9px; }
+.product-body h3 { font-size: 25px; font-weight: 650; letter-spacing: -.035em; }
+.product-meta { color: #566d5d; }
+.spec-chip { border-color: #e1e9df; background: #f9faf8; border-radius: 5px; }
+.product-price { letter-spacing: -.045em; font-weight: 680; font-size: 31px; }
+.product-btns .btn { border-radius: 9px; }
+.step-card { border-top-color: #aec8b2; }
+.step-number { font-size: 13px; letter-spacing: .04em; }
+.option-card.active { background: #eef6ec; border-color: #39774c; box-shadow: inset 0 0 0 1px #39774c; }
+.option-card:has(input:disabled) { background: #eef0ef; border-color: #c7ceca; box-shadow: none; }
+.checkout-summary { background: #f2f6ef; }
+.footer { background: #14382c; }
+@media (max-width: 1100px) {
+  .hero-grid { gap: 38px; }
+  .hero-showcase { padding: 21px; }
+  .showcase-model { font-size: 25px; }
+  .product-body { padding: 21px; }
+}
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+  .hero h1 { font-size: 48px; }
+  .hero-kicker { font-size: 11px; }
+  .showcase-image-stage { height: 264px; }
+  .showcase-model { font-size: 23px; }
+  .showcase-price { font-size: 25px; }
+  .showcase-info { gap: 9px; }
+  .showcase-specs, .showcase-battery { font-size: 12px; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 38px 0 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero h1 { font-size: clamp(43px,8vw,62px); }
+  .hero-kicker { font-size: 12px; }
+  .hero .lead { font-size: 17px; }
+  .hero-actions { margin-top: 24px; }
+  .trust-row { margin-top: 23px; gap: 10px 16px; }
+  .hero-showcase { width: 100%; max-width: 580px; justify-self: center; padding: 22px; border-radius: 21px; }
+  .showcase-image-stage { height: 310px; }
+  .showcase-model { font-size: 27px; }
+  .showcase-price { font-size: 30px; }
+  .showcase-specs, .showcase-battery { font-size: 13px; }
+  #vorteile { padding-block: 34px; }
+  #vorteile .section-header h2 { font-size: 26px; }
+  .product-image { min-height: 236px; }
+  .product-image img { height: 236px; padding: 20px; }
+  .product-body { padding: 20px; }
+  .product-body h3 { font-size: 23px; }
+}
+@media (max-width: 540px) {
+  .hero h1 { font-size: clamp(39px,10.5vw,55px); }
+  .hero-kicker { font-size: 11px; padding: 7px 9px; }
+  .hero-showcase { padding: 17px; border-radius: 19px; }
+  .showcase-heading { margin-bottom: 15px; gap: 12px; }
+  .showcase-heading h2 { font-size: 18px; }
+  .showcase-eyebrow { font-size: 10px; }
+  .showcase-image-stage { height: 264px; border-radius: 12px; }
+  .showcase-image { padding: 14px; }
+  .showcase-condition { bottom: 11px; left: 11px; padding: 4px 7px; font-size: 11px; }
+  .showcase-info { padding-top: 18px; gap: 12px; flex-wrap: wrap; }
+  .showcase-model { font-size: 25px; }
+  .showcase-price { font-size: 28px; }
+  .showcase-specs, .showcase-battery { font-size: 12px; }
+  .showcase-shipping { font-size: 11px; }
+  .showcase-details { font-size: 13px; margin-top: 16px; }
+  .showcase-controls { padding-top: 10px; margin-top: 17px; }
+  .showcase-dot { min-height: 44px; }
+  .showcase-pause { min-height: 44px; }
+  .product-image { min-height: 280px; }
+  .product-image img { height: 280px; }
+  .product-body { padding: 24px; }
+  .product-body h3 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .showcase-slide, .showcase-image, .showcase-dot span, .showcase-details .icon { transition: none; }
+  .showcase-product:hover .showcase-image { transform: none; }
+}
+
+  </style>
 </head>
 
 <body>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="logo">
-        <div class="logo-mark">PL</div>
-        <span>PhoneLab <small style="font-weight:400; font-size:13px; color:var(--muted);">Leipzig</small></span>
+        <span class="logo-mark" aria-hidden="true">PL</span>
+        <span class="logo-wordmark">PhoneLab<small class="logo-city">Leipzig · Lindenau</small></span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="#reparatur">Reparatur</a>
-        <a href="#geraete">Gebrauchte Smartphones</a>
+        <a href="#geraete">Refurbished iPhones</a>
         <button class="btn btn-secondary" id="navCartBtn" onclick="openCartDrawer()" style="padding: 10px 18px; border-radius:12px; position:relative;">
-          🛒 Warenkorb <span id="navCartCount" style="display:none; background:var(--danger); color:#fff; border-radius:99px; font-size:12px; font-weight:900; padding:2px 7px; margin-left:4px;">0</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h2l3 12h11l2-9H6M9 20h.01M18 20h.01"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> Warenkorb <span id="navCartCount" style="display:none; background:var(--danger); color:#fff; border-radius:99px; font-size:12px; font-weight:900; padding:2px 7px; margin-left:4px;">0</span>
         </button>
-        <a href="#checkout" class="btn btn-primary" style="padding: 10px 18px; border-radius:12px;">Anfragen</a>
+        <a href="#checkout" class="btn btn-primary nav-checkout" style="padding:10px 18px;">Zum Abschluss</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
-        <div>
-          <span class="badge">
-            <span style="color:var(--accent)">✦</span> 10 Jahre Erfahrung · faire Preise · 12 Monate Gewährleistung
-          </span>
-          <h1 style="margin-top:16px;">iPhone Reparatur Leipzig</h1>
-          <p class="lead">
-            Professionelle iPhone-Reparaturen in Leipzig-Lindenau – ohne teure Ladenmiete, ohne Lagerkosten. Deshalb echte Bestpreise und 12 Monate Gewährleistung auf jede Reparatur.
-          </p>
+        <div class="hero-copy">
+          <p class="hero-kicker"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Leipzig-Lindenau · Vor Ort &amp; per Versand</p>
+          <h1 id="hero-title">Dein iPhone.<em>In guten Händen.</em></h1>
+          <p class="lead">Professionell reparieren lassen oder ein geprüftes refurbished iPhone finden. Bei PhoneLab bekommst du beides – mit persönlichem Service und klaren Preisen.</p>
           <div class="hero-actions">
-            <a href="#reparatur" class="btn btn-primary">Jetzt reparieren lassen</a>
-            <a href="#geraete" class="btn btn-secondary">Gebrauchtes iPhone kaufen</a>
+            <a href="#reparatur" class="btn btn-primary">Reparaturpreis berechnen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+            <a href="#geraete" class="btn btn-secondary">iPhones entdecken</a>
           </div>
           <div class="trust-row">
-            <span style="font-weight:650; display:flex; align-items:center; gap:6px;">
-              <span style="color:var(--success); font-size:18px;">★</span> 10 Jahre Erfahrung
-            </span>
-            <span style="font-weight:650; display:flex; align-items:center; gap:6px; color:var(--muted);">•</span>
-            <span style="font-weight:650; display:flex; align-items:center; gap:6px;">
-              <span style="color:var(--primary); font-size:18px;">✔</span> Keine Ladenmiete = Bestpreise
-            </span>
-            <span style="font-weight:650; display:flex; align-items:center; gap:6px; color:var(--muted);">•</span>
-            <span style="font-weight:650; display:flex; align-items:center; gap:6px;">
-              <span style="color:var(--accent); font-size:18px;">🛡</span> 12 Monate Gewährleistung
-            </span>
+            <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> 10 Jahre Erfahrung</span>
+            <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> Geprüfte Geräte</span>
+            <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> Persönlicher Kontakt</span>
           </div>
         </div>
-
-        <div class="hero-visual">
-          <div class="phone-card">
-            <div class="phone-screen">
-
-              <!-- Status Bar -->
-              <div class="screen-statusbar">
-                <span id="screenClock">09:41</span>
-                <div class="statusbar-icons">
-                  <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-                  <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                </div>
-              </div>
-
-              <!-- App Header -->
-              <div class="screen-app-header">
-                <div class="screen-app-logo">
-                  <div class="screen-app-dot">PL</div>
-                  <span class="screen-app-name">PhoneLab</span>
-                </div>
-                <div class="screen-live-badge">
-                  <span class="screen-live-dot"></span>Live
-                </div>
-              </div>
-
-              <!-- Active Repair -->
-              <div class="screen-active">
-                <div class="screen-active-label">Aktive Reparatur</div>
-                <div class="screen-active-title">Display-<br>Reparatur</div>
-                <div class="screen-active-sub">Faire Preise · 12 Monate Gewährleistung</div>
-                <div class="screen-progress-wrap">
-                  <div class="screen-progress-bar"></div>
-                </div>
-                <div class="screen-progress-label">
-                  <span>In Bearbeitung</span>
-                  <span>72%</span>
-                </div>
-              </div>
-
-              <!-- Cycling Examples -->
-              <div class="screen-examples">
-                <div class="screen-examples-label">Abgeschlossene Aufträge</div>
-                <div class="screen-example-slot">
-                  <div class="screen-ex">
-                    <div class="screen-ex-info">
-                      <span class="screen-ex-model">iPhone 16 Pro</span>
-                      <span class="screen-ex-repair">Display-Reparatur</span>
-                    </div>
-                    <div class="screen-ex-right">
-                      <span class="screen-ex-price">€265</span>
-                      <span class="screen-ex-done">✓ Abgeholt</span>
-                    </div>
-                  </div>
-                  <div class="screen-ex">
-                    <div class="screen-ex-info">
-                      <span class="screen-ex-model">iPhone 14</span>
-                      <span class="screen-ex-repair">Akku-Tausch</span>
-                    </div>
-                    <div class="screen-ex-right">
-                      <span class="screen-ex-price">€49</span>
-                      <span class="screen-ex-done">✓ Abgeholt</span>
-                    </div>
-                  </div>
-                  <div class="screen-ex">
-                    <div class="screen-ex-info">
-                      <span class="screen-ex-model">iPhone 13 Pro</span>
-                      <span class="screen-ex-repair">Kamera-Reparatur</span>
-                    </div>
-                    <div class="screen-ex-right">
-                      <span class="screen-ex-price">€95</span>
-                      <span class="screen-ex-done">✓ Abgeholt</span>
-                    </div>
-                  </div>
-                  <div class="screen-ex">
-                    <div class="screen-ex-info">
-                      <span class="screen-ex-model">iPhone 15</span>
-                      <span class="screen-ex-repair">Backglas-Tausch</span>
-                    </div>
-                    <div class="screen-ex-right">
-                      <span class="screen-ex-price">€75</span>
-                      <span class="screen-ex-done">✓ Abgeholt</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+        <div class="hero-showcase" id="deviceShowcase" role="region" aria-roledescription="Karussell" aria-labelledby="showcase-title">
+          <div class="showcase-heading">
+            <div><p class="showcase-eyebrow">Aktuell im Angebot</p><h2 id="showcase-title">Geprüft. Bereit für dich.</h2></div>
+            <div class="showcase-counter" aria-label="Gerät 1 von 3"><span class="current">01</span><span aria-hidden="true">/</span><span>03</span></div>
           </div>
-          <div class="floating-card one">
-            <strong>Originalqualität</strong>
-            <p>Auf Wunsch ohne Fehlermeldung.</p>
+          <div class="showcase-slides" aria-live="off"><div class="showcase-slide is-active" role="group" aria-roledescription="Folie" aria-label="1 von 3: iPhone 14 Pro" aria-hidden="false">
+      <button type="button" class="showcase-product" data-highlight-device="ip14pro128" aria-label="iPhone 14 Pro, 128 GB · Deep Purple, 429 € – Gerät ansehen">
+        <span class="showcase-image-stage">
+          <img class="showcase-image" src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/95/95a1dbbd-2368-4081-90c3-8161bf5b2a37?rule=%24_59.AUTO" alt="iPhone 14 Pro · 128 GB · Deep Purple" width="640" height="480" decoding="async" loading="eager" fetchpriority="high" referrerpolicy="no-referrer" />
+          <span class="showcase-image-fallback" hidden>Foto aktuell nicht verfügbar</span>
+          <span class="showcase-condition"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Zustand: Sehr gut</span>
+        </span>
+        <span class="showcase-info">
+          <span><strong class="showcase-model">iPhone 14 Pro</strong><span class="showcase-specs">128 GB · Deep Purple</span><span class="showcase-battery">100 % Batteriekapazität</span></span>
+          <span class="showcase-cost"><span class="showcase-price">429 €</span><span class="showcase-shipping">inkl. Versand</span></span>
+        </span>
+        <span class="showcase-details">Gerät ansehen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>
+      </button>
+    </div></div>
+          <div class="showcase-controls" hidden>
+            <div class="showcase-dots" role="group" aria-label="Gerät auswählen"></div>
+            <button type="button" class="showcase-pause" aria-label="Automatischen Gerätewechsel pausieren">Pause</button>
           </div>
-          <div class="floating-card two">
-            <strong>Geprüfte Geräte</strong>
-            <p>12 Monate Garantie.</p>
-          </div>
+          <p class="showcase-announcement showcase-sr" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
       </div>
     </section>
@@ -1098,24 +1512,23 @@
       <div class="container">
         <div class="section-header" style="text-align:center; margin-inline:auto;">
           <p class="eyebrow">Deine Vorteile bei uns</p>
-          <h2>Warum PhoneLab Leipzig?</h2>
-          <p class="lead" style="margin-inline:auto;">Wir setzen auf Qualität, Transparenz und faire Preise bei jeder iPhone Reparatur.</p>
+          <h2>Guter Service beginnt mit Vertrauen.</h2>
         </div>
         <div class="highlights-grid">
           <div class="highlight-card">
-            <span class="highlight-icon">🏆</span>
+            <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 6a5 5 0 0 0-6 6l-5 5a2 2 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4 3-3Z"/></svg></span>
             <h3>10 Jahre Erfahrung</h3>
-            <p style="color:var(--muted);">Kein Anfänger am Schraubenzieher. Über ein Jahrzehnt iPhone-Reparaturen – von Display bis Platine. Du bekommst handwerkliche Qualität, keine Experimentierwerkstatt.</p>
+            <p style="color:var(--muted);">Erfahrung mit iPhone-Reparaturen seit einem Jahrzehnt – von Display und Akku bis zur Platine. Dein Gerät wird sorgfältig geprüft und repariert.</p>
           </div>
           <div class="highlight-card">
-            <span class="highlight-icon">💸</span>
-            <h3>Faire Preise durch schlanke Struktur</h3>
-            <p style="color:var(--muted);">Keine teure Ladenmiete, keine Ersatzteile auf Lager – jedes Teil wird frisch für deinen Auftrag bestellt. So entstehen keine unnötigen Kosten, die du am Ende bezahlst.</p>
+            <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Zm3 5h6m-6 4h6"/></svg></span>
+            <h3>Dein Preis. Klar vorab.</h3>
+            <p style="color:var(--muted);">Im Konfigurator siehst du den Preis deiner Auswahl direkt. Ersatzteile werden passend zu deinem Auftrag bestellt; mehrere Reparaturen lassen sich kombinieren.</p>
           </div>
           <div class="highlight-card">
-            <span class="highlight-icon">🛡</span>
+            <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span>
             <h3>12 Monate Gewährleistung</h3>
-            <p style="color:var(--muted);">Auf jede durchgeführte Reparatur gewähre ich 12 Monate gesetzliche Gewährleistung. Hochwertige Ersatzteile, sauber verbaut – du kannst dich darauf verlassen.</p>
+            <p style="color:var(--muted);">Auf durchgeführte Reparaturen erhältst du 12 Monate Gewährleistung. Bei Fragen zu deinem Auftrag ist PhoneLab persönlich für dich da.</p>
           </div>
         </div>
       </div>
@@ -1124,9 +1537,9 @@
     <section class="section" id="reparatur">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">iPhone-Reparatur Konfigurator</p>
-          <h2>Reparatur zusammenstellen</h2>
-          <p class="lead">Wähle deine Modell-Serie, wähle <strong>eine oder mehrere Reparaturen</strong> und profitiere vom Kombi-Rabatt.</p>
+          <p class="eyebrow">Reparieren statt ersetzen</p>
+          <h2>Was braucht dein iPhone?</h2>
+          <p class="lead">Wähle dein Modell und die passende Reparatur. Du siehst den Preis sofort – inklusive Kombi-Rabatt, wenn du mehrere Reparaturen auswählst.</p>
         </div>
 
         <div class="repair-panel">
@@ -1155,7 +1568,7 @@
               <div class="step-heading"><span class="step-num">3</span> Reparatur wählen</div>
               <div style="display:flex; gap:10px; align-items:flex-start; background:#eff6ff; border:1px solid #93c5fd; border-radius:12px; padding:11px 14px; margin-bottom:14px; font-size:13px; color:#1e40af; line-height:1.55;">
                 <span style="flex-shrink:0; font-size:15px;">ℹ️</span>
-                <span>Alle Ersatzteile – Display, Kamera, Akku, Gehäuse – sind <strong>hochwertige Drittanbieterteile</strong>, kein Apple-Original. Gleiche Qualität, volle Funktion, faire Preise. Gegen Aufpreis buchbar: <strong>ohne iOS-Meldung</strong> bei bestimmten Displays &amp; Akkus älterer Modelle; <strong>Original Apple Akku</strong> bei der iPhone 16 Serie (✨ Premium-Optionen erscheinen nach deiner Auswahl).</span>
+                <span>Alle Ersatzteile – Display, Kamera, Akku, Gehäuse – sind <strong>hochwertige Drittanbieterteile</strong>, kein Apple-Original. Die verfügbaren Optionen und Preise findest du direkt bei deiner Auswahl. Gegen Aufpreis buchbar: <strong>ohne iOS-Meldung</strong> bei bestimmten Displays &amp; Akkus älterer Modelle; <strong>Original Apple Akku</strong> bei der iPhone 16 Serie (✨ Premium-Optionen erscheinen nach deiner Auswahl).</span>
               </div>
               <div class="repair-grid" id="repairsGrid"></div>
             </div>
@@ -1189,7 +1602,7 @@
 
           <div class="summary-card">
             <div>
-              <h3 style="margin-bottom: 20px;">Zusammenfassung</h3>
+              <h3 style="margin-bottom: 20px;">Deine Reparatur im Überblick</h3>
               <div class="price-box">
                 <span>Gesamtpreis</span>
                 <div style="display: flex; align-items: baseline; gap: 8px;">
@@ -1202,7 +1615,7 @@
                 <li id="summaryModel">Kein Modell gewählt</li>
               </ul>
             </div>
-            <button class="btn btn-primary" id="bookRepair" style="width: 100%; margin-top: 14px;">In den Warenkorb 🛒</button>
+            <button class="btn btn-primary" id="bookRepair" style="width: 100%; margin-top: 14px;">Reparatur in den Warenkorb <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button>
             <p style="text-align:center; font-size:12px; color:var(--muted); margin-top:10px;">⏱ Reparaturzeit: 3–7 Werktage nach Geräteeingang</p>
           </div>
         </div>
@@ -1212,55 +1625,15 @@
     <section class="section" id="geraete" style="background:var(--bg-soft);">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">Gebrauchte Smartphones</p>
-          <h2>Gebrauchte Smartphones mit Garantie</h2>
-          <p class="lead">Alle Geräte wurden von uns geprüft, gereinigt und getestet. Inklusive Gewährleistung.</p>
+          <p class="eyebrow">Geprüft. Gereinigt. Wieder bereit.</p>
+          <h2>Dein nächstes iPhone. Refurbished.</h2>
+          <p class="lead">Entdecke geprüfte iPhones mit transparenten Angaben zu Zustand, Speicher und Akku. Vor Ort ansehen und abholen oder kostenlos per DHL liefern lassen.</p>
         </div>
 
         <div class="products-grid">
 
           
-          <article class="product-card">
-            <div class="product-image" title="Details zum iPhone 16 öffnen">
-              <img src="https://i.ebayimg.com/images/g/mvcAAeSwfPFqiB2u/s-l1600.webp" alt="Apple iPhone 16 128 GB Ultramarine" loading="lazy" referrerpolicy="no-referrer" />
-            </div>
-            <div class="product-body">
-              <span class="badge" style="margin-bottom:12px;">✓ Verfügbar · Sehr gut</span>
-              <h3>iPhone 16</h3>
-              <p class="product-meta">128 GB · Ultramarine · 91 % Batterie</p>
-              <div class="product-specs-row">
-                <span class="spec-chip">Display & Rückseite wie neu</span>
-                <span class="spec-chip">5G</span>
-                <span class="spec-chip">USB-C</span>
-              </div>
-              <div class="product-price">€539</div>
-              <div class="product-btns">
-                <button class="btn btn-secondary details-btn" data-device="ip16u" style="flex:1;">Details</button>
-                <button class="btn btn-primary buy-device" data-name="iPhone 16 (128 GB, Ultramarine)" data-price="539" style="flex:1;">Kaufen</button>
-              </div>
-            </div>
-          </article>
 
-          <article class="product-card">
-            <div class="product-image" title="Details zum iPhone 14 Pro Max öffnen">
-              <img src="https://i.ebayimg.com/images/g/lp8AAeSwdK5qiCA4/s-l1600.webp" alt="Apple iPhone 14 Pro Max 256 GB Silber" loading="lazy" referrerpolicy="no-referrer" />
-            </div>
-            <div class="product-body">
-              <span class="badge" style="margin-bottom:12px;">★ Verfügbar · Wie neu</span>
-              <h3>iPhone 14 Pro Max</h3>
-              <p class="product-meta">256 GB · Silber · 100 % Batterie</p>
-              <div class="product-specs-row">
-                <span class="spec-chip">Kratzfrei</span>
-                <span class="spec-chip">Originalbatterie</span>
-                <span class="spec-chip">Schutzhülle inkl.</span>
-              </div>
-              <div class="product-price">€599</div>
-              <div class="product-btns">
-                <button class="btn btn-secondary details-btn" data-device="ip14pm256" style="flex:1;">Details</button>
-                <button class="btn btn-primary buy-device" data-name="iPhone 14 Pro Max (256 GB, Silber)" data-price="599" style="flex:1;">Kaufen</button>
-              </div>
-            </div>
-          </article>
 
           <article class="product-card">
             <div class="product-image" title="Details zum iPhone 14 Pro öffnen">
@@ -1401,27 +1774,27 @@
       <div class="container">
         <div class="section-header" style="text-align:center; margin-inline:auto;">
           <p class="eyebrow">In 4 Schritten</p>
-          <h2>Wie funktioniert die Reparatur?</h2>
+          <h2>Vom Defekt zurück in deinen Alltag.</h2>
         </div>
         <div class="steps-grid">
           <div class="step-card">
             <div class="step-number">01</div>
-            <h3>Konfigurieren</h3>
+            <h3>Reparatur auswählen</h3>
             <p>Modell und gewünschte Reparaturen oben auswählen – auch mehrere auf einmal.</p>
           </div>
           <div class="step-card">
             <div class="step-number">02</div>
-            <h3>Anfragen</h3>
-            <p>Formular mit Kontaktdaten absenden. Bei Barzahlung vor Ort keine Vorauskasse nötig – bei PayPal wird der Betrag direkt fällig.</p>
+            <h3>Auftrag abschließen</h3>
+            <p>Kontaktdaten und Übergabe wählen. Bei Einsendung zahlst du vorab per PayPal oder Kreditkarte. Vor Ort ist auch Barzahlung nach der Reparatur möglich.</p>
           </div>
           <div class="step-card">
             <div class="step-number">03</div>
-            <h3>Abgeben / Einsenden</h3>
+            <h3>Abgeben oder einsenden</h3>
             <p>Gerät in Leipzig Lindenau abgeben oder per Post einsenden. Reparaturzeit: <strong>3–7 Werktage</strong> nach Eingang.</p>
           </div>
           <div class="step-card">
             <div class="step-number">04</div>
-            <h3>Abholen / Freuen</h3>
+            <h3>Wieder nutzen</h3>
             <p>Repariertes iPhone nach kurzer Zeit wieder nutzen – wir informieren dich, sobald es fertig ist.</p>
           </div>
         </div>
@@ -1431,9 +1804,9 @@
     <section class="section" id="checkout">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">Verbindliche Anfrage</p>
+          <p class="eyebrow">Deine Auswahl. Dein Auftrag.</p>
           <h2>Auftrag abschließen</h2>
-          <p class="lead">Schließe deine Reparaturanfrage oder Gerätebestellung sicher ab.</p>
+          <p class="lead">Prüfe deine Auswahl, wähle Übergabe und Zahlung und schließe deinen Auftrag ab.</p>
         </div>
 
         <form id="checkoutForm">
@@ -1444,55 +1817,55 @@
               <div class="checkout-form-grid">
                 <div>
                   <label for="firstName">Vorname *</label>
-                  <input type="text" id="firstName" required />
+                  <input type="text" id="firstName" autocomplete="given-name" required />
                 </div>
                 <div>
                   <label for="lastName">Nachname *</label>
-                  <input type="text" id="lastName" required />
+                  <input type="text" id="lastName" autocomplete="family-name" required />
                 </div>
                 <div class="full-width">
-                  <label for="email">E-Mail Adresse *</label>
-                  <input type="email" id="email" required />
+                  <label for="email">E-Mail-Adresse *</label>
+                  <input type="email" id="email" autocomplete="email" required />
                 </div>
                 <div class="full-width">
                   <label for="phone">Telefonnummer *</label>
-                  <input type="tel" id="phone" required />
+                  <input type="tel" id="phone" autocomplete="tel" required />
                 </div>
                 <div class="full-width">
-                  <label for="notes">Bemerkungen / Defekt-Beschreibung (Optional)</label>
-                  <input type="text" id="notes" placeholder="z.B. Passwort für Testzwecke, Besonderheiten..." />
+                  <label for="notes">Bemerkungen / Fehlerbeschreibung (optional)</label>
+                  <input type="text" id="notes" placeholder="Zum Beispiel: Fehlerbild oder Besonderheiten am Gerät" />
                 </div>
 
                 <div class="full-width" style="margin-top: 14px;">
-                  <div class="option-section-label">📍 Übergabe</div>
+                  <div class="option-section-label" id="delivery-heading">Übergabe &amp; Versand</div>
 
                   <!-- Reparatur-Übergabe (Standard) -->
-                  <div id="delivery-repair-options" class="option-cards">
+                  <div id="delivery-repair-options" class="option-cards" role="group" aria-labelledby="delivery-heading">
                     <label class="option-card active" id="label-delivery-pickup">
                       <input type="radio" name="delivery" value="pickup" checked />
-                      <div class="option-card-icon">🏪</div>
+                      <div class="option-card-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10v11h16V10M3 10l2-7h14l2 7H3Zm6 11v-7h6v7"/></svg></div>
                       <strong>Vor Ort</strong>
                       <span>Leipzig Lindenau<br>kostenlos</span>
                     </label>
                     <label class="option-card" id="label-delivery-shipping">
                       <input type="radio" name="delivery" value="shipping" />
-                      <div class="option-card-icon">📦</div>
+                      <div class="option-card-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 5v10l9 5 9-5V8M12 13v10M7.5 5.5l9 5"/></svg></div>
                       <strong>Einsendung</strong>
                       <span>Per DHL<br>zzgl. €5.49 Rückversand</span>
                     </label>
                   </div>
 
                   <!-- Geräte-Kauf-Übergabe (nur wenn 1 Gerät im Warenkorb) -->
-                  <div id="delivery-device-options" class="option-cards" style="display:none;">
+                  <div id="delivery-device-options" class="option-cards" role="group" aria-labelledby="delivery-heading" style="display:none;">
                     <label class="option-card active" id="label-delivery-device-test">
                       <input type="radio" name="delivery_device" value="test" checked />
-                      <div class="option-card-icon">🏪</div>
+                      <div class="option-card-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10v11h16V10M3 10l2-7h14l2 7H3Zm6 11v-7h6v7"/></svg></div>
                       <strong>Vor Ort testen</strong>
                       <span>Leipzig Lindenau<br>kostenlos · direkt abholen</span>
                     </label>
                     <label class="option-card" id="label-delivery-device-send">
                       <input type="radio" name="delivery_device" value="send" />
-                      <div class="option-card-icon">🚚</div>
+                      <div class="option-card-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 5v10l9 5 9-5V8M12 13v10M7.5 5.5l9 5"/></svg></div>
                       <strong>Lieferung</strong>
                       <span>Versandkostenfrei<br>per DHL zu dir nach Hause</span>
                     </label>
@@ -1502,23 +1875,23 @@
                 <!-- Lieferadresse (nur bei Geräte-Versand) -->
                 <div class="full-width" id="deviceShippingAddress" style="display:none;">
                   <div style="background:#f0fdfa; border:1px solid var(--primary); border-radius:16px; padding:18px; display:grid; gap:14px;">
-                    <p style="font-weight:800; color:var(--primary-dark); font-size:15px;">📦 Lieferadresse</p>
+                    <p style="font-weight:800; color:var(--primary-dark); font-size:15px;">Liefer- / Rücksendeadresse</p>
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
                       <div>
                         <label for="streetName">Straße *</label>
-                        <input type="text" id="streetName" placeholder="Musterstraße" />
+                        <input type="text" id="streetName" autocomplete="address-line1" placeholder="Musterstraße" />
                       </div>
                       <div>
                         <label for="streetNr">Hausnummer *</label>
-                        <input type="text" id="streetNr" placeholder="12a" />
+                        <input type="text" id="streetNr" autocomplete="address-line2" placeholder="12a" />
                       </div>
                       <div>
                         <label for="zipCode">PLZ *</label>
-                        <input type="text" id="zipCode" placeholder="04177" />
+                        <input type="text" id="zipCode" autocomplete="postal-code" inputmode="numeric" placeholder="04177" />
                       </div>
                       <div>
                         <label for="city">Ort *</label>
-                        <input type="text" id="city" placeholder="Leipzig" />
+                        <input type="text" id="city" autocomplete="address-level2" placeholder="Leipzig" />
                       </div>
                     </div>
                   </div>
@@ -1526,13 +1899,13 @@
 
                 <!-- Zahlung -->
                 <div class="full-width" style="margin-top:6px;">
-                  <div class="option-section-label">💳 Zahlung</div>
-                  <div class="option-cards">
+                  <div class="option-section-label" id="payment-heading">Zahlung</div>
+                  <div class="option-cards payment-options" role="group" aria-labelledby="payment-heading" aria-describedby="payment-guidance">
                     <label class="option-card active" id="label-payment-cash">
                       <input type="radio" name="payment" value="cash" checked />
-                      <div class="option-card-icon">💵</div>
+                      <div class="option-card-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M5 9h1m12 6h1"/></svg></div>
                       <strong>Barzahlung</strong>
-                      <span id="payment-cash-hint">Nach Abschluss<br>der Reparatur</span>
+                      <span id="payment-cash-hint">Nach Abschluss <br>der Reparatur</span>
                     </label>
                     <label class="option-card" id="label-payment-paypal">
                       <input type="radio" name="payment" value="paypal" />
@@ -1543,7 +1916,7 @@
                         </svg>
                       </div>
                       <strong>PayPal</strong>
-                      <span>Sofortzahlung<br>sicher & schnell</span>
+                      <span>Sofortzahlung <br>sicher &amp; schnell</span>
                     </label>
                     <label class="option-card" id="label-payment-stripe">
                       <input type="radio" name="payment" value="stripe" />
@@ -1551,9 +1924,10 @@
                         <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.5px; line-height: 1; color: #635BFF; white-space: nowrap;">stripe</span>
                       </div>
                       <strong>Kreditkarte</strong>
-                      <span>Visa, Mastercard<br>via Stripe</span>
+                      <span>Visa, Mastercard <br>via Stripe</span>
                     </label>
                   </div>
+                  <p class="checkout-note" id="payment-guidance">Bei Einsendung oder Lieferung ist Vorauszahlung per PayPal oder Kreditkarte erforderlich. Barzahlung ist nur vor Ort möglich.</p>
                 </div>
               </div>
             </div>
@@ -1616,13 +1990,13 @@
                   <div>
                     <strong style="font-size:15px; color:#92400e;">Sofortzahlung erforderlich</strong>
                     <p style="font-size:13px; color:#78350f; margin-top:4px; line-height:1.5;">
-                      Bei Einsendung per Post sowie bei Online-Zahlung (PayPal oder Kreditkarte) wird der Betrag vorab fällig – bevor das Gerät zur Reparatur eingeschickt wird. Bitte fülle alle Kontaktdaten aus und wähle deine bevorzugte Zahlungsart.
+                      Online-Zahlungen werden direkt fällig. Bei einer Reparatur per Einsendung bezahlst du vor dem Einschicken; beim Gerätekauf mit Lieferung vor dem Versand. Bitte gib dafür deine vollständigen Kontaktdaten und deine Adresse an.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div id="formMessage" style="padding: 14px; background:var(--bg-soft); border-radius:12px; font-weight:700; color:var(--primary);" hidden>
+              <div role="status" aria-live="polite" id="formMessage" style="padding: 14px; background:var(--bg-soft); border-radius:12px; font-weight:700; color:var(--primary);" hidden>
                 Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns in Kürze!
               </div>
 
@@ -1664,14 +2038,14 @@
   <!-- ─── Cart Drawer ────────────────────────────── -->
   <div id="cartPopup">
     <div class="cart-popup-box" id="cartPopupBox">
-      <button class="cart-popup-close" onclick="closeCartPopup()">✕</button>
-      <div class="cart-popup-icon">🛒</div>
+      <button type="button" aria-label="Warenkorb schließen" class="cart-popup-close" onclick="closeCartPopup()">✕</button>
+      <div class="cart-popup-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3h2l3 12h11l2-9H6M9 20h.01M18 20h.01"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></div>
       <div class="cart-popup-title" id="cartPopupTitle">In den Warenkorb gelegt!</div>
       <div class="cart-popup-sub" id="cartPopupSub">Deine Auswahl ist bereit.</div>
       <div class="cart-popup-items" id="cartPopupItems"></div>
       <div class="cart-popup-btns">
         <button class="btn btn-secondary" onclick="closeCartPopup()">Weiter stöbern</button>
-        <a href="#checkout" class="btn btn-primary" onclick="closeCartPopup(); transferCartToCheckout();">Zur Anfrage →</a>
+        <a href="#checkout" class="btn btn-primary" onclick="closeCartPopup(); transferCartToCheckout();">Zum Abschluss →</a>
       </div>
     </div>
   </div>
@@ -1681,7 +2055,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
-        <span class="close-modal" onclick="closeModal('agbModal')">&times;</span>
+        <button type="button" class="close-modal" aria-label="Schließen" onclick="closeModal('agbModal')">&times;</button>
       </div>
       <div style="max-height: 400px; overflow-y: auto; font-size: 14px; line-height: 1.6; color: var(--muted);">
         <p><strong>1. Geltungsbereich</strong><br>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge über Reparaturleistungen und den Verkauf von gebrauchten iPhones zwischen PhoneLab Leipzig und dem Kunden.</p><br>
@@ -1696,7 +2070,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2>Datenschutzerklärung</h2>
-        <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+        <button type="button" class="close-modal" aria-label="Schließen" onclick="closeModal('privacyModal')">&times;</button>
       </div>
       <div style="max-height: 400px; overflow-y: auto; font-size: 14px; line-height: 1.6; color: var(--muted);">
         <p><strong>DATENSCHUTZERKLÄRUNG gemäß Art. 13, 14 DSGVO für den Verkauf und Reparaturservice über diese Website</strong></p><br>
@@ -1715,7 +2089,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2>Impressum</h2>
-        <span class="close-modal" onclick="closeModal('impressumModal')">&times;</span>
+        <button type="button" class="close-modal" aria-label="Schließen" onclick="closeModal('impressumModal')">&times;</button>
       </div>
       <div style="font-size: 14px; line-height: 1.6; color: var(--muted);">
         <p><strong>PhoneLab Leipzig</strong></p>
@@ -1730,7 +2104,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2>Widerrufsbelehrung</h2>
-        <span class="close-modal" onclick="closeModal('widerrufModal')">&times;</span>
+        <button type="button" class="close-modal" aria-label="Schließen" onclick="closeModal('widerrufModal')">&times;</button>
       </div>
       <div style="max-height: 480px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: var(--muted);">
         <p style="margin-bottom:10px;"><strong>gemäß § 312g BGB i.V.m. Art. 246a EGBGB</strong></p>
@@ -1787,7 +2161,7 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <p>&copy; 2026 PhoneLab Leipzig. Alle Preise inkl. Reparatur & Material (§ 19 UStG).</p>
+      <div class="footer-brand"><strong>PhoneLab Leipzig</strong><p>iPhone-Reparatur &amp; refurbished iPhones in Leipzig-Lindenau.</p><p>&copy; 2026 PhoneLab Leipzig. Alle Preise inkl. Reparatur &amp; Material (§ 19 UStG).</p></div>
       <div class="footer-links">
         <a href="#0" onclick="openModal('impressumModal')">Impressum</a>
         <a href="#0" onclick="openModal('agbModal')">AGB</a>
@@ -1844,7 +2218,11 @@
       const notes     = (document.getElementById('notes')?.value     || '').trim();
       const deliveryRadio = document.querySelector('input[name="delivery"]:checked');
       const deliveryVal   = deliveryRadio?.value || 'pickup';
-      const deliveryText  = deliveryVal === 'shipping' ? 'Einsendung per DHL' : 'Vor Ort (Leipzig Lindenau)';
+      const allDevices = cart.length > 0 && cart.every(item => item.type === 'device');
+      const deviceDelivery = document.querySelector('input[name="delivery_device"]:checked')?.value;
+      const deliveryText = allDevices
+        ? (deviceDelivery === 'send' ? 'Lieferung per DHL (kostenlos)' : 'Vor Ort testen und abholen (Leipzig Lindenau)')
+        : (deliveryVal === 'shipping' ? 'Einsendung per DHL' : 'Vor Ort (Leipzig Lindenau)');
       const streetName = (document.getElementById('streetName')?.value || '').trim();
       const streetNr   = (document.getElementById('streetNr')?.value  || '').trim();
       const zipCode    = (document.getElementById('zipCode')?.value   || '').trim();
@@ -1857,7 +2235,7 @@
       const total   = totalEl ? totalEl.textContent : 'EUR 0.00';
       const paymentText = paymentType === 'paypal'
         ? `PayPal${transactionId ? ' (Transaktions-ID: ' + transactionId + ')' : ''}`
-        : 'Barzahlung vor Ort';
+        : paymentType === 'stripe' ? 'Kreditkarte via Stripe (Zahlungsstatus bei Stripe prüfen)' : 'Barzahlung vor Ort';
       const commonParams = {
         order_number: orderNumber, timestamp, customer_name: `${firstName} ${lastName}`,
         customer_email: email, customer_phone: phone, items_list: itemsList,
@@ -2032,7 +2410,9 @@
         if (repairOpts) repairOpts.style.display = 'grid';
         if (deviceOpts) deviceOpts.style.display = 'none';
         const shippingAddr = document.getElementById('deviceShippingAddress');
+        _applyCheckoutMode(false);
         if (shippingAddr) shippingAddr.style.display = 'none';
+        setShippingAddressRequired(false);
         updatePaymentUI();
         return;
       }
@@ -2045,7 +2425,7 @@
             <strong style="flex:1;">${item.label}</strong>
             <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
               <span style="font-weight:800;color:var(--primary-dark);">€${item.price.toFixed(2)}</span>
-              <button onclick="removeFromCart(${item.id})" title="Position entfernen"
+              <button type="button" onclick="removeFromCart(${item.id})" title="Position entfernen"
                 style="background:var(--danger);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:12px;cursor:pointer;display:grid;place-items:center;font-weight:900;flex-shrink:0;">✕</button>
             </div>
           </div>
@@ -2076,9 +2456,9 @@
         ${shippingExtra}
         <div class="checkout-sum-row" style="color:var(--primary);font-size:20px;font-weight:900;"><span>Gesamtsumme</span><span id="checkoutTotal">€${total.toFixed(2)}</span></div>`;
 
-      updatePaymentUI();
-      // Checkout-Modus (Gerät vs Reparatur) anpassen – ohne Rückkopplung
+      // Versandregeln zuerst anwenden, damit der passende Zahlknopf sichtbar ist.
       _applyCheckoutMode(allDevices);
+      updatePaymentUI();
       // Zahlung-Text nachträglich aktualisieren, da _applyCheckoutMode ggf. PayPal erzwingt
       const paymentEl = document.getElementById('checkoutPayment');
       if (paymentEl) {
@@ -2110,7 +2490,8 @@
       if (!selectedSeriesKey) { bc.classList.add('empty'); return; }
       bc.classList.remove('empty');
 
-      const seriesChip = document.createElement('span');
+      const seriesChip = document.createElement('button');
+      seriesChip.type = 'button';
       seriesChip.className = 'bc-item';
       seriesChip.innerHTML = 'iPhone ' + selectedSeriesKey + ' <span class="bc-edit">✎</span>';
       seriesChip.title = 'Serie ändern';
@@ -2123,7 +2504,8 @@
 
       if (selectedModelKey) {
         const modelName = seriesData[selectedSeriesKey].models[selectedModelKey].name;
-        const modelChip = document.createElement('span');
+        const modelChip = document.createElement('button');
+        modelChip.type = 'button';
         modelChip.className = 'bc-item';
         modelChip.innerHTML = modelName + ' <span class="bc-edit">✎</span>';
         modelChip.title = 'Modell ändern';
@@ -2172,7 +2554,8 @@
     const seriesOrder = ["16", "15", "14", "13", "12", "11", "X/XS", "8/SE"];
     for (const series of seriesOrder) {
       if (!seriesData[series]) continue;
-      const box = document.createElement('div');
+      const box = document.createElement('button');
+      box.type = 'button';
       box.className   = 'series-box';
       box.textContent = 'iPhone ' + series;
       box.onclick     = () => selectSeries(series);
@@ -2192,7 +2575,8 @@
       modelGrid.innerHTML = '';
       for (const mKey in seriesData[series].models) {
         const m    = seriesData[series].models[mKey];
-        const mBox = document.createElement('div');
+        const mBox = document.createElement('button');
+      mBox.type = 'button';
         mBox.className   = 'model-box';
         mBox.textContent = m.name;
         mBox.onclick     = () => selectModel(mKey);
@@ -2239,7 +2623,8 @@
       ['display', 'akku', 'kamera', 'housing', 'backglass'].forEach(rep => {
         const price = model[rep];
         if (price && price > 0) {
-          const rBox = document.createElement('div');
+          const rBox = document.createElement('button');
+      rBox.type = 'button';
           rBox.className = 'repair-box';
           rBox.onclick   = () => toggleRepair(rep, rBox);
           rBox.innerHTML = '<div class="repair-box-info"><strong>' + repairLabels[rep] + '</strong><span>' + getRepairSubtitle(rep) + '</span></div><div class="repair-box-price">€' + price + '</div>';
@@ -2248,7 +2633,8 @@
       });
 
       // Fehlerdiagnose Option
-      const diagBox = document.createElement('div');
+      const diagBox = document.createElement('button');
+      diagBox.type = 'button';
       diagBox.className = 'repair-box diagnose-box';
       diagBox.id = 'diagnoseRepairBox';
       diagBox.style.gridColumn = '1 / -1';
@@ -2601,7 +2987,7 @@
       const required = ['firstName','lastName','email','phone'];
       for (const id of required) {
         const el = document.getElementById(id);
-        if (!el || !el.value.trim()) return false;
+        if (!el || !el.value.trim() || !el.checkValidity()) return false;
       }
 
       const shippingFields = ['streetName','streetNr','zipCode','city'];
@@ -2676,7 +3062,7 @@
           });
         },
 
-        onError:  function(err) { console.error('PayPal Fehler:', err); alert('Die PayPal-Zahlung konnte nicht abgeschlossen werden. Bitte versuche es erneut oder wähle Barzahlung.'); },
+        onError:  function(err) { console.error('PayPal Fehler:', err); alert('Die PayPal-Zahlung konnte nicht abgeschlossen werden. Bitte versuche es erneut oder wähle eine andere verfügbare Zahlungsart.'); },
         onCancel: function() {}
       }).render('#paypal-button-container');
     }
@@ -2774,7 +3160,7 @@
             <span style="font-weight:700;color:var(--text);">${item.label}</span>
             <div style="display:flex;align-items:center;gap:10px;">
               <strong style="color:var(--primary-dark);">€${item.price.toFixed(2)}</strong>
-              <button onclick="removeFromCart(${item.id})" style="background:var(--danger);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:13px;cursor:pointer;display:grid;place-items:center;font-weight:900;" title="Entfernen">✕</button>
+              <button type="button" onclick="removeFromCart(${item.id})" style="background:var(--danger);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:13px;cursor:pointer;display:grid;place-items:center;font-weight:900;" title="Entfernen">✕</button>
             </div>
           </div>
           <span style="font-size:13px;color:var(--muted);font-weight:400;">${item.details}</span>`;
@@ -2851,9 +3237,13 @@
     // 12. Checkout Form Absenden (Barzahlung / Vor-Ort)
     document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      const isPaypal = document.querySelector('input[name="payment"]:checked').value === 'paypal';
-      if (isPaypal) return;
+      _applyCheckoutMode(cart.length > 0 && cart.every(item => item.type === 'device'));
+      updatePaymentUI();
+      const payment = document.querySelector('input[name="payment"]:checked');
+      // Enter und andere Formularaktionen dürfen keine Online-Zahlung umgehen.
+      if (!payment || payment.value !== 'cash' || payment.disabled) return;
       if (cart.length === 0) { alert('Dein Warenkorb ist leer.'); return; }
+      if (!isFormValid()) { this.reportValidity(); return; }
 
       // Button in Ladezustand versetzen
       const btn = document.getElementById('submitOrderBtn');
@@ -3003,10 +3393,15 @@
       const cashHint = document.getElementById('payment-cash-hint');
       if (cashHint) {
         cashHint.innerHTML = deviceOnlyOrder
-          ? 'Bei Abholung<br>vor Ort'
-          : 'Nach Abschluss<br>der Reparatur';
+          ? 'Bei Abholung <br>vor Ort'
+          : 'Nach Abschluss <br>der Reparatur';
       }
 
+      // Auch nach einem Formular-Reset markieren die Karten die tatsächliche Auswahl.
+      document.querySelectorAll('.option-card').forEach(label => {
+        const radio = label.querySelector('input[type="radio"]');
+        if (radio) label.classList.toggle('active', radio.checked && !radio.disabled);
+      });
       _updateSubmitBtnLabel();
     }
 
@@ -3034,85 +3429,6 @@
     let gallerySlides = [];
 
     const deviceDetails = {
-      "ip16u": {
-        "name": "iPhone 16",
-        "subtitle": "128 GB · Ultramarine",
-        "price": "€539",
-        "condition": "Sehr gut",
-        "conditionIcon": "✅",
-        "conditionColor": { "bg": "var(--primary-soft)", "border": "var(--primary)", "text": "var(--primary-dark)" },
-        "conditionDetails": "Das Gerät befindet sich insgesamt in einem sehr gepflegten gebrauchten Zustand. Display und Rückseite sind optisch wie neu. Am Rahmen bzw. an den Rändern sind normale Gebrauchsspuren vorhanden. Technisch funktioniert das Gerät einwandfrei.",
-        "akku": 91,
-        "color": "#4f78c4",
-        "images": [
-          "https://i.ebayimg.com/images/g/mvcAAeSwfPFqiB2u/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/IuEAAeSwRqBqiB2y/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/flMAAeSwgW9qiB25/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/krgAAeSwxB9qiB2j/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/dJ0AAeSwy-ZqiB2j/s-l1600.webp"
-        ],
-        "specs": [
-          { "cat": "Gerät" },
-          { "label": "Modell", "value": "iPhone 16" },
-          { "label": "Farbe", "value": "Ultramarine" },
-          { "label": "Speicher", "value": "128 GB" },
-          { "label": "Chip", "value": "Apple A18" },
-          { "cat": "Display & Kamera" },
-          { "label": "Display", "value": "6,1\" Super Retina XDR (OLED)" },
-          { "label": "Kamera", "value": "48 MP Fusion + 12 MP Ultraweitwinkel" },
-          { "cat": "Konnektivität" },
-          { "label": "5G", "value": "✓ Ja" },
-          { "label": "Anschluss", "value": "USB-C" },
-          { "label": "SIM", "value": "Nano-SIM + eSIM" },
-          { "cat": "Software & Status" },
-          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
-          { "label": "iCloud", "value": "✓ Entriegelt" },
-          { "label": "Batteriekapazität", "value": "91%", "isAkku": true, "akkuVal": 91 }
-        ],
-        "includes": ["📱 iPhone 16", "📋 Kaufbeleg"],
-        "cartName": "iPhone 16 (128 GB, Ultramarine)",
-        "cartPrice": 539
-      },
-      "ip14pm256": {
-        "name": "iPhone 14 Pro Max",
-        "subtitle": "256 GB · Silber",
-        "price": "€599",
-        "condition": "Wie neu",
-        "conditionIcon": "⭐",
-        "conditionColor": { "bg": "#dcfce7", "border": "#16a34a", "text": "#166534" },
-        "conditionDetails": "Das Gerät befindet sich in einem hervorragenden, optisch neuwertigen Zustand und ist kratzfrei. Display, Rückseite und Rahmen sind sehr gepflegt. Die Batterie wurde fachgerecht erneuert; verbaut wurde eine Apple Originalbatterie. Die maximale Kapazität beträgt 100 %.",
-        "akku": 100,
-        "color": "#d8d8d2",
-        "images": [
-          "https://i.ebayimg.com/images/g/lp8AAeSwdK5qiCA4/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/NqUAAeSwk1JqiCA3/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/XdAAAeSwLcVqiCA5/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/lmQAAeSwjh5qiCA5/s-l1600.webp",
-          "https://i.ebayimg.com/images/g/pLgAAeSwCjpqiCA5/s-l1600.webp"
-        ],
-        "specs": [
-          { "cat": "Gerät" },
-          { "label": "Modell", "value": "iPhone 14 Pro Max" },
-          { "label": "Farbe", "value": "Silber" },
-          { "label": "Speicher", "value": "256 GB" },
-          { "label": "Chip", "value": "Apple A16 Bionic" },
-          { "cat": "Display & Kamera" },
-          { "label": "Display", "value": "6,7\" Super Retina XDR ProMotion (OLED)" },
-          { "label": "Kamera", "value": "48 MP Pro-Kamerasystem" },
-          { "cat": "Konnektivität" },
-          { "label": "5G", "value": "✓ Ja" },
-          { "label": "Anschluss", "value": "Lightning" },
-          { "label": "SIM", "value": "Nano-SIM + eSIM" },
-          { "cat": "Software & Status" },
-          { "label": "Face ID", "value": "✓ Geprüft & aktiv" },
-          { "label": "iCloud", "value": "✓ Entriegelt" },
-          { "label": "Batterie", "value": "Apple Originalteil · erneuert" },
-          { "label": "Batteriekapazität", "value": "100%", "isAkku": true, "akkuVal": 100 }
-        ],
-        "includes": ["📱 iPhone 14 Pro Max", "🟡 Neuwertige gelbe Schutzhülle", "📋 Kaufbeleg"],
-        "cartName": "iPhone 14 Pro Max (256 GB, Silber)",
-        "cartPrice": 599
-      },
       "ip14pro128": {
         "name": "iPhone 14 Pro",
         "subtitle": "128 GB · Deep Purple",
@@ -3392,15 +3708,6 @@
     function toggleWaPopup() {
       document.getElementById('waPopup').classList.toggle('show');
     }
-    // Live clock in phone mockup
-    function updateScreenClock() {
-      const el = document.getElementById('screenClock');
-      if (!el) return;
-      const now = new Date();
-      el.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-    }
-    updateScreenClock();
-    setInterval(updateScreenClock, 30000);
     document.addEventListener('click', function(e) {
       const btn = document.getElementById('waBtn');
       const popup = document.getElementById('waPopup');
@@ -3413,8 +3720,8 @@
   <!-- ─── Cookie Banner ─────────────────────────────── -->
   <div id="cookieBanner" class="hidden">
     <div class="cookie-text">
-      <strong>🍪 Diese Website verwendet Cookies</strong>
-      Wir nutzen technisch notwendige Cookies für die Funktionalität der Seite sowie PayPal zur Zahlungsabwicklung.
+      <strong>Deine Cookie-Einstellungen</strong>
+      Wir nutzen Cookies für die Funktionen der Website und die Zahlungsabwicklung. Mit deiner Zustimmung verwenden wir außerdem Google Analytics zur Auswertung der Nutzung.
       Mehr Infos in unserer <a href="#0" onclick="openModal('privacyModal')">Datenschutzerklärung</a>.
     </div>
     <div class="cookie-btns">
@@ -3506,6 +3813,114 @@
       document.getElementById('cookieBanner').classList.add('hidden');
       // analytics_storage bleibt 'denied'
     }
+  </script>
+  <script id="phonelab-device-showcase">
+/* Das Highlight nutzt ausschließlich die Produkte aus dem sichtbaren Geräteangebot. */
+(function initDeviceShowcase() {
+  'use strict';
+  const root = document.getElementById('deviceShowcase');
+  if (!root || typeof deviceDetails === 'undefined') return;
+  const offeredKeys = [...new Set(Array.from(document.querySelectorAll('#geraete .product-card .details-btn[data-device]'), button => button.dataset.device))]
+    .filter(key => deviceDetails[key] && deviceDetails[key].images && deviceDetails[key].images.length);
+  if (!offeredKeys.length) { root.hidden = true; return; }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  }
+  function renderSlide(key, index, total) {
+    const device = deviceDetails[key];
+    const price = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: Number.isInteger(device.cartPrice) ? 0 : 2 }).format(device.cartPrice);
+    return `<div class="showcase-slide${index === 0 ? ' is-active' : ''}" role="group" aria-roledescription="Folie" aria-label="${index + 1} von ${total}: ${escapeHtml(device.name)}" aria-hidden="${index !== 0}"${index ? ' inert' : ''}>
+      <button type="button" class="showcase-product" data-highlight-device="${escapeHtml(key)}" aria-label="${escapeHtml(device.name)}, ${escapeHtml(device.subtitle)}, ${escapeHtml(price)} – Gerät ansehen">
+        <span class="showcase-image-stage">
+          <img class="showcase-image" src="${escapeHtml(device.images[0])}" alt="${escapeHtml(device.name)} · ${escapeHtml(device.subtitle)}" width="640" height="480" decoding="async" loading="eager" fetchpriority="${index === 0 ? 'high' : 'low'}" referrerpolicy="no-referrer" />
+          <span class="showcase-image-fallback" hidden>Foto aktuell nicht verfügbar</span>
+          <span class="showcase-condition"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Zustand: ${escapeHtml(device.condition)}</span>
+        </span>
+        <span class="showcase-info">
+          <span><strong class="showcase-model">${escapeHtml(device.name)}</strong><span class="showcase-specs">${escapeHtml(device.subtitle)}</span><span class="showcase-battery">${escapeHtml(device.akku)} % Batteriekapazität</span></span>
+          <span class="showcase-cost"><span class="showcase-price">${escapeHtml(price)}</span><span class="showcase-shipping">inkl. Versand</span></span>
+        </span>
+        <span class="showcase-details">Gerät ansehen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>
+      </button>
+    </div>`;
+  }
+
+  const slideContainer = root.querySelector('.showcase-slides');
+  const dotContainer = root.querySelector('.showcase-dots');
+  const controls = root.querySelector('.showcase-controls');
+  const pauseButton = root.querySelector('.showcase-pause');
+  const counter = root.querySelector('.showcase-counter');
+  const announcement = root.querySelector('.showcase-announcement');
+  slideContainer.innerHTML = offeredKeys.map((key, index) => renderSlide(key, index, offeredKeys.length)).join('');
+  dotContainer.innerHTML = offeredKeys.map((key,index) => `<button type="button" class="showcase-dot" data-slide="${index}" aria-label="${escapeHtml(deviceDetails[key].name)} anzeigen" aria-current="${index === 0}"><span aria-hidden="true"></span></button>`).join('');
+  const slides = Array.from(slideContainer.children);
+  const dots = Array.from(dotContainer.children);
+  controls.hidden = slides.length < 2;
+
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let activeIndex = 0;
+  let timer = null;
+  let manuallyPaused = false;
+  let pointerInside = false;
+  let focusInside = false;
+  let visible = true;
+  const interval = 6500;
+  const playIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>';
+  const pauseIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>';
+
+  function schedule() {
+    if (timer !== null) { window.clearTimeout(timer); timer = null; }
+    const shouldRun = slides.length > 1 && !motion.matches && !manuallyPaused && !pointerInside && !focusInside && !document.hidden && visible;
+    root.classList.toggle('is-rotating', shouldRun);
+    pauseButton.hidden = motion.matches || slides.length < 2;
+    pauseButton.setAttribute('aria-label', manuallyPaused ? 'Automatischen Gerätewechsel fortsetzen' : 'Automatischen Gerätewechsel pausieren');
+    pauseButton.innerHTML = (manuallyPaused ? playIcon : pauseIcon) + '<span>' + (manuallyPaused ? 'Weiter' : 'Pause') + '</span>';
+    if (shouldRun) timer = window.setTimeout(() => selectSlide(activeIndex + 1), interval);
+  }
+
+  function selectSlide(index, manual = false) {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const isActive = i === activeIndex;
+      slide.classList.toggle('is-active', isActive);
+      slide.setAttribute('aria-hidden', String(!isActive));
+      slide.inert = !isActive;
+      dots[i].setAttribute('aria-current', String(isActive));
+    });
+    counter.innerHTML = '<span class="current">' + String(activeIndex + 1).padStart(2, '0') + '</span><span aria-hidden="true">/</span><span>' + String(slides.length).padStart(2, '0') + '</span>';
+    counter.setAttribute('aria-label', 'Gerät ' + (activeIndex + 1) + ' von ' + slides.length);
+    if (manual) announcement.textContent = deviceDetails[offeredKeys[activeIndex]].name + ' ausgewählt';
+    schedule();
+  }
+
+  dots.forEach((dot,index) => dot.addEventListener('click', () => selectSlide(index, true)));
+  pauseButton.addEventListener('click', () => { manuallyPaused = !manuallyPaused; schedule(); });
+  root.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { pointerInside = true; schedule(); } });
+  root.addEventListener('pointerleave', () => { pointerInside = false; schedule(); });
+  root.addEventListener('focusin', () => { focusInside = true; schedule(); });
+  root.addEventListener('focusout', event => { if (!root.contains(event.relatedTarget)) { focusInside = false; schedule(); } });
+  controls.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    selectSlide(activeIndex + (event.key === 'ArrowRight' ? 1 : -1), true);
+    dots[activeIndex].focus();
+  });
+  root.querySelectorAll('[data-highlight-device]').forEach(button => button.addEventListener('click', () => openDeviceDetail(button.dataset.highlightDevice)));
+  root.querySelectorAll('.showcase-image').forEach(img => {
+    const handleError = () => { img.hidden = true; img.nextElementSibling.hidden = false; };
+    img.addEventListener('error', handleError);
+    if (img.complete && img.naturalWidth === 0) handleError();
+  });
+  document.addEventListener('visibilitychange', schedule);
+  if (motion.addEventListener) motion.addEventListener('change', schedule);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; schedule(); }, { threshold: 0.15 });
+    observer.observe(root);
+  }
+  selectSlide(0);
+})();
+
   </script>
 </body>
 </html>
