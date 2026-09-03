@@ -1457,30 +1457,18 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
 .showcase-image-fallback { color: #d4e6d9; }
 .showcase-condition { background: rgba(29,76,55,.92); color: #dbf5df; border-color: #6b9a775e; box-shadow: 0 3px 12px #06251c12; backdrop-filter: blur(10px); z-index: 2; }
 .hero-showcase { border-color: #688a665e; box-shadow: 0 22px 65px #183d2922,inset 0 1px 0 #ffffff14; }
-.brand-welcome { display: flex; align-items: center; gap: 14px; width: fit-content; margin-bottom: 28px; }
-.brand-welcome-mark { display: grid; place-items: center; flex-shrink: 0; position: relative; overflow: hidden; isolation: isolate; width: 60px; height: 60px; border-radius: 17px; background: #174c38; color: #f2faf3; box-shadow: 0 8px 18px #194a2c16,inset 0 1px 0 #ffffff25; }
-.brand-welcome-mark::after { content: ''; pointer-events: none; position: absolute; inset: -30%; background: linear-gradient(110deg,transparent 35%,rgba(228,255,233,.26) 50%,transparent 65%); transform: translateX(-130%); }
-.brand-welcome-letters { display: block; font-size: 24px; line-height: 1; font-weight: 800; letter-spacing: -.05em; }
-.brand-welcome-copy { display: flex; flex-direction: column; gap: 2px; }
-.brand-welcome-eyebrow { font-size: 11px; color: #587561; font-weight: 650; letter-spacing: .11em; text-transform: uppercase; }
-.brand-welcome-name { display: block; color: #193d2b; font-size: 29px; font-weight: 720; letter-spacing: -.045em; line-height: 1.18; }
-.brand-welcome-name small { display: inline-block; font-size: 13px; letter-spacing: -.005em; font-weight: 500; margin-left: 7px; color: #5b7662; }
-.brand-welcome-local { display: block; color: #5d7564; font-size: 12px; line-height: 1.6; margin-top: 2px; }
-.phonelab-welcome .brand-welcome-mark { animation: welcomeMark .7s cubic-bezier(.18,.75,.2,1) both; }
-.phonelab-welcome .brand-welcome-mark::after { animation: welcomeGleam 1.05s .35s ease-out both; }
-.phonelab-welcome .brand-welcome-letters { animation: welcomeLetters .6s .1s ease-out both; }
-.phonelab-welcome .brand-welcome-copy { animation: welcomeWords .75s .14s cubic-bezier(.2,.7,.2,1) both; }
+
+.site-header .logo-mark { position: relative; overflow: hidden; isolation: isolate; }
+.site-header .logo-mark::after { content: ''; pointer-events: none; position: absolute; inset: -30%; background: linear-gradient(110deg,transparent 35%,rgba(228,255,233,.26) 50%,transparent 65%); transform: translateX(-130%); }
+.phonelab-welcome .site-header .logo-mark { animation: welcomeMark .7s cubic-bezier(.18,.75,.2,1) both; }
+.phonelab-welcome .site-header .logo-mark::after { animation: welcomeGleam 1.05s .35s ease-out both; }
+.phonelab-welcome .site-header .logo-wordmark { animation: welcomeWords .75s .14s cubic-bezier(.2,.7,.2,1) both; }
 .phonelab-welcome .hero h1 { animation: welcomeWords .8s .2s cubic-bezier(.2,.7,.2,1) both; }
 .phonelab-welcome .hero-showcase { animation: welcomeShowcase 1s .12s cubic-bezier(.2,.7,.2,1) both; }
-/* Kontrollen bleiben jederzeit sichtbar und bedienbar; kein Splashscreen. */
-.hero:focus-within .brand-welcome-mark, .hero:focus-within .brand-welcome-copy,
+.site-header:focus-within .logo-mark, .site-header:focus-within .logo-wordmark,
 .hero:focus-within h1, .hero:focus-within .hero-showcase { animation: none; }
 @keyframes welcomeMark {
   from { opacity: 0; transform: translateY(9px) scale(.88) rotate(-5deg); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes welcomeLetters {
-  from { opacity: .3; transform: translateY(5px); }
   to { opacity: 1; transform: none; }
 }
 @keyframes welcomeGleam {
@@ -1495,26 +1483,12 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
   from { opacity: .1; transform: translateY(14px) scale(.985); }
   to { opacity: 1; transform: none; }
 }
-@media (max-width: 768px) {
-  .brand-welcome { gap: 12px; margin-bottom: 24px; }
-  .brand-welcome-mark { width: 55px; height: 55px; border-radius: 15px; }
-  .brand-welcome-name { font-size: 27px; }
-  .brand-welcome-letters { font-size: 22px; }
-}
-@media (max-width: 540px) {
-  .brand-welcome-mark { width: 51px; height: 51px; border-radius: 14px; }
-  .brand-welcome-name { font-size: 25px; }
-  .brand-welcome-name small { font-size: 12px; margin-left: 5px; }
-  .brand-welcome-eyebrow { font-size: 10px; }
-  .brand-welcome-local { font-size: 11px; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .phonelab-welcome .brand-welcome-mark, .phonelab-welcome .brand-welcome-mark::after,
-  .phonelab-welcome .brand-welcome-letters, .phonelab-welcome .brand-welcome-copy,
-  .phonelab-welcome .hero h1, .phonelab-welcome .hero-showcase { animation: none !important; }
+  .phonelab-welcome .site-header .logo-mark, .phonelab-welcome .site-header .logo-mark::after,
+  .phonelab-welcome .site-header .logo-wordmark, .phonelab-welcome .hero h1,
+  .phonelab-welcome .hero-showcase { animation: none !important; }
 }
-
-  </style>
+</style>
   <script id="phonelab-welcome-animation">
 /* Pro Tab ein kurzer Markenauftakt; keinerlei Sperre für Navigation oder Bestellung. */
 (function welcomePhoneLab() {
@@ -1557,16 +1531,9 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="brand-welcome">
-            <span class="brand-welcome-mark" aria-hidden="true"><span class="brand-welcome-letters">PL</span></span>
-            <span class="brand-welcome-copy">
-              <span class="brand-welcome-eyebrow">Willkommen bei</span>
-              <span class="brand-welcome-name">PhoneLab <small>Leipzig</small></span>
-              <span class="brand-welcome-local">Leipzig-Lindenau · Vor Ort &amp; per Versand</span>
-            </span>
-          </div>
+          <p class="hero-kicker">Leipzig-Lindenau · Vor Ort &amp; per Versand</p>
           <h1 id="hero-title">Dein iPhone.<em>In guten Händen.</em></h1>
-          <p class="lead">Professionell reparieren lassen oder ein geprüftes refurbished iPhone finden. Bei PhoneLab bekommst du beides – mit persönlichem Service und klaren Preisen.</p>
+          <p class="lead">Professionelle iPhone-Reparaturen und geprüfte refurbished iPhones – mit persönlichem Service und sehr konkurrenzfähigen Preisen. <strong>Ohne klassisches Ladengeschäft</strong> halten wir die laufenden Kosten niedrig. Diesen Preisvorteil geben wir an dich weiter.</p>
           <div class="hero-actions">
             <a href="#reparatur" class="btn btn-primary">Reparaturpreis berechnen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
             <a href="#geraete" class="btn btn-secondary">iPhones entdecken</a>
@@ -1619,8 +1586,8 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           </div>
           <div class="highlight-card">
             <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Zm3 5h6m-6 4h6"/></svg></span>
-            <h3>Dein Preis. Klar vorab.</h3>
-            <p style="color:var(--muted);">Im Konfigurator siehst du den Preis deiner Auswahl direkt. Ersatzteile werden passend zu deinem Auftrag bestellt; mehrere Reparaturen lassen sich kombinieren.</p>
+            <h3>Weniger Fixkosten. Dein Preisvorteil.</h3>
+            <p style="color:var(--muted);">Bei PhoneLab entfallen Ladenmiete sowie die zusätzlichen Personal- und Lagerkosten eines klassischen Ladengeschäfts. <strong>Ersatzteile bestellen wir nur bei Bedarf für deinen Auftrag.</strong> Wir finanzieren also keinen großen Teilevorrat über unsere Preise – davon profitierst du direkt.</p>
           </div>
           <div class="highlight-card">
             <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span>
@@ -1636,7 +1603,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         <div class="section-header">
           <p class="eyebrow">Reparieren statt ersetzen</p>
           <h2>Was braucht dein iPhone?</h2>
-          <p class="lead">Wähle dein Modell und die passende Reparatur. Du siehst den Preis sofort – inklusive Kombi-Rabatt, wenn du mehrere Reparaturen auswählst.</p>
+          <p class="lead">Wähle dein Modell und die passende Reparatur. Du siehst den Preis sofort – inklusive Kombi-Rabatt, wenn du mehrere Reparaturen auswählst. Benötigte Ersatzteile bestellen wir gezielt für deinen Auftrag: So zahlst du keine unnötigen Lagerkosten mit.</p>
         </div>
 
         <div class="repair-panel">
@@ -2590,7 +2557,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       const seriesChip = document.createElement('button');
       seriesChip.type = 'button';
       seriesChip.className = 'bc-item';
-      seriesChip.innerHTML = 'iPhone ' + selectedSeriesKey + ' <span class="bc-edit">✎</span>';
+      seriesChip.innerHTML = 'iPhone ' + selectedSeriesKey + ' Serie <span class="bc-edit">✎</span>';
       seriesChip.title = 'Serie ändern';
       seriesChip.onclick = () => resetToSeries();
       bc.appendChild(seriesChip);
@@ -2654,7 +2621,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       const box = document.createElement('button');
       box.type = 'button';
       box.className   = 'series-box';
-      box.textContent = 'iPhone ' + series;
+      box.textContent = 'iPhone ' + series + ' Serie';
       box.onclick     = () => selectSeries(series);
       seriesGrid.appendChild(box);
     }
