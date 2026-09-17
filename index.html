@@ -8,6 +8,49 @@
     name="description"
     content="iPhone-Reparatur in Leipzig-Lindenau und geprüfte refurbished iPhones. Reparaturpreis online zusammenstellen, Gerät vor Ort abgeben oder einsenden. PhoneLab Leipzig."
   />
+  <link rel="canonical" href="https://phonelab-leipzig.netlify.app/" />
+  <meta name="theme-color" content="#0f513f" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PhoneLab Leipzig | iPhone-Reparatur & refurbished iPhones" />
+  <meta property="og:description" content="Reparaturpreis sofort berechnen oder ein geprüftes refurbished iPhone kaufen. Persönlicher Service in Leipzig-Lindenau und per Versand." />
+  <meta property="og:url" content="https://phonelab-leipzig.netlify.app/" />
+  <meta property="og:image" content="https://phonelab-leipzig.netlify.app/assets/phones/iphone-16-pro/01.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobilePhoneStore",
+    "name": "PhoneLab Leipzig",
+    "url": "https://phonelab-leipzig.netlify.app/",
+    "telephone": "+49 151 56022081",
+    "email": "adrich@gmx.net",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Henricistraße 35",
+      "postalCode": "04177",
+      "addressLocality": "Leipzig",
+      "addressCountry": "DE"
+    },
+    "areaServed": ["Leipzig", "Deutschland"],
+    "description": "iPhone-Reparatur in Leipzig-Lindenau und Verkauf geprüfter refurbished iPhones, vor Ort und per Versand.",
+    "sameAs": ["https://wa.me/4915156022081"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Brauche ich einen Termin?","acceptedAnswer":{"@type":"Answer","text":"Ja. Bitte vereinbare vor der Abgabe per WhatsApp oder Telefon einen Termin in Leipzig-Lindenau."}},
+      {"@type":"Question","name":"Wie lange dauert eine Reparatur?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 3–7 Werktage nach Geräteeingang. Den konkreten Zeitrahmen bestätigt PhoneLab persönlich."}},
+      {"@type":"Question","name":"Kann ich mein iPhone einsenden?","acceptedAnswer":{"@type":"Answer","text":"Ja. Geräte können per DHL eingesendet und nach der Reparatur zurückgesendet werden."}},
+      {"@type":"Question","name":"Gibt es Gewährleistung?","acceptedAnswer":{"@type":"Answer","text":"Auf durchgeführte Reparaturen gibt PhoneLab 12 Monate Gewährleistung."}}
+    ]
+  }
+  </script>
 
   <!-- ─── Google Analytics 4 + Consent Mode v2 (DSGVO) ─── -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BH77FMHQGJ"></script>
@@ -1488,6 +1531,45 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
   .phonelab-welcome .site-header .logo-wordmark, .phonelab-welcome .hero h1,
   .phonelab-welcome .hero-showcase { animation: none !important; }
 }
+    /* Conversion and local-contact layer */
+    .service-bar { background:#083c32; color:#fff; font-size:13px; font-weight:750; }
+    .service-bar-inner { min-height:38px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .service-bar-actions { display:flex; align-items:center; gap:18px; }
+    .service-bar a { color:#fff; text-decoration:underline; text-underline-offset:3px; }
+    .hero-proof { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .hero-proof span { background:#fff; border:1px solid var(--border); border-radius:12px; padding:9px 12px; font-weight:800; font-size:14px; box-shadow:0 8px 24px rgba(15,23,42,.06); }
+    .contact-conversion { background:#0b4035; color:#fff; }
+    .contact-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:32px; align-items:start; }
+    .contact-conversion .eyebrow { color:#7ce8cb; }
+    .contact-conversion .lead { color:rgba(255,255,255,.76); }
+    .contact-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .contact-actions .btn-primary { background:#fff; color:#0b4035; box-shadow:none; }
+    .contact-actions .btn-secondary { background:transparent; color:#fff; border-color:rgba(255,255,255,.35); }
+    .contact-actions .btn-secondary:hover { border-color:#fff; color:#fff; }
+    .contact-card { background:#fff; color:var(--text); border-radius:var(--radius); padding:28px; box-shadow:0 24px 55px rgba(0,0,0,.18); }
+    .contact-card dl { display:grid; gap:17px; }
+    .contact-card div { display:grid; grid-template-columns:120px 1fr; gap:16px; padding-bottom:17px; border-bottom:1px solid var(--border); }
+    .contact-card div:last-child { border:0; padding-bottom:0; }
+    .contact-card dt { color:var(--muted); font-weight:700; }
+    .contact-card dd { margin:0; font-weight:800; }
+    .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .faq-grid details { background:#fff; border:1px solid var(--border); border-radius:16px; padding:18px 20px; box-shadow:0 8px 24px rgba(15,23,42,.04); }
+    .faq-grid summary { cursor:pointer; font-weight:850; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+    .faq-grid summary::after { content:"+"; color:var(--primary); font-size:22px; line-height:1; }
+    .faq-grid details[open] summary::after { content:"–"; }
+    .faq-grid details p { color:var(--muted); margin-top:12px; }
+    .mobile-action-bar { display:none; }
+    @media (max-width: 768px) {
+      .service-bar-inner { min-height:42px; justify-content:center; text-align:center; }
+      .service-bar-copy { display:none; }
+      .service-bar-actions { width:100%; justify-content:center; gap:24px; }
+      .contact-grid, .faq-grid { grid-template-columns:1fr; }
+      .contact-card div { grid-template-columns:1fr; gap:4px; }
+      .mobile-action-bar { position:fixed; z-index:90; left:12px; right:12px; bottom:12px; display:grid; grid-template-columns:.8fr 1.2fr; gap:8px; padding:8px; border:1px solid rgba(255,255,255,.7); background:rgba(255,255,255,.94); backdrop-filter:blur(16px); border-radius:18px; box-shadow:0 18px 45px rgba(15,23,42,.24); }
+      .mobile-action-bar .btn { padding:12px 10px; font-size:14px; }
+      body { padding-bottom:82px; }
+      #waBtn, #waPopup { display:none !important; }
+    }
 </style>
   <script id="phonelab-welcome-animation">
 /* Pro Tab ein kurzer Markenauftakt; keinerlei Sperre für Navigation oder Bestellung. */
@@ -1510,6 +1592,15 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
 </head>
 
 <body>
+  <aside class="service-bar" aria-label="Schnellkontakt">
+    <div class="container service-bar-inner">
+      <span class="service-bar-copy">Termin nach Vereinbarung · Reparatur vor Ort in Leipzig-Lindenau oder per Versand</span>
+      <span class="service-bar-actions">
+        <a href="tel:+4915156022081" data-track="phone_click">0151 560 220 81</a>
+        <a href="https://wa.me/4915156022081?text=Hallo%20PhoneLab%2C%20ich%20brauche%20Hilfe%20mit%20meinem%20iPhone." target="_blank" rel="noopener" data-track="whatsapp_click">WhatsApp-Anfrage</a>
+      </span>
+    </div>
+  </aside>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="logo">
@@ -1535,8 +1626,13 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           <h1 id="hero-title">Dein iPhone.<em>In guten Händen.</em></h1>
           <p class="lead">Professionelle iPhone-Reparaturen und geprüfte refurbished iPhones – mit persönlichem Service und sehr konkurrenzfähigen Preisen. <strong>Ohne klassisches Ladengeschäft</strong> halten wir die laufenden Kosten niedrig. Diesen Preisvorteil geben wir an dich weiter.</p>
           <div class="hero-actions">
-            <a href="#reparatur" class="btn btn-primary">Reparaturpreis berechnen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
-            <a href="#geraete" class="btn btn-secondary">iPhones entdecken</a>
+            <a href="#reparatur" class="btn btn-primary" data-track="hero_repair_click">Reparaturpreis berechnen <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a>
+            <a href="#geraete" class="btn btn-secondary" data-track="hero_phones_click">iPhones entdecken</a>
+          </div>
+          <div class="hero-proof" aria-label="Beispielpreise">
+            <span>Display ab 55 €</span>
+            <span>Akku ab 25 €</span>
+            <span>12 Monate Gewährleistung</span>
           </div>
           <div class="trust-row">
             <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> 10 Jahre Erfahrung</span>
@@ -1861,6 +1957,47 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
             <h3>Wieder nutzen</h3>
             <p>Repariertes iPhone nach kurzer Zeit wieder nutzen – wir informieren dich, sobald es fertig ist.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-conversion" id="kontakt">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Direkt zur Lösung</p>
+          <h2>Unsicher, welche Reparatur du brauchst?</h2>
+          <p class="lead">Schick uns kurz dein iPhone-Modell und eine Beschreibung des Schadens. Du erhältst eine persönliche Einschätzung und kannst anschließend in Ruhe entscheiden.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="https://wa.me/4915156022081?text=Hallo%20PhoneLab%2C%20ich%20habe%20eine%20Frage%20zu%20meinem%20iPhone." target="_blank" rel="noopener" data-track="contact_whatsapp_click">Per WhatsApp fragen</a>
+            <a class="btn btn-secondary" href="tel:+4915156022081" data-track="contact_phone_click">Jetzt anrufen</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3>PhoneLab Leipzig</h3>
+          <dl>
+            <div><dt>Vor Ort</dt><dd>Henricistraße 35<br>04177 Leipzig-Lindenau</dd></div>
+            <div><dt>Besuch</dt><dd>Nach Terminvereinbarung</dd></div>
+            <div><dt>Alternativ</dt><dd>Deutschlandweite Einsendung per DHL</dd></div>
+            <div><dt>Kontakt</dt><dd><a href="tel:+4915156022081">0151 560 220 81</a><br><a href="mailto:adrich@gmx.net">adrich@gmx.net</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="background:var(--bg-soft);">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Häufige Fragen</p>
+          <h2>Klarheit vor der Reparatur.</h2>
+          <p class="lead">Die wichtigsten Antworten zu Ablauf, Teilen, Dauer und Gewährleistung.</p>
+        </div>
+        <div class="faq-grid">
+          <details><summary>Brauche ich einen Termin?</summary><p>Ja. PhoneLab arbeitet ohne klassisches Ladengeschäft. Vereinbare vor der Abgabe bitte kurz per WhatsApp oder Telefon einen Termin in Leipzig-Lindenau.</p></details>
+          <details><summary>Wie lange dauert eine Reparatur?</summary><p>In der Regel 3–7 Werktage nach Geräteeingang. Ersatzteile werden passend zu deinem Auftrag bestellt; den konkreten Zeitrahmen bestätigen wir dir persönlich.</p></details>
+          <details><summary>Welche Ersatzteile werden verwendet?</summary><p>Die Reparaturoptionen nutzen hochwertige Drittanbieterteile. Verfügbare Premium-Optionen – etwa bestimmte Originalteile oder Reparaturen ohne iOS-Meldung – werden im Konfigurator transparent angezeigt.</p></details>
+          <details><summary>Kann ich mein iPhone einsenden?</summary><p>Ja. Du kannst dein Gerät per DHL einsenden. Beim Abschluss werden Rückversand und mögliche Versandkosten transparent in der Zusammenfassung angezeigt.</p></details>
+          <details><summary>Gibt es Gewährleistung?</summary><p>Auf durchgeführte Reparaturen erhältst du 12 Monate Gewährleistung. Ausgenommen sind neue Schäden, zum Beispiel durch Sturz, Wasser oder unsachgemäße Nutzung.</p></details>
+          <details><summary>Kann ich ein refurbished iPhone vor Ort ansehen?</summary><p>Ja. Verfügbare Geräte kannst du nach Terminvereinbarung in Leipzig-Lindenau ansehen und abholen oder kostenlos per DHL liefern lassen.</p></details>
         </div>
       </div>
     </section>
@@ -2234,6 +2371,11 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       </div>
     </div>
   </footer>
+
+  <nav class="mobile-action-bar" aria-label="Schnellaktionen">
+    <a class="btn btn-secondary" href="https://wa.me/4915156022081?text=Hallo%20PhoneLab%2C%20ich%20brauche%20Hilfe%20mit%20meinem%20iPhone." target="_blank" rel="noopener" data-track="mobile_whatsapp_click">WhatsApp</a>
+    <a class="btn btn-primary" href="#reparatur" data-track="mobile_repair_click">Preis berechnen</a>
+  </nav>
 
   <script>
     // ══════════════════════════════════════════════════════════════
@@ -3996,6 +4138,16 @@ const deviceHighlightPhotos = {"ip14pro128":{"source":"https://img.kleinanzeigen
   selectSlide(0);
 })();
 
+  </script>
+  <script id="phonelab-conversion-tracking">
+  document.addEventListener('click', function (event) {
+    const tracked = event.target.closest('[data-track]');
+    if (!tracked || typeof window.gtag !== 'function') return;
+    window.gtag('event', tracked.dataset.track, {
+      link_url: tracked.href || undefined,
+      page_location: window.location.href
+    });
+  });
   </script>
 </body>
 </html>
