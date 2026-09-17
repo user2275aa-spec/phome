@@ -1538,15 +1538,16 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     .service-bar a { color:#fff; text-decoration:underline; text-underline-offset:3px; }
     .hero-proof { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
     .hero-proof span { background:#fff; border:1px solid var(--border); border-radius:12px; padding:9px 12px; font-weight:800; font-size:14px; box-shadow:0 8px 24px rgba(15,23,42,.06); }
-    .contact-conversion { background:#0b4035; color:#fff; }
+    .contact-conversion { background:#edf7f3; color:var(--text); border-top:1px solid #d6ebe3; border-bottom:1px solid #d6ebe3; }
     .contact-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:32px; align-items:start; }
-    .contact-conversion .eyebrow { color:#7ce8cb; }
-    .contact-conversion .lead { color:rgba(255,255,255,.76); }
+    .contact-conversion .eyebrow { color:var(--primary-dark); }
+    .contact-conversion h2 { color:#0b2e27; max-width:700px; }
+    .contact-conversion .lead { color:#3f5f58; font-size:20px; line-height:1.75; }
     .contact-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
-    .contact-actions .btn-primary { background:#fff; color:#0b4035; box-shadow:none; }
-    .contact-actions .btn-secondary { background:transparent; color:#fff; border-color:rgba(255,255,255,.35); }
-    .contact-actions .btn-secondary:hover { border-color:#fff; color:#fff; }
-    .contact-card { background:#fff; color:var(--text); border-radius:var(--radius); padding:28px; box-shadow:0 24px 55px rgba(0,0,0,.18); }
+    .contact-actions .btn-primary { background:var(--primary); color:#fff; box-shadow:0 12px 24px rgba(15,118,110,.22); }
+    .contact-actions .btn-secondary { background:#fff; color:#0b4035; border-color:#9fcabe; }
+    .contact-actions .btn-secondary:hover { border-color:var(--primary); color:var(--primary-dark); }
+    .contact-card { background:#fff; color:var(--text); border:1px solid #cfe5dd; border-radius:var(--radius); padding:28px; box-shadow:0 18px 40px rgba(15,76,63,.1); }
     .contact-card dl { display:grid; gap:17px; }
     .contact-card div { display:grid; grid-template-columns:120px 1fr; gap:16px; padding-bottom:17px; border-bottom:1px solid var(--border); }
     .contact-card div:last-child { border:0; padding-bottom:0; }
