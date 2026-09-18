@@ -2845,11 +2845,15 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
             const qualityLabel = rep === 'display' ? 'Teilequalität des Displays' : 'Teilequalität des Akkus';
             const standardName = rep === 'display' ? 'XO7 2.0 Soft-OLED' : 'Hochwertiger Drittanbieter-Akku';
             group.innerHTML = `
-              <div class="repair-box-info" style="margin-bottom:12px;"><strong>${repairLabels[rep]}</strong><span>${qualityLabel} auswählen</span></div>
-              <div class="repair-quality-options" style="display:grid;gap:8px;">
+              <button type="button" class="repair-group-toggle" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;font:inherit;">
+                <span class="repair-box-info"><strong>${repairLabels[rep]}</strong><span>Antippen und Teilequalität auswählen</span></span>
+                <span class="repair-box-price repair-group-price">ab €${Math.min(model[rep], model[originalKey])}</span>
+              </button>
+              <div class="repair-quality-options" hidden style="display:none;gap:8px;margin-top:12px;">
                 <button type="button" class="quality-option" data-quality="standard" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:11px 12px;cursor:pointer;font:inherit;"><strong>${standardName}</strong><span style="display:block;color:var(--muted);font-size:12px;margin-top:3px;">€${model[rep]} · gesetzliche Gewährleistungsrechte</span></button>
                 <button type="button" class="quality-option" data-quality="original" style="text-align:left;border:1px solid var(--border);background:#fff;border-radius:10px;padding:11px 12px;cursor:pointer;font:inherit;"><strong>Apple Originalteil (neu)</strong><span style="display:block;color:var(--muted);font-size:12px;margin-top:3px;">€${model[originalKey]} · Verfügbarkeit wird bestätigt</span></button>
               </div>`;
+            group.querySelector('.repair-group-toggle').onclick = () => toggleRepairGroup(rep, group);
             group.querySelectorAll('.quality-option').forEach(button => {
               button.onclick = () => chooseRepairQuality(rep, button.dataset.quality, group, button);
             });
@@ -2887,7 +2891,10 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         // Alle normalen Reparaturen abwählen
         selectedRepairs.clear();
         selectedQualities = {};
-        document.querySelectorAll('.repair-box:not(.diagnose-box)').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.repair-box:not(.diagnose-box)').forEach(b => {
+          b.classList.remove('active');
+          resetRepairGroup(b);
+        });
         element.classList.add('active');
         showDiagnoseFields();
       } else {
@@ -2895,6 +2902,36 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         hideDiagnoseFields();
       }
       updateSummary();
+    }
+
+    function resetRepairGroup(group) {
+      const options = group.querySelector('.repair-quality-options');
+      const toggle = group.querySelector('.repair-group-toggle');
+      if (!options || !toggle) return;
+      options.hidden = true;
+      options.style.display = 'none';
+      toggle.setAttribute('aria-expanded', 'false');
+      group.querySelectorAll('.quality-option').forEach(option => {
+        option.style.borderColor = 'var(--border)';
+        option.style.background = '#fff';
+      });
+    }
+
+    function toggleRepairGroup(rep, group) {
+      if (selectedRepairs.has(rep)) {
+        selectedRepairs.delete(rep);
+        delete selectedQualities[rep];
+        group.classList.remove('active');
+        resetRepairGroup(group);
+        updateSummary();
+        return;
+      }
+      const options = group.querySelector('.repair-quality-options');
+      const toggle = group.querySelector('.repair-group-toggle');
+      const willOpen = options.hidden;
+      options.hidden = !willOpen;
+      options.style.display = willOpen ? 'grid' : 'none';
+      toggle.setAttribute('aria-expanded', String(willOpen));
     }
 
     function chooseRepairQuality(rep, quality, group, button) {
@@ -2907,6 +2944,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       selectedRepairs.add(rep);
       selectedQualities[rep] = quality;
       group.classList.add('active');
+      group.querySelector('.repair-group-toggle').setAttribute('aria-expanded', 'true');
       group.querySelectorAll('.quality-option').forEach(option => {
         const active = option === button;
         option.style.borderColor = active ? 'var(--primary)' : 'var(--border)';
