@@ -47,7 +47,7 @@
       {"@type":"Question","name":"Brauche ich einen Termin?","acceptedAnswer":{"@type":"Answer","text":"Ja. Bitte vereinbare vor der Abgabe per WhatsApp oder Telefon einen Termin in Leipzig-Lindenau."}},
       {"@type":"Question","name":"Wie lange dauert eine Reparatur?","acceptedAnswer":{"@type":"Answer","text":"In der Regel 3–7 Werktage nach Geräteeingang. Den konkreten Zeitrahmen bestätigt PhoneLab persönlich."}},
       {"@type":"Question","name":"Kann ich mein iPhone einsenden?","acceptedAnswer":{"@type":"Answer","text":"Ja. Geräte können per DHL eingesendet und nach der Reparatur zurückgesendet werden."}},
-      {"@type":"Question","name":"Gibt es Gewährleistung?","acceptedAnswer":{"@type":"Answer","text":"Auf durchgeführte Reparaturen gibt PhoneLab 12 Monate Gewährleistung."}}
+      {"@type":"Question","name":"Gibt es Gewährleistung?","acceptedAnswer":{"@type":"Answer","text":"Für durchgeführte Reparaturen gelten die gesetzlichen Gewährleistungsrechte."}}
     ]
   }
   </script>
@@ -818,43 +818,6 @@
       .repair-box { border-radius: 14px; }
       .repair-box-info strong { font-size: 14px; }
 
-      /* ── "Ohne iOS-Fehlermeldung?" — full-width, readable ───── */
-      #noWarningServiceArea {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 16px;
-        margin-top: 16px;
-        border-radius: 16px;
-      }
-      #noWarningServiceArea h3.step-title {
-        font-size: 15px;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      #noWarningServiceArea > p {
-        font-size: 13px !important;
-        line-height: 1.65;
-      }
-      /* Warning notice inside noWarningServiceArea */
-      #noWarningServiceArea > div:first-of-type {
-        padding: 12px;
-        border-radius: 10px;
-      }
-      #noWarningServiceArea > div:first-of-type p {
-        font-size: 12.5px !important;
-        line-height: 1.6;
-      }
-      /* Checkbox rows */
-      #noWarningOptions > div {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 12px;
-        border-radius: 12px;
-      }
-      #noWarningOptions label {
-        font-size: 13px !important;
-      }
-
       /* Summary card below builder on mobile */
       .summary-card { padding: 20px 16px; }
       .price { font-size: 36px; }
@@ -1247,8 +1210,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
   .series-grid, .model-sub-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
   .series-box, .model-box { font-size: 14px; padding: 15px 8px; }
   .repair-box-info strong { font-size: 16px; }
-  .repair-box-info span, #noWarningOptions label, #noWarningServiceArea > p { font-size: 14px !important; }
-  #noWarningServiceArea > div:first-of-type p { font-size: 13px !important; }
+  .repair-box-info span { font-size: 14px !important; }
   .repair-box-price { font-size: 17px; }
   #diagnoseDesc { font-size: 16px !important; }
   .price { font-size: 40px; }
@@ -1633,10 +1595,10 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           <div class="hero-proof" aria-label="Beispielpreise">
             <span>Display ab 49 €</span>
             <span>Akku ab 29 €</span>
-            <span>12 Monate Gewährleistung</span>
+            <span>Gesetzliche Gewährleistungsrechte</span>
           </div>
           <div class="trust-row">
-            <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> 10 Jahre Erfahrung</span>
+            <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> Termin vor Ort</span>
             <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> Geprüfte Geräte</span>
             <span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m5 12 4 4L19 6"/></svg> Persönlicher Kontakt</span>
           </div>
@@ -1678,8 +1640,8 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         <div class="highlights-grid">
           <div class="highlight-card">
             <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 6a5 5 0 0 0-6 6l-5 5a2 2 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4 3-3Z"/></svg></span>
-            <h3>10 Jahre Erfahrung</h3>
-            <p style="color:var(--muted);">Erfahrung mit iPhone-Reparaturen seit einem Jahrzehnt – von Display und Akku bis zur Platine. Dein Gerät wird sorgfältig geprüft und repariert.</p>
+            <h3>Persönlicher Reparaturservice</h3>
+            <p style="color:var(--muted);">Direkte Kommunikation, klare Preise und eine persönliche Terminabstimmung für jeden Auftrag.</p>
           </div>
           <div class="highlight-card">
             <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Zm3 5h6m-6 4h6"/></svg></span>
@@ -1688,8 +1650,8 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           </div>
           <div class="highlight-card">
             <span class="highlight-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span>
-            <h3>12 Monate Gewährleistung</h3>
-            <p style="color:var(--muted);">Auf durchgeführte Reparaturen erhältst du 12 Monate Gewährleistung. Bei Fragen zu deinem Auftrag ist PhoneLab persönlich für dich da.</p>
+            <h3>Gesetzliche Gewährleistung</h3>
+            <p style="color:var(--muted);">Für Reparaturen und verbaute Ersatzteile gelten die gesetzlichen Gewährleistungsrechte. Bei Fragen zu deinem Auftrag ist PhoneLab persönlich für dich da.</p>
           </div>
         </div>
       </div>
@@ -1729,36 +1691,11 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
               <div class="step-heading"><span class="step-num">3</span> Reparatur wählen</div>
               <div style="display:flex; gap:10px; align-items:flex-start; background:#eff6ff; border:1px solid #93c5fd; border-radius:12px; padding:11px 14px; margin-bottom:14px; font-size:13px; color:#1e40af; line-height:1.55;">
                 <span style="flex-shrink:0; font-size:15px;">ℹ️</span>
-                <span>Alle Ersatzteile – Display, Kamera, Akku, Gehäuse – sind <strong>hochwertige Drittanbieterteile</strong>, kein Apple-Original. Die verfügbaren Optionen und Preise findest du direkt bei deiner Auswahl. Gegen Aufpreis buchbar: <strong>ohne iOS-Meldung</strong> bei bestimmten Displays &amp; Akkus älterer Modelle; <strong>Original Apple Akku</strong> bei der iPhone 16 Serie (✨ Premium-Optionen erscheinen nach deiner Auswahl).</span>
+                <span>Alle Ersatzteile – Display, Kamera, Akku und Gehäuse – sind <strong>hochwertige Drittanbieterteile</strong>, sofern bei der jeweiligen Reparatur nicht ausdrücklich etwas anderes angegeben ist. Die verfügbaren Optionen und Preise findest du direkt bei deiner Auswahl.</span>
               </div>
               <div class="repair-grid" id="repairsGrid"></div>
             </div>
 
-            <!-- ── Premium Service ────────────────────── -->
-            <div id="noWarningServiceArea" style="display:none; margin-top:22px; padding:18px; background:var(--bg-soft); border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <h3 id="noWarningTitle" class="step-title" style="margin-bottom:10px;"><span>✨</span> Optional: Ohne iOS-Fehlermeldung?</h3>
-
-              <!-- Kunden-Hinweis (nur bei "ohne iOS-Warnung" Optionen relevant) -->
-              <div id="iosWarningHint" style="background:#fef3c7; border:1px solid #f59e0b; border-radius:12px; padding:12px 14px; margin-bottom:14px; display:flex; gap:10px; align-items:flex-start;">
-                <span style="font-size:20px; flex-shrink:0; line-height:1.4;">⚠️</span>
-                <p style="font-size:13px; color:#78350f; margin:0; line-height:1.6;">
-                  <strong>Bitte prüfe vorab selbst in deinen iPhone-Einstellungen:</strong> Gehe zu
-                  <em>Einstellungen → Allgemein → Info</em> und schaue, ob dort bereits eine Meldung wie
-                  „Wichtiges Bauteil" oder „Originalzustand unbekannt" erscheint. <strong>Diese Option ist
-                  nur möglich, wenn bisher keine solche Meldung angezeigt wird.</strong> Die Prüfung liegt
-                  in deiner Verantwortung – bitte melde uns das Ergebnis beim Check-in.
-                </p>
-              </div>
-
-              <p id="noWarningDesc" style="color:var(--muted); font-size:14px; margin-bottom:14px;">
-                Ab dem iPhone 11 (bzw. XS beim Akku) zeigt iOS bei getauschten Displays und Akkus eine
-                Warnung an. Wir können den Original-Chip umprogrammieren, um diese Meldung zu verhindern.
-                Wähle unten pro Reparatur einzeln aus:
-              </p>
-
-              <!-- Dynamische Checkboxen je Reparatur -->
-              <div id="noWarningOptions" style="display:grid; gap:10px;"></div>
-            </div>
           </div>
 
           <div class="summary-card">
@@ -1819,7 +1756,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
 
           <article class="product-card">
             <div class="product-image" title="Details zum iPhone 13 Pro öffnen">
-              <img src="https://img.kleinanzeigen.de/api/v1/prod-ads/images/7f/7f07d477-2c40-4a2e-873a-91d3ef3fe014?rule=%24_59.AUTO" alt="Apple iPhone 13 Pro 128 GB Graphit" loading="lazy" referrerpolicy="no-referrer" />
+              <img src="assets/phones/iphone-13-pro/01.jpg" alt="Apple iPhone 13 Pro 128 GB Graphit" loading="lazy" />
             </div>
             <div class="product-body">
               <span class="badge" style="margin-bottom:12px;">★ Verfügbar · Sehr gut</span>
@@ -1916,8 +1853,8 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           <div style="background:var(--primary-soft);border:1px solid rgba(20,184,166,0.3);border-radius:14px;padding:14px 18px;display:flex;gap:12px;align-items:center;">
             <span style="font-size:22px;flex-shrink:0;">🛡</span>
             <div>
-              <strong style="font-size:14px;color:var(--primary-dark);">12 Monate gesetzliche Gewährleistung</strong>
-              <p style="font-size:13px;color:var(--primary-dark);opacity:0.8;margin-top:2px;">durch PhoneLab Leipzig · nach § 437 BGB</p>
+              <strong style="font-size:14px;color:var(--primary-dark);">Gesetzliche Gewährleistungsrechte</strong>
+              <p style="font-size:13px;color:var(--primary-dark);opacity:0.8;margin-top:2px;">für das angebotene refurbished Gerät</p>
             </div>
           </div>
 
@@ -2054,9 +1991,9 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         <div class="faq-grid">
           <details><summary>Brauche ich einen Termin?</summary><p>Ja. PhoneLab arbeitet ohne klassisches Ladengeschäft. Vereinbare vor der Abgabe bitte kurz per WhatsApp oder Telefon einen Termin in Leipzig-Lindenau.</p></details>
           <details><summary>Wie lange dauert eine Reparatur?</summary><p>In der Regel 3–7 Werktage nach Geräteeingang. Ersatzteile werden passend zu deinem Auftrag bestellt; den konkreten Zeitrahmen bestätigen wir dir persönlich.</p></details>
-          <details><summary>Welche Ersatzteile werden verwendet?</summary><p>Die Reparaturoptionen nutzen hochwertige Drittanbieterteile. Verfügbare Premium-Optionen – etwa bestimmte Originalteile oder Reparaturen ohne iOS-Meldung – werden im Konfigurator transparent angezeigt.</p></details>
+          <details><summary>Welche Ersatzteile werden verwendet?</summary><p>Die Reparaturoptionen nutzen hochwertige Drittanbieterteile, sofern bei der jeweiligen Reparatur nicht ausdrücklich etwas anderes angegeben ist. Art und Preis des Ersatzteils werden vor der Auftragserteilung transparent ausgewiesen.</p></details>
           <details><summary>Kann ich mein iPhone einsenden?</summary><p>Ja. Du kannst dein Gerät per DHL einsenden. Beim Abschluss werden Rückversand und mögliche Versandkosten transparent in der Zusammenfassung angezeigt.</p></details>
-          <details><summary>Gibt es Gewährleistung?</summary><p>Auf durchgeführte Reparaturen erhältst du 12 Monate Gewährleistung. Ausgenommen sind neue Schäden, zum Beispiel durch Sturz, Wasser oder unsachgemäße Nutzung.</p></details>
+          <details><summary>Gibt es Gewährleistung?</summary><p>Für Reparaturen und verbaute Ersatzteile gelten die gesetzlichen Gewährleistungsrechte. Neue Schäden, etwa durch Sturz, Wasser oder unsachgemäße Nutzung, sind davon nicht umfasst.</p></details>
           <details><summary>Kann ich ein refurbished iPhone vor Ort ansehen?</summary><p>Ja. Verfügbare Geräte kannst du nach Terminvereinbarung in Leipzig-Lindenau ansehen und abholen oder kostenlos per DHL liefern lassen.</p></details>
         </div>
       </div>
@@ -2321,8 +2258,8 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       <div style="max-height: 400px; overflow-y: auto; font-size: 14px; line-height: 1.6; color: var(--muted);">
         <p><strong>1. Geltungsbereich</strong><br>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge über Reparaturleistungen und den Verkauf von gebrauchten iPhones zwischen PhoneLab Leipzig und dem Kunden.</p><br>
         <p><strong>2. Vertragsschluss</strong><br>Die Präsentation der Reparaturleistungen auf der Website stellt kein rechtlich bindendes Angebot dar. Erst durch das Absenden des Online-Formulars gibt der Kunde eine verbindliche Anfrage ab. Der Vertrag kommt zustande, sobald wir die Reparaturannahme bestätigen.</p><br>
-        <p><strong>3. Preise und Zahlung</strong><br>Die angegebenen Preise sind Endpreise. Da wir die Kleinunternehmerregelung gemäß § 19 UStG nutzen, wird keine Umsatzsteuer ausgewiesen. Die Zahlung erfolgt bar vor Ort oder per PayPal nach Abschluss der Reparatur.</p><br>
-        <p><strong>4. Gewährleistung</strong><br>Auf alle durchgeführten Reparaturen und ersetzten Bauteile gewähren wir eine gesetzliche Gewährleistung. Ausgenommen sind Schäden, die nach der Reparatur durch unsachgemäßen Gebrauch (z.B. Sturz- oder Wasserschaden) entstanden sind.</p>
+        <p><strong>3. Preise und Zahlung</strong><br>Die angegebenen Preise sind Endpreise. Da wir die Kleinunternehmerregelung gemäß § 19 UStG nutzen, wird keine Umsatzsteuer ausgewiesen. Bei persönlicher Abgabe kann nach Abschluss der Reparatur bar bezahlt werden. Bei Versandaufträgen ist die im Checkout ausgewählte Online-Zahlung vor der Bearbeitung fällig.</p><br>
+        <p><strong>4. Gewährleistung</strong><br>Für Reparaturen und ersetzte Bauteile gelten die gesetzlichen Gewährleistungsrechte. Nicht umfasst sind Schäden, die nach der Reparatur durch unsachgemäßen Gebrauch entstehen, zum Beispiel durch Sturz- oder Wasserschäden.</p>
       </div>
     </div>
   </div>
@@ -2537,72 +2474,72 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       "11": {
         label: "iPhone 11",
         models: {
-          "ip11pm":  { name: "11 Pro Max", display: 75, akku: 48,  kamera: 69, housing: 119, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip11p":  { name: "11 Pro", display: 69, akku: 44,  kamera: 59, housing: 109, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip11":  { name: "11", display: 65, akku: 36,  kamera: 49, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 }
+          "ip11pm":  { name: "11 Pro Max", display: 75, akku: 48,  kamera: 69, housing: 119, backglass: 0 },
+          "ip11p":  { name: "11 Pro", display: 69, akku: 44,  kamera: 59, housing: 109, backglass: 0 },
+          "ip11":  { name: "11", display: 65, akku: 36,  kamera: 49, housing: 89, backglass: 0 }
         }
       },
       "12": {
         label: "iPhone 12",
         models: {
-          "ip12pm":  { name: "12 Pro Max", display: 105, akku: 42,  kamera: 89, housing: 139, backglass: 0, icDiff: 39, akkuDiff: 16 },
-          "ip12p":  { name: "12 Pro", display: 92, akku: 46,  kamera: 79, housing: 129, backglass: 0, icDiff: 39, akkuDiff: 16 },
-          "ip12":  { name: "12", display: 85, akku: 42,  kamera: 69, housing: 109, backglass: 0, icDiff: 39, akkuDiff: 16 },
-          "ip12mini":  { name: "12 Mini", display: 79, akku: 39,  kamera: 59, housing: 99, backglass: 0, icDiff: 39, akkuDiff: 16 }
+          "ip12pm":  { name: "12 Pro Max", display: 105, akku: 42,  kamera: 89, housing: 139, backglass: 0 },
+          "ip12p":  { name: "12 Pro", display: 92, akku: 46,  kamera: 79, housing: 129, backglass: 0 },
+          "ip12":  { name: "12", display: 85, akku: 42,  kamera: 69, housing: 109, backglass: 0 },
+          "ip12mini":  { name: "12 Mini", display: 79, akku: 39,  kamera: 59, housing: 99, backglass: 0 }
         }
       },
       "13": {
         label: "iPhone 13",
         models: {
-          "ip13pm":  { name: "13 Pro Max", display: 129, akku: 52,  kamera: 105, housing: 159, backglass: 0, icDiff: 55, akkuDiff: 18 },
-          "ip13p":  { name: "13 Pro", display: 119, akku: 49,  kamera: 95, housing: 145, backglass: 0, icDiff: 55, akkuDiff: 16 },
-          "ip13":  { name: "13", display: 105, akku: 45,  kamera: 75, housing: 125, backglass: 0, icDiff: 52, akkuDiff: 16 },
-          "ip13mini":  { name: "13 Mini", display: 105, akku: 42,  kamera: 65, housing: 115, backglass: 0, icDiff: 55, akkuDiff: 16 }
+          "ip13pm":  { name: "13 Pro Max", display: 129, akku: 52,  kamera: 105, housing: 159, backglass: 0 },
+          "ip13p":  { name: "13 Pro", display: 119, akku: 49,  kamera: 95, housing: 145, backglass: 0 },
+          "ip13":  { name: "13", display: 105, akku: 45,  kamera: 75, housing: 125, backglass: 0 },
+          "ip13mini":  { name: "13 Mini", display: 105, akku: 42,  kamera: 65, housing: 115, backglass: 0 }
         }
       },
       "14": {
         label: "iPhone 14",
         models: {
-          "ip14pm":  { name: "14 Pro Max", display: 185, akku: 65,  kamera: 129, housing: 205, backglass: 99, icDiff: 65, akkuDiff: 20 },
-          "ip14p":  { name: "14 Pro", display: 169, akku: 59,  kamera: 115, housing: 189, backglass: 89, icDiff: 60, akkuDiff: 18 },
-          "ip14plus":  { name: "14 Plus", display: 119, akku: 55,  kamera: 95, housing: 165, backglass: 79, icDiff: 65, akkuDiff: 18 },
-          "ip14":  { name: "14", display: 99, akku: 49,  kamera: 85, housing: 155, backglass: 75, icDiff: 65, akkuDiff: 18 }
+          "ip14pm":  { name: "14 Pro Max", display: 185, akku: 65,  kamera: 129, housing: 205, backglass: 99 },
+          "ip14p":  { name: "14 Pro", display: 169, akku: 59,  kamera: 115, housing: 189, backglass: 89 },
+          "ip14plus":  { name: "14 Plus", display: 119, akku: 55,  kamera: 95, housing: 165, backglass: 79 },
+          "ip14":  { name: "14", display: 99, akku: 49,  kamera: 85, housing: 155, backglass: 75 }
         }
       },
       "15": {
         label: "iPhone 15",
         models: {
-          "ip15pm":  { name: "15 Pro Max", display: 199, akku: 69,  kamera: 139, housing: 229, backglass: 109, icDiff: 65, akkuDiff: 25 },
-          "ip15p":  { name: "15 Pro", display: 185, akku: 65,  kamera: 119, housing: 215, backglass: 99, icDiff: 60, akkuDiff: 25 },
-          "ip15plus":  { name: "15 Plus", display: 149, akku: 59,  kamera: 105, housing: 165, backglass: 79, icDiff: 65, akkuDiff: 20 },
-          "ip15":  { name: "15", display: 129, akku: 55,  kamera: 99, housing: 155, backglass: 75, icDiff: 65, akkuDiff: 20 }
+          "ip15pm":  { name: "15 Pro Max", display: 199, akku: 69,  kamera: 139, housing: 229, backglass: 109 },
+          "ip15p":  { name: "15 Pro", display: 185, akku: 65,  kamera: 119, housing: 215, backglass: 99 },
+          "ip15plus":  { name: "15 Plus", display: 149, akku: 59,  kamera: 105, housing: 165, backglass: 79 },
+          "ip15":  { name: "15", display: 129, akku: 55,  kamera: 99, housing: 155, backglass: 75 }
         }
       },
       "16": {
         label: "iPhone 16",
         models: {
-          "ip16pm":  { name: "16 Pro Max", display: 299, akku: 89,  kamera: 169, housing: 239, backglass: 119, icDiff: 70, akkuDiff: 49 },
-          "ip16p":  { name: "16 Pro", display: 265, akku: 85,  kamera: 149, housing: 219, backglass: 109, icDiff: 70, akkuDiff: 49 },
-          "ip16plus":  { name: "16 Plus", display: 219, akku: 79,  kamera: 129, housing: 189, backglass: 95, icDiff: 65, akkuDiff: 45 },
-          "ip16":  { name: "16", display: 189, akku: 75,  kamera: 119, housing: 175, backglass: 89, icDiff: 65, akkuDiff: 45 }
+          "ip16pm":  { name: "16 Pro Max", display: 299, akku: 89,  kamera: 169, housing: 239, backglass: 119 },
+          "ip16p":  { name: "16 Pro", display: 265, akku: 85,  kamera: 149, housing: 219, backglass: 109 },
+          "ip16plus":  { name: "16 Plus", display: 219, akku: 79,  kamera: 129, housing: 189, backglass: 95 },
+          "ip16":  { name: "16", display: 189, akku: 75,  kamera: 119, housing: 175, backglass: 89 }
         }
       },
       "X/XS": {
         label: "iPhone X / XS",
         models: {
-          "ipxsm":  { name: "XS Max", display: 69, akku: 38,  kamera: 59, housing: 99, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipxs":  { name: "XS", display: 65, akku: 35,  kamera: 49, housing: 89, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipxr":  { name: "XR", display: 55, akku: 32,  kamera: 45, housing: 79, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipx":  { name: "X", display: 65, akku: 35,  kamera: 49, housing: 85, backglass: 0, icDiff: 0, akkuDiff: 0 }
+          "ipxsm":  { name: "XS Max", display: 69, akku: 38,  kamera: 59, housing: 99, backglass: 0 },
+          "ipxs":  { name: "XS", display: 65, akku: 35,  kamera: 49, housing: 89, backglass: 0 },
+          "ipxr":  { name: "XR", display: 55, akku: 32,  kamera: 45, housing: 79, backglass: 0 },
+          "ipx":  { name: "X", display: 65, akku: 35,  kamera: 49, housing: 85, backglass: 0 }
         }
       },
       "8/SE": {
         label: "iPhone 8/SE",
         models: {
-          "ipse3":  { name: "SE 3 (2022)", display: 65, akku: 38,  kamera: 42, housing: 79, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ipse2":  { name: "SE 2 (2020)", display: 52, akku: 32,  kamera: 35, housing: 69, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip8p":  { name: "8 Plus", display: 59, akku: 36,  kamera: 42, housing: 69, backglass: 0, icDiff: 0, akkuDiff: 0 },
-          "ip8":  { name: "8", display: 49, akku: 29,  kamera: 35, housing: 59, backglass: 0, icDiff: 0, akkuDiff: 0 }
+          "ipse3":  { name: "SE 3 (2022)", display: 65, akku: 38,  kamera: 42, housing: 79, backglass: 0 },
+          "ipse2":  { name: "SE 2 (2020)", display: 52, akku: 32,  kamera: 35, housing: 69, backglass: 0 },
+          "ip8p":  { name: "8 Plus", display: 59, akku: 36,  kamera: 42, housing: 69, backglass: 0 },
+          "ip8":  { name: "8", display: 49, akku: 29,  kamera: 35, housing: 59, backglass: 0 }
         }
       }
     };
@@ -2744,11 +2681,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     const modelGrid   = document.getElementById('modelGrid');
     const repairsGrid = document.getElementById('repairsGrid');
 
-    const noWarningServiceArea = document.getElementById('noWarningServiceArea');
-    const noWarningOptionsEl   = document.getElementById('noWarningOptions');
-    // Per-repair premium-state (gets reset when repair is deselected or model changes)
-    let noWarningState = { display: false, akku: false };
-
     // ─── Breadcrumb ─────────────────────────────────────────────
     function updateBreadcrumb() {
       const bc = document.getElementById('repairBreadcrumb');
@@ -2799,8 +2731,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     function resetToSeries() {
       selectedSeriesKey = null; selectedModelKey = null;
       selectedRepairs.clear(); diagnoseModeActive = false;
-      noWarningState = { display: false, akku: false };
-      noWarningServiceArea.style.display = 'none';
       hideDiagnoseFields();
       showStep('stepSeries');
       updateBreadcrumb(); updateSummary();
@@ -2809,8 +2739,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     function resetToModel() {
       selectedModelKey = null;
       selectedRepairs.clear(); diagnoseModeActive = false;
-      noWarningState = { display: false, akku: false };
-      noWarningServiceArea.style.display = 'none';
       hideDiagnoseFields();
       showStep('stepModel');
       updateBreadcrumb(); updateSummary();
@@ -2834,8 +2762,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       selectedModelKey  = null;
       selectedRepairs.clear();
       diagnoseModeActive = false;
-      noWarningState = { display: false, akku: false };
-      noWarningServiceArea.style.display = 'none';
       hideDiagnoseFields();
 
       modelGrid.innerHTML = '';
@@ -2857,7 +2783,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       selectedModelKey = modelKey;
       selectedRepairs.clear();
       diagnoseModeActive = false;
-      noWarningState = { display: false, akku: false };
       hideDiagnoseFields();
 
       repairsGrid.innerHTML = '';
@@ -2869,20 +2794,18 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         switch (rep) {
           case 'display':
             return oledSeries.includes(selectedSeriesKey)
-              ? 'Hochwertiges Drittanbieter Soft-OLED · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar'
-              : 'Hochwertiges Drittanbieterteil · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar';
+              ? 'Hochwertiges Drittanbieter Soft-OLED · gesetzliche Gewährleistungsrechte'
+              : 'Hochwertiges Drittanbieterteil · gesetzliche Gewährleistungsrechte';
           case 'akku':
-            return selectedSeriesKey === '16'
-              ? 'Hochwertiges Drittanbieterteil · Originalkapazität · 12 M. Garantie · ⭐ Original Apple Akku optional'
-              : 'Starke Leistung · Originalkapazität · 12 M. Garantie · ✨ Premium (ohne iOS-Meldung) zubuchbar';
+            return 'Hochwertiges Drittanbieterteil · Originalkapazität · gesetzliche Gewährleistungsrechte';
           case 'kamera':
-            return 'Hochwertiges Drittanbieterteil · geprüfte Optik · 12 M. Garantie';
+            return 'Hochwertiges Drittanbieterteil · geprüfte Optik · gesetzliche Gewährleistungsrechte';
           case 'housing':
-            return 'Passgenaue Verarbeitung · neuwertig · 12 M. Garantie';
+            return 'Passgenaue Verarbeitung · neuwertig · gesetzliche Gewährleistungsrechte';
           case 'backglass':
-            return 'Originaloptik · bruchsicher verklebt · 12 M. Garantie';
+            return 'Originaloptik · bruchsicher verklebt · gesetzliche Gewährleistungsrechte';
           default:
-            return 'Geprüfte Qualität · 12 M. Garantie';
+            return 'Geprüfte Qualität · gesetzliche Gewährleistungsrechte';
         }
       }
 
@@ -2982,76 +2905,11 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       if (selectedRepairs.has(rep)) {
         selectedRepairs.delete(rep);
         element.classList.remove('active');
-        // Premium-Status für diese Reparatur zurücksetzen
-        if (rep === 'display') noWarningState.display = false;
-        if (rep === 'akku')    noWarningState.akku    = false;
       } else {
         selectedRepairs.add(rep);
         element.classList.add('active');
       }
       updateSummary();
-    }
-
-    // ── Hilfsfunktion: Premium-Checkboxen je Reparatur rendern ──────────
-    function renderNoWarningOptions(surchargeDisplay, surchargeAkku) {
-      noWarningOptionsEl.innerHTML = '';
-      const isIPhone16 = selectedSeriesKey === '16';
-
-      // ─ Titel und Beschreibung dynamisch anpassen ─
-      const titleEl   = document.getElementById('noWarningTitle');
-      const hintEl    = document.getElementById('iosWarningHint');
-      const descEl    = document.getElementById('noWarningDesc');
-
-      const hasDisplayWarn = surchargeDisplay > 0;
-      const hasAkkuApple   = isIPhone16 && surchargeAkku > 0;
-      const hasAkkuWarn    = !isIPhone16 && surchargeAkku > 0;
-
-      if (hasAkkuApple && !hasDisplayWarn) {
-        // Nur iPhone-16-Akku: Apple Original Premium
-        titleEl.innerHTML = '<span>⭐</span> Optional: Original Apple Akku';
-        hintEl.style.display = 'none';
-        descEl.innerHTML = 'Für die iPhone 16 Serie bieten wir optional einen <strong>Original Apple Akku</strong> an. Damit erhältst du volle iOS-Kompatibilität, keine Warnmeldungen und identische Akkulaufzeit wie im Werkszustand. Der günstigere Drittanbieter-Akku (bereits im Basispreis enthalten) ist ebenfalls hochwertig und zuverlässig.';
-      } else if (hasAkkuApple && hasDisplayWarn) {
-        // Display (ohne Warnung) + iPhone-16-Akku (Apple Original): gemischt
-        titleEl.innerHTML = '<span>✨</span> Optional: Premium-Optionen';
-        hintEl.style.display = 'flex';
-        descEl.innerHTML = 'Beim Display kann die iOS-Warnung per Chip-Umprogrammierung entfernt werden. Für den Akku bieten wir optional einen <strong>Original Apple Akku</strong> an, der keine Warnmeldung erzeugt. Wähle unten pro Reparatur einzeln aus:';
-      } else {
-        // Standard: ohne iOS-Fehlermeldung (Display / ältere Akku-Modelle)
-        titleEl.innerHTML = '<span>✨</span> Optional: Ohne iOS-Fehlermeldung?';
-        hintEl.style.display = 'flex';
-        descEl.textContent = 'Ab dem iPhone 11 (bzw. XS beim Akku) zeigt iOS bei getauschten Displays und Akkus eine Warnung an. Wir können den Original-Chip umprogrammieren, um diese Meldung zu verhindern. Wähle unten pro Reparatur einzeln aus:';
-      }
-
-      function makeRow(rep, surcharge, label) {
-        const checked = noWarningState[rep];
-        const row = document.createElement('div');
-        row.style.cssText = 'display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:12px 14px;';
-        const cbId = 'noWarn_' + rep;
-        row.innerHTML = `
-          <input type="checkbox" id="${cbId}" ${checked ? 'checked' : ''}
-            style="width:20px; height:20px; accent-color:var(--primary); cursor:pointer; flex-shrink:0;" />
-          <label for="${cbId}" style="margin:0; cursor:pointer; font-weight:700; flex:1; font-size:14px; line-height:1.4;">
-            ${label}
-            <span style="color:var(--primary); margin-left:6px;">+€${surcharge.toFixed(2)}</span>
-          </label>`;
-        row.querySelector('input').addEventListener('change', function () {
-          noWarningState[rep] = this.checked;
-          updateSummary();
-        });
-        return row;
-      }
-
-      if (surchargeDisplay > 0) {
-        noWarningOptionsEl.appendChild(
-          makeRow('display', surchargeDisplay, '✨ Display-Tausch ohne iOS-Warnung')
-        );
-      }
-      if (surchargeAkku > 0) {
-        noWarningOptionsEl.appendChild(
-          makeRow('akku', surchargeAkku, isIPhone16 ? '⭐ Akku-Wechsel mit Original Apple Akku' : '✨ Akku-Wechsel ohne iOS-Warnung')
-        );
-      }
     }
 
     // 5. Zusammenfassung aktualisieren
@@ -3062,7 +2920,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       if (!selectedModelKey) {
         summaryList.innerHTML = '<li>Kein Modell gewählt</li>';
         totalPriceEl.textContent = '€0.00';
-        noWarningServiceArea.style.display = 'none';
         return;
       }
 
@@ -3085,7 +2942,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         li.innerHTML = `🔍 Fehlerdiagnose: €${DIAGNOSE_BASE_FEE} Pauschale + <strong>€${approvedAmount.toFixed(2)}</strong> Freigabe`;
         li.style.color = '#92400e';
         summaryList.appendChild(li);
-        noWarningServiceArea.style.display = 'none';
 
         const oldPriceEl = document.getElementById('oldPrice');
         const discountLabel = document.getElementById('discountLabel');
@@ -3103,36 +2959,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         li.textContent = `${repairLabels[rep]}: €${price}`;
         summaryList.appendChild(li);
       });
-
-      // ── Premium Service: separate Aufpreise je Reparatur ──────────────
-      const icSurchargeDisplay = (selectedRepairs.has('display') && selectedModel.icDiff  > 0) ? selectedModel.icDiff  : 0;
-      const icSurchargeAkku    = (selectedRepairs.has('akku')    && selectedModel.akkuDiff > 0) ? selectedModel.akkuDiff : 0;
-
-      if (icSurchargeDisplay > 0 || icSurchargeAkku > 0) {
-        noWarningServiceArea.style.display = 'block';
-        renderNoWarningOptions(icSurchargeDisplay, icSurchargeAkku);
-      } else {
-        noWarningServiceArea.style.display = 'none';
-        noWarningState.display = false;
-        noWarningState.akku    = false;
-      }
-
-      if (noWarningState.display && icSurchargeDisplay > 0) {
-        total += icSurchargeDisplay;
-        const li = document.createElement('li');
-        li.style.color = 'var(--primary)'; li.style.fontWeight = 'bold';
-        li.textContent = `✨ Premium (Display, ohne Warnung): +€${icSurchargeDisplay.toFixed(2)}`;
-        summaryList.appendChild(li);
-      }
-      if (noWarningState.akku && icSurchargeAkku > 0) {
-        total += icSurchargeAkku;
-        const li = document.createElement('li');
-        li.style.color = 'var(--primary)'; li.style.fontWeight = 'bold';
-        li.textContent = selectedSeriesKey === '16'
-          ? `⭐ Original Apple Akku: +€${icSurchargeAkku.toFixed(2)}`
-          : `✨ Premium (Akku, ohne Warnung): +€${icSurchargeAkku.toFixed(2)}`;
-        summaryList.appendChild(li);
-      }
 
       // Kombi-Rabatt
       let discount = 0;
@@ -3376,9 +3202,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       const totalVal  = parseFloat(totalText.replace('€','')) || 0;
 
       let details = Array.from(selectedRepairs).map(r => repairLabels[r]).join(', ');
-      if (noWarningState.display && model.icDiff  > 0) details += ' + Premium (Display, ohne Warnung)';
-      if (noWarningState.akku    && model.akkuDiff > 0) details += selectedSeriesKey === '16' ? ' + Original Apple Akku' : ' + Premium (Akku, ohne Warnung)';
-
       addToCart({
         type: 'repair',
         label: `iPhone ${model.name} – Reparatur`,
@@ -3752,11 +3575,11 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         "akku": 100,
         "color": "#4b4a46",
         "images": [
-          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/7f/7f07d477-2c40-4a2e-873a-91d3ef3fe014?rule=%24_59.AUTO",
-          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/28/28377358-4372-4e23-96d8-4c3244bfaeb0?rule=%24_59.AUTO",
-          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/51/51dc678e-4276-499b-8330-758fb3134553?rule=%24_59.AUTO",
-          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/c4/c4459796-0f06-4d4a-970d-dc83170c0400?rule=%24_59.AUTO",
-          "https://img.kleinanzeigen.de/api/v1/prod-ads/images/89/89551d5f-711d-4eea-ae97-c5765382a306?rule=%24_59.AUTO"
+          "assets/phones/iphone-13-pro/01.jpg",
+          "assets/phones/iphone-13-pro/02.jpg",
+          "assets/phones/iphone-13-pro/03.jpg",
+          "assets/phones/iphone-13-pro/04.jpg",
+          "assets/phones/iphone-13-pro/05.jpg"
         ],
         "specs": [
           { "cat": "Gerät" },
@@ -4104,8 +3927,7 @@ const deviceHighlightPhotos = {"ip14pro128":{"source":"https://img.kleinanzeigen
   }
   function renderSlide(key, index, total) {
     const device = deviceDetails[key];
-    const photo = typeof deviceHighlightPhotos !== 'undefined' ? deviceHighlightPhotos[key] : null;
-    const imageSource = photo && device.images.includes(photo.source) ? photo.image : device.images[0];
+    const imageSource = device.images[0];
     const price = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: Number.isInteger(device.cartPrice) ? 0 : 2 }).format(device.cartPrice);
     return `<div class="showcase-slide${index === 0 ? ' is-active' : ''}" role="group" aria-roledescription="Folie" aria-label="${index + 1} von ${total}: ${escapeHtml(device.name)}" aria-hidden="${index !== 0}"${index ? ' inert' : ''}>
       <button type="button" class="showcase-product" data-highlight-device="${escapeHtml(key)}" aria-label="${escapeHtml(device.name)}, ${escapeHtml(device.subtitle)}, ${escapeHtml(price)} – Gerät ansehen">
