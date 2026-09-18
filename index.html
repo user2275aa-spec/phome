@@ -1594,7 +1594,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           </div>
           <div class="hero-proof" aria-label="Beispielpreise">
             <span>Display ab 49 €</span>
-            <span>Akku ab 29 €</span>
+            <span>Akku ab 35 €</span>
             <span>Gesetzliche Gewährleistungsrechte</span>
           </div>
           <div class="trust-row">
@@ -1876,6 +1876,11 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           <p class="lead">Informiere dich über Ablauf, Preise und Optionen – oder wähle dein Modell direkt im Reparatur-Konfigurator.</p>
         </div>
         <div class="highlights-grid">
+          <a class="highlight-card" href="/iphone-17-reparatur-leipzig.html" aria-label="Mehr zur iPhone 17 Reparatur in Leipzig">
+            <span class="highlight-icon" aria-hidden="true">17</span>
+            <h3>iPhone 17 Reparatur</h3>
+            <p>Display, Akku und weitere Reparaturen für iPhone 17, Air, Pro, Pro Max und 17e.</p>
+          </a>
           <a class="highlight-card" href="/iphone-display-reparatur-leipzig.html" aria-label="Mehr zur iPhone Display Reparatur in Leipzig">
             <span class="highlight-icon" aria-hidden="true">▣</span>
             <h3>iPhone Display Reparatur</h3>
@@ -1884,7 +1889,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
           <a class="highlight-card" href="/iphone-akku-wechsel-leipzig.html" aria-label="Mehr zum iPhone Akku-Wechsel in Leipzig">
             <span class="highlight-icon" aria-hidden="true">◫</span>
             <h3>iPhone Akku wechseln</h3>
-            <p>Bei kurzer Laufzeit oder unerwartetem Abschalten. Modellpreise ab 29 €.</p>
+            <p>Bei kurzer Laufzeit oder unerwartetem Abschalten. Modellpreise ab 35 €.</p>
           </a>
           <a class="highlight-card" href="/iphone-rueckglas-reparatur-leipzig.html" aria-label="Mehr zur iPhone Rückglas Reparatur in Leipzig">
             <span class="highlight-icon" aria-hidden="true">◇</span>
@@ -2471,6 +2476,16 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
 
     // ─── Datenstruktur ────────────────────────────────────────────
     const seriesData = {
+      "17": {
+        label: "iPhone 17",
+        models: {
+          "ip17pm": { name: "17 Pro Max", display: 289, displayOriginal: 499, akku: 99, akkuOriginal: 119, kamera: 189, housing: 269, backglass: 139 },
+          "ip17p":  { name: "17 Pro", display: 189, displayOriginal: 449, akku: 89, akkuOriginal: 119, kamera: 169, housing: 249, backglass: 129 },
+          "ip17air":{ name: "Air", display: 169, akku: 85, kamera: 149, housing: 239, backglass: 119 },
+          "ip17":   { name: "17", display: 159, displayOriginal: 399, akku: 79, akkuOriginal: 109, kamera: 139, housing: 219, backglass: 109 },
+          "ip17e":  { name: "17e", display: 89, displayOriginal: 289, akku: 59, akkuOriginal: 99, kamera: 109, housing: 189, backglass: 99 }
+        }
+      },
       "11": {
         label: "iPhone 11",
         models: {
@@ -2482,46 +2497,46 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       "12": {
         label: "iPhone 12",
         models: {
-          "ip12pm":  { name: "12 Pro Max", display: 105, akku: 42,  kamera: 89, housing: 139, backglass: 0 },
-          "ip12p":  { name: "12 Pro", display: 92, akku: 46,  kamera: 79, housing: 129, backglass: 0 },
-          "ip12":  { name: "12", display: 85, akku: 42,  kamera: 69, housing: 109, backglass: 0 },
-          "ip12mini":  { name: "12 Mini", display: 79, akku: 39,  kamera: 59, housing: 99, backglass: 0 }
+          "ip12pm":  { name: "12 Pro Max", display: 105, displayOriginal: 399, akku: 42, akkuOriginal: 89, kamera: 89, housing: 139, backglass: 0 },
+          "ip12p":  { name: "12 Pro", display: 92, displayOriginal: 349, akku: 46, akkuOriginal: 89, kamera: 79, housing: 129, backglass: 0 },
+          "ip12":  { name: "12", display: 85, displayOriginal: 349, akku: 42, akkuOriginal: 89, kamera: 69, housing: 109, backglass: 0 },
+          "ip12mini":  { name: "12 Mini", display: 79, displayOriginal: 279, akku: 39, akkuOriginal: 89, kamera: 59, housing: 99, backglass: 0 }
         }
       },
       "13": {
         label: "iPhone 13",
         models: {
-          "ip13pm":  { name: "13 Pro Max", display: 129, akku: 52,  kamera: 105, housing: 159, backglass: 0 },
-          "ip13p":  { name: "13 Pro", display: 119, akku: 49,  kamera: 95, housing: 145, backglass: 0 },
-          "ip13":  { name: "13", display: 105, akku: 45,  kamera: 75, housing: 125, backglass: 0 },
-          "ip13mini":  { name: "13 Mini", display: 105, akku: 42,  kamera: 65, housing: 115, backglass: 0 }
+          "ip13pm":  { name: "13 Pro Max", display: 129, displayOriginal: 399, akku: 52, akkuOriginal: 89, kamera: 105, housing: 159, backglass: 0 },
+          "ip13p":  { name: "13 Pro", display: 119, displayOriginal: 349, akku: 49, akkuOriginal: 89, kamera: 95, housing: 145, backglass: 0 },
+          "ip13":  { name: "13", display: 105, displayOriginal: 349, akku: 45, akkuOriginal: 89, kamera: 75, housing: 125, backglass: 0 },
+          "ip13mini":  { name: "13 Mini", display: 105, displayOriginal: 279, akku: 42, akkuOriginal: 89, kamera: 65, housing: 115, backglass: 0 }
         }
       },
       "14": {
         label: "iPhone 14",
         models: {
-          "ip14pm":  { name: "14 Pro Max", display: 185, akku: 65,  kamera: 129, housing: 205, backglass: 99 },
-          "ip14p":  { name: "14 Pro", display: 169, akku: 59,  kamera: 115, housing: 189, backglass: 89 },
-          "ip14plus":  { name: "14 Plus", display: 119, akku: 55,  kamera: 95, housing: 165, backglass: 79 },
-          "ip14":  { name: "14", display: 99, akku: 49,  kamera: 85, housing: 155, backglass: 75 }
+          "ip14pm":  { name: "14 Pro Max", display: 169, displayOriginal: 479, akku: 65, akkuOriginal: 99, kamera: 129, housing: 205, backglass: 99 },
+          "ip14p":  { name: "14 Pro", display: 129, displayOriginal: 399, akku: 59, akkuOriginal: 99, kamera: 115, housing: 189, backglass: 89 },
+          "ip14plus":  { name: "14 Plus", display: 109, displayOriginal: 399, akku: 55, akkuOriginal: 99, kamera: 95, housing: 165, backglass: 79 },
+          "ip14":  { name: "14", display: 99, displayOriginal: 349, akku: 49, akkuOriginal: 99, kamera: 85, housing: 155, backglass: 75 }
         }
       },
       "15": {
         label: "iPhone 15",
         models: {
-          "ip15pm":  { name: "15 Pro Max", display: 199, akku: 69,  kamera: 139, housing: 229, backglass: 109 },
-          "ip15p":  { name: "15 Pro", display: 185, akku: 65,  kamera: 119, housing: 215, backglass: 99 },
-          "ip15plus":  { name: "15 Plus", display: 149, akku: 59,  kamera: 105, housing: 165, backglass: 79 },
-          "ip15":  { name: "15", display: 129, akku: 55,  kamera: 99, housing: 155, backglass: 75 }
+          "ip15pm":  { name: "15 Pro Max", display: 199, displayOriginal: 479, akku: 69, akkuOriginal: 99, kamera: 139, housing: 229, backglass: 109 },
+          "ip15p":  { name: "15 Pro", display: 179, displayOriginal: 399, akku: 65, akkuOriginal: 99, kamera: 119, housing: 215, backglass: 99 },
+          "ip15plus":  { name: "15 Plus", display: 149, displayOriginal: 399, akku: 59, akkuOriginal: 99, kamera: 105, housing: 165, backglass: 79 },
+          "ip15":  { name: "15", display: 129, displayOriginal: 349, akku: 55, akkuOriginal: 99, kamera: 99, housing: 155, backglass: 75 }
         }
       },
       "16": {
         label: "iPhone 16",
         models: {
-          "ip16pm":  { name: "16 Pro Max", display: 299, akku: 89,  kamera: 169, housing: 239, backglass: 119 },
-          "ip16p":  { name: "16 Pro", display: 265, akku: 85,  kamera: 149, housing: 219, backglass: 109 },
-          "ip16plus":  { name: "16 Plus", display: 219, akku: 79,  kamera: 129, housing: 189, backglass: 95 },
-          "ip16":  { name: "16", display: 189, akku: 75,  kamera: 119, housing: 175, backglass: 89 }
+          "ip16pm":  { name: "16 Pro Max", display: 269, displayOriginal: 479, akku: 89, akkuOriginal: 109, kamera: 169, housing: 239, backglass: 119 },
+          "ip16p":  { name: "16 Pro", display: 169, displayOriginal: 429, akku: 85, akkuOriginal: 109, kamera: 149, housing: 219, backglass: 109 },
+          "ip16plus":  { name: "16 Plus", display: 149, displayOriginal: 399, akku: 79, akkuOriginal: 99, kamera: 129, housing: 189, backglass: 95 },
+          "ip16":  { name: "16", display: 129, displayOriginal: 349, akku: 75, akkuOriginal: 99, kamera: 119, housing: 175, backglass: 89 }
         }
       },
       "X/XS": {
@@ -2529,24 +2544,26 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         models: {
           "ipxsm":  { name: "XS Max", display: 69, akku: 38,  kamera: 59, housing: 99, backglass: 0 },
           "ipxs":  { name: "XS", display: 65, akku: 35,  kamera: 49, housing: 89, backglass: 0 },
-          "ipxr":  { name: "XR", display: 55, akku: 32,  kamera: 45, housing: 79, backglass: 0 },
-          "ipx":  { name: "X", display: 65, akku: 35,  kamera: 49, housing: 85, backglass: 0 }
+          "ipxr":  { name: "XR", display: 55, akku: 35,  kamera: 45, housing: 79, backglass: 0 },
+          "ipx":  { name: "X", display: 65, akku: 39,  kamera: 49, housing: 85, backglass: 0 }
         }
       },
       "8/SE": {
         label: "iPhone 8/SE",
         models: {
           "ipse3":  { name: "SE 3 (2022)", display: 65, akku: 38,  kamera: 42, housing: 79, backglass: 0 },
-          "ipse2":  { name: "SE 2 (2020)", display: 52, akku: 32,  kamera: 35, housing: 69, backglass: 0 },
-          "ip8p":  { name: "8 Plus", display: 59, akku: 36,  kamera: 42, housing: 69, backglass: 0 },
-          "ip8":  { name: "8", display: 49, akku: 29,  kamera: 35, housing: 59, backglass: 0 }
+          "ipse2":  { name: "SE 2 (2020)", display: 52, akku: 35,  kamera: 35, housing: 69, backglass: 0 },
+          "ip8p":  { name: "8 Plus", display: 59, akku: 39,  kamera: 42, housing: 69, backglass: 0 },
+          "ip8":  { name: "8", display: 49, akku: 35,  kamera: 35, housing: 59, backglass: 0 }
         }
       }
     };
 
     const repairLabels = {
       display:   "Display-Tausch",
+      displayOriginal: "Display-Tausch · Apple Originalteil",
       akku:      "Akku-Wechsel",
+      akkuOriginal: "Akku-Wechsel · Apple Originalteil",
       kamera:    "Kamera-Reparatur",
       housing:   "Gehäuse-Tausch",
       backglass: "Rückseite / Backglass"
@@ -2745,7 +2762,7 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     }
 
     // 1. Serie-Buttons erstellen (explizite Reihenfolge: neueste zuerst)
-    const seriesOrder = ["16", "15", "14", "13", "12", "11", "X/XS", "8/SE"];
+    const seriesOrder = ["17", "16", "15", "14", "13", "12", "11", "X/XS", "8/SE"];
     for (const series of seriesOrder) {
       if (!seriesData[series]) continue;
       const box = document.createElement('button');
@@ -2789,15 +2806,19 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
       const model = seriesData[selectedSeriesKey].models[modelKey];
 
       // ─── Repair subtitles ────────────────────────────────────
-      const oledSeries = ['16', '15', '14', '13', '12', '11', 'X/XS'];
+      const oledSeries = ['17', '16', '15', '14', '13', '12', '11', 'X/XS'];
       function getRepairSubtitle(rep) {
         switch (rep) {
           case 'display':
             return oledSeries.includes(selectedSeriesKey)
-              ? 'Hochwertiges Drittanbieter Soft-OLED · gesetzliche Gewährleistungsrechte'
+              ? 'XO7 2.0 Soft-OLED · 120 Hz bei unterstützten Modellen · gesetzliche Gewährleistungsrechte'
               : 'Hochwertiges Drittanbieterteil · gesetzliche Gewährleistungsrechte';
           case 'akku':
             return 'Hochwertiges Drittanbieterteil · Originalkapazität · gesetzliche Gewährleistungsrechte';
+          case 'displayOriginal':
+            return 'Neues Apple Originalteil · Verfügbarkeit wird vor Auftrag bestätigt · gesetzliche Gewährleistungsrechte';
+          case 'akkuOriginal':
+            return 'Neues Apple Originalteil · Batteriezustand wird unterstützt · gesetzliche Gewährleistungsrechte';
           case 'kamera':
             return 'Hochwertiges Drittanbieterteil · geprüfte Optik · gesetzliche Gewährleistungsrechte';
           case 'housing':
@@ -2809,12 +2830,13 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         }
       }
 
-      ['display', 'akku', 'kamera', 'housing', 'backglass'].forEach(rep => {
+      ['display', 'displayOriginal', 'akku', 'akkuOriginal', 'kamera', 'housing', 'backglass'].forEach(rep => {
         const price = model[rep];
         if (price && price > 0) {
           const rBox = document.createElement('button');
       rBox.type = 'button';
           rBox.className = 'repair-box';
+          rBox.dataset.repair = rep;
           rBox.onclick   = () => toggleRepair(rep, rBox);
           rBox.innerHTML = '<div class="repair-box-info"><strong>' + repairLabels[rep] + '</strong><span>' + getRepairSubtitle(rep) + '</span></div><div class="repair-box-price">€' + price + '</div>';
           repairsGrid.appendChild(rBox);
@@ -2906,6 +2928,12 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
         selectedRepairs.delete(rep);
         element.classList.remove('active');
       } else {
+        const alternatives = rep === 'display' ? ['displayOriginal'] : rep === 'displayOriginal' ? ['display'] : rep === 'akku' ? ['akkuOriginal'] : rep === 'akkuOriginal' ? ['akku'] : [];
+        alternatives.forEach(alt => {
+          selectedRepairs.delete(alt);
+          const altBox = document.querySelector('.repair-box[data-repair="' + alt + '"]');
+          if (altBox) altBox.classList.remove('active');
+        });
         selectedRepairs.add(rep);
         element.classList.add('active');
       }
