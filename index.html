@@ -70,9 +70,11 @@
     gtag('config', 'G-BH77FMHQGJ');
 
     // Falls Nutzer bei einem früheren Besuch bereits zugestimmt hat
-    if (localStorage.getItem('cookieConsent') === 'accepted') {
-      gtag('consent', 'update', { 'analytics_storage': 'granted' });
-    }
+    try {
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch (_) { /* Cookie-Auswahl funktioniert auch ohne lokalen Speicher. */ }
   </script>
   <!-- ─────────────────────────────────────────────────── -->
 
@@ -1553,6 +1555,19 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
 })();
 
   </script>
+  <style id="cookie-dialog-styles">
+    html:has(#cookieBanner[open]), body:has(#cookieBanner[open]) { overflow: hidden; }
+    #cookieBanner { inset: 0; margin: auto; width: min(480px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain; padding: 24px; animation: none; }
+    #cookieBanner:not([open]) { display: none; }
+    #cookieBanner[open] { display: flex; }
+    #cookieBanner::backdrop { background: rgba(15, 23, 42, .65); backdrop-filter: blur(3px); }
+    #cookieBanner .cookie-btns { flex-wrap: wrap; }
+    #cookieBanner .cookie-btns button { flex: 1 1 180px; font-weight: 700; }
+    #cookieBanner :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+    .cookie-privacy summary { cursor: pointer; color: var(--primary); text-decoration: underline; }
+    #cookiePrivacyContent { margin-top: 12px; }
+    #cookiePrivacyContent > div { max-height: 30dvh !important; }
+  </style>
 </head>
 
 <body>
@@ -3913,18 +3928,48 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     });
   </script>
 
-  <!-- ─── Cookie Banner ─────────────────────────────── -->
-  <div id="cookieBanner" class="hidden">
+  <!-- ─── Cookie-Auswahl vor Nutzung ────────────────── -->
+  <dialog closedby="none" id="cookieBanner" aria-labelledby="cookieTitle" aria-describedby="cookieDescription" aria-modal="true">
     <div class="cookie-text">
-      <strong>Deine Cookie-Einstellungen</strong>
-      Wir nutzen Cookies für die Funktionen der Website und die Zahlungsabwicklung. Mit deiner Zustimmung verwenden wir außerdem Google Analytics zur Auswertung der Nutzung.
-      Mehr Infos in unserer <a href="#privacyModal" onclick="openModal('privacyModal')">Datenschutzerklärung</a>.
+      <strong id="cookieTitle">Deine Cookie-Einstellungen</strong>
+      <p id="cookieDescription">Bitte wähle eine Option, um die Website zu nutzen. Mit „Nur notwendige“ kannst du die Website ebenfalls vollständig nutzen. Mit deiner Zustimmung verwenden wir außerdem Google Analytics zur Auswertung der Nutzung.</p>
     </div>
+    <details class="cookie-privacy">
+      <summary>Datenschutzerklärung lesen</summary>
+      <div id="cookiePrivacyContent"></div>
+    </details>
     <div class="cookie-btns">
-      <button class="cookie-btn-decline" onclick="declineCookies()">Nur notwendige</button>
-      <button class="cookie-btn-accept" onclick="acceptCookies()">Alle akzeptieren</button>
+      <button type="button" class="cookie-btn-decline" onclick="declineCookies()" autofocus>Nur notwendige</button>
+      <button type="button" class="cookie-btn-accept" onclick="acceptCookies()">Alle akzeptieren</button>
     </div>
-  </div>
+  </dialog>
+  <script>
+    // Eine ausdrueckliche Auswahl ist erforderlich; Escape und Hintergrund schliessen nicht.
+    const cookieDialog = document.getElementById('cookieBanner');
+    cookieDialog.addEventListener('cancel', event => event.preventDefault());
+    cookieDialog.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); }
+    });
+    let cookieChoice = null;
+    try { cookieChoice = localStorage.getItem('cookieConsent'); } catch (_) {}
+    const privacyContent = document.querySelector('#privacyModal .modal-content > div:last-child');
+    if (privacyContent) {
+      document.getElementById('cookiePrivacyContent').appendChild(privacyContent.cloneNode(true));
+    }
+    if (cookieChoice !== 'accepted' && cookieChoice !== 'declined') {
+      cookieDialog.showModal();
+    }
+    function saveCookieChoice(choice) {
+      // Auch bei gesperrtem Browser-Speicher bleibt die Website nach der Auswahl nutzbar.
+      try { localStorage.setItem('cookieConsent', choice); } catch (_) {}
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', { analytics_storage: choice === 'accepted' ? 'granted' : 'denied' });
+      }
+      cookieDialog.close();
+    }
+    function acceptCookies() { saveCookieChoice('accepted'); }
+    function declineCookies() { saveCookieChoice('declined'); }
+  </script>
 
   <!-- ─── Stripe Checkout ──────────────────────────────────── -->
   <script>
@@ -3991,25 +4036,6 @@ body:has(#cookieBanner:not(.hidden)) #waBtn { bottom: 28px; }
     })();
   </script>
 
-  <script>
-    // Cookie Banner Logik
-    (function() {
-      const consent = localStorage.getItem('cookieConsent');
-      if (!consent) {
-        document.getElementById('cookieBanner').classList.remove('hidden');
-      }
-    })();
-    function acceptCookies() {
-      localStorage.setItem('cookieConsent', 'accepted');
-      document.getElementById('cookieBanner').classList.add('hidden');
-      gtag('consent', 'update', { 'analytics_storage': 'granted' });
-    }
-    function declineCookies() {
-      localStorage.setItem('cookieConsent', 'declined');
-      document.getElementById('cookieBanner').classList.add('hidden');
-      // analytics_storage bleibt 'denied'
-    }
-  </script>
   <script id="phonelab-conversion-tracking">
   document.addEventListener('click', function (event) {
     const tracked = event.target.closest('[data-track]');
